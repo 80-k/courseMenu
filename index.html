@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>코스 메뉴 안내</title>
+    
+    <!-- Google Fonts - 고급 레스토랑용 글꼴 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 data-ko="코스 메뉴 안내" data-ja="コース料理メニュー">코스 메뉴 안내</h1>
+            <div class="language-toggle">
+                <button id="ko-btn" class="lang-btn active">한국어</button>
+                <button id="ja-btn" class="lang-btn">日本語</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="course-menu">
+                <div class="course-item">
+                    <div class="course-header">
+                        <h2 data-ko="선부 (先付) - 애피타이저" data-ja="先付 (ぜんぷ) - アペタイザー">선부 (先付) - 애피타이저</h2>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="course-content">
+                        <p class="description" data-ko="일본 요리 코스에서 가장 먼저 나오는 작은 요리를 의미" data-ja="日本料理のコースで最初に出される小さな料理を意味">일본 요리 코스에서 가장 먼저 나오는 작은 요리를 의미</p>
+                        <ul>
+                            <li><span data-ko="차가운 <span class='tooltip-trigger' data-tooltip='대나무 잎'>사사</span> 두부" data-ja="冷たい<span class='tooltip-trigger' data-tooltip='竹の葉'>笹</span>豆腐">차가운 <span class='tooltip-trigger' data-tooltip='대나무 잎'>사사</span> 두부</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-header">
+                        <h2 data-ko="슌사이 (旬彩) - 제철 요리" data-ja="旬彩 (しゅんさい) - 旬の料理">슌사이 (旬彩) - 제철 요리</h2>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="course-content">
+                        <ul>
+                            <li><span data-ko="<span class='tooltip-trigger' data-tooltip='아리아케 해의 해파리'>아리아케 해파리</span>, 다진 참마" data-ja="<span class='tooltip-trigger' data-tooltip='有明海のクラゲ'>有明海クラゲ</span>、擦りおろした山芋"><span class='tooltip-trigger' data-tooltip='아리아케 해의 해파리'>아리아케 해파리</span>, 다진 참마</span></li>
+                            <li><span data-ko="<span class='tooltip-trigger' data-tooltip='동과라고도 불리는 채소'>동아</span>와 <span class='tooltip-trigger' data-tooltip='사가현의 닭고기'>미쓰세 닭고기</span>를 사용한 <span class='tooltip-trigger' data-tooltip='녹말 소스 찜'>유바지 앙카케</span>" data-ja="<span class='tooltip-trigger' data-tooltip='とうがんとも呼ばれる野菜'>冬瓜</span>と<span class='tooltip-trigger' data-tooltip='佐賀県の鶏肉'>みつせ鶏</span>を使った<span class='tooltip-trigger' data-tooltip='でんぷんソース蒸し'>湯葉地あんかけ</span>"><span class='tooltip-trigger' data-tooltip='동과라고도 불리는 채소'>동아</span>와 <span class='tooltip-trigger' data-tooltip='사가현의 닭고기'>미쓰세 닭고기</span>를 사용한 <span class='tooltip-trigger' data-tooltip='녹말 소스 찜'>유바지 앙카케</span></span></li>
+                            <li data-ko="시금치와 팽이버섯 국화 조림" data-ja="ほうれん草とえのき茸の菊花煮">시금치와 팽이버섯 국화 조림</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-header">
+                        <h2 data-ko="시루완 (汁椀) - 맑은 국" data-ja="汁椀 (しるわん) - 澄まし汁">시루완 (汁椀) - 맑은 국</h2>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="course-content">
+                        <ul>
+                            <li><span data-ko="차가운 <span class='tooltip-trigger' data-tooltip='소면'>니멘</span>" data-ja="冷たい<span class='tooltip-trigger' data-tooltip='そうめん'>にゅうめん</span>">차가운 <span class='tooltip-trigger' data-tooltip='소면'>니멘</span></span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-header">
+                        <h2 data-ko="쓰쿠리 (造里) - 사시미" data-ja="造里 (つくり) - 刺身">쓰쿠리 (造里) - 사시미</h2>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="course-content">
+                        <ul>
+                            <li><span data-ko="<span class='tooltip-trigger' data-tooltip='오징어의 한 종류'>한치</span> 활어회 외 2종" data-ja="<span class='tooltip-trigger' data-tooltip='イカの一種'>ハンチ</span>活き造り他2種"><span class='tooltip-trigger' data-tooltip='오징어의 한 종류'>한치</span> 활어회 외 2종</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-header">
+                        <h2 data-ko="야키모노 (焼物) - 구이" data-ja="焼物 (やきもの) - 焼き物">야키모노 (焼物) - 구이</h2>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="course-content">
+                        <ul>
+                            <li><span data-ko="<span class='tooltip-trigger' data-tooltip='벤자리돔'>이사키</span> 매실 된장 구이" data-ja="<span class='tooltip-trigger' data-tooltip='ベンザリドム'>イサキ</span>梅味噌焼き"><span class='tooltip-trigger' data-tooltip='벤자리돔'>이사키</span> 매실 된장 구이</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-header">
+                        <h2 data-ko="아게모노 (揚物) - 튀김" data-ja="揚物 (あげもの) - 揚げ物">아게모노 (揚物) - 튀김</h2>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="course-content">
+                        <ul>
+                            <li><span data-ko="<span class='tooltip-trigger' data-tooltip='쓰쿠리에서 나온 활 한치회의 남은 부위'>한치</span> 튀김 또는 소금구이" data-ja="<span class='tooltip-trigger' data-tooltip='造里で出た活きハンチ刺身の残りの部位'>ハンチ</span>の天ぷらまたは塩焼き"><span class='tooltip-trigger' data-tooltip='쓰쿠리에서 나온 활 한치회의 남은 부위'>한치</span> 튀김 또는 소금구이</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-header">
+                        <h2 data-ko="요사이 (洋菜) - 서양 요리" data-ja="洋菜 (ようさい) - 洋食">요사이 (洋菜) - 서양 요리</h2>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="course-content">
+                        <ul>
+                            <li><span data-ko="<span class='tooltip-trigger' data-tooltip='흑우'>와규</span> 로스트 비프와 여름 채소 구이" data-ja="<span class='tooltip-trigger' data-tooltip='黒牛'>和牛</span>ローストビーフと夏野菜グリル"><span class='tooltip-trigger' data-tooltip='흑우'>와규</span> 로스트 비프와 여름 채소 구이</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-header">
+                        <h2 data-ko="고항 (御飯) - 식사" data-ja="御飯 (ごはん) - 食事">고항 (御飯) - 식사</h2>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="course-content">
+                        <ul>
+                            <li data-ko="옥수수 가마솥 밥" data-ja="とうもろこし釜炊きご飯">옥수수 가마솥 밥</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-header">
+                        <h2 data-ko="도메완 (留椀) - 마무리 국" data-ja="留椀 (とめわん) - 締めの汁">도메완 (留椀) - 마무리 국</h2>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="course-content">
+                        <ul>
+                            <li><span data-ko="<span class='tooltip-trigger' data-tooltip='적된장국'>아카다시</span>" data-ja="<span class='tooltip-trigger' data-tooltip='赤味噌汁'>赤だし</span>"><span class='tooltip-trigger' data-tooltip='적된장국'>아카다시</span></span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-header">
+                        <h2 data-ko="디저트 (デザート)" data-ja="デザート">디저트 (デザート)</h2>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="course-content">
+                        <ul>
+                            <li data-ko="붉은 과육 멜론, 거봉" data-ja="赤肉メロン、巨峰">붉은 과육 멜론, 거봉</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 플로팅 버튼들 -->
+    <div class="floating-buttons">
+        <!-- 모두 열기/닫기 버튼 -->
+        <button id="toggle-all-btn" class="toggle-all-btn">
+            <span class="toggle-all-icon">▼</span>
+            <span class="toggle-all-text" data-ko="모두\n열기" data-ja="すべて\n開く">모두<br>열기</span>
+        </button>
+        
+        <!-- 스크롤 버튼 -->
+        <button id="scroll-btn" class="scroll-btn">
+            <span class="scroll-btn-icon">▼</span>
+            <span class="scroll-btn-text" data-ko="아래로" data-ja="下へ">아래로</span>
+        </button>
+    </div>
+
+    <!-- 툴팁 -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
