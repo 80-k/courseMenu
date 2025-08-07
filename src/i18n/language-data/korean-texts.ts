@@ -20,11 +20,22 @@ export const ko = {
 
   // 헤더
   header: {
-    mainTitle: "상견례 안내",
+    // 모드별 메인 타이틀
+    mainTitle: {
+      wedding: "웨딩 안내",
+      sanggyeonrye: "상견례 안내", 
+      afterparty: "뒷풀이 안내"
+    },
     courseTitle: "코스 요리",
     scheduleWeddingTitle: "일정 & 예식장",
     scheduleMenuTitle: "일정 안내",
     programMenuTitle: "시간표",
+    // 모드별 부제목
+    subtitle: {
+      wedding: "소중한 날을 함께해 주셔서 감사합니다",
+      sanggyeonrye: "두 가족이 만나는 뜻깊은 시간입니다",
+      afterparty: "즐거운 시간을 함께해요"
+    }
   },
 
   // 언어 선택
@@ -57,6 +68,24 @@ export const ko = {
       description: "당일 프로그램 안내",
       items: "예식 내용, 진행 순서 안내",
     },
+    // 상견례 관련 메뉴
+    sanggyeonryeInfo: {
+      title: "상견례 정보",
+      description: "양가 부모님의 만남에 대한 안내",
+      items: "만남 시간, 장소 안내, 준비물"
+    },
+    sanggyeonryeRestaurant: {
+      title: "식당 안내", 
+      description: "상견례 장소 정보",
+      items: "식당 소개, 위치, 주차 정보"
+    },
+    // 뒷풀이 관련 메뉴
+    afterpartyInfo: {
+      title: "뒷풀이 안내",
+      description: "식후 파티 정보",
+      items: "시간, 장소, 프로그램"
+    },
+    // 기존 레스토랑 정보
     restaurantInfo: {
       businessHours: "일시: 2025년 8월 11일",
       regularHoliday: "장소: 칸잔소베칸",
@@ -123,7 +152,7 @@ export const ko = {
           date: "2025년 7월 7일",
           event: "혼인신고",
         },
-        meeting: {
+        sanggyeonrye: {
           date: "2025년 8월 11일",
           event: "상견례",
         },
@@ -201,7 +230,7 @@ export const ko = {
       date: "2025년 7월 7일",
       event: "혼인신고",
     },
-    meeting: {
+    sanggyeonrye: {
       date: "2025년 8월 11일",
       event: "상견례",
     },

@@ -5,10 +5,11 @@ import { getMenuItemsWithTranslations } from '../data/dynamic-menu-config';
 import { LEGACY_ROUTE_MAPPING } from '../config/application-routes';
 import { FeatureGate } from '../components/common/FeatureGates';
 import { ASSETS } from '../constants/assets';
+import type { MenuCategory } from '../types';
 import '../styles/global.css';
 
 export const MainMenu: React.FC = () => {
-  const { language, t } = useI18n();
+  const { language, translate } = useI18n();
   const navigate = useNavigate();
 
   // 현재 설정에 따라 표시할 메뉴 항목들 가져오기
@@ -43,7 +44,7 @@ export const MainMenu: React.FC = () => {
             {availableMenuItems.map(menuItem => (
               <NavigationMenuCard
                 key={menuItem.id}
-                category={menuItem}
+                category={menuItem as unknown as MenuCategory}
                 onClick={() => navigateToMenuPage(menuItem.id, menuItem.href)}
               />
             ))}
@@ -53,9 +54,9 @@ export const MainMenu: React.FC = () => {
         <FeatureGate feature="showSchedule">
           <footer>
             <div className="restaurant-info">
-              <p>{t('menu.restaurantInfo.businessHours')}</p>
-              <p>{t('menu.restaurantInfo.regularHoliday')}</p>
-              <p>{t('menu.restaurantInfo.reservation')}</p>
+              <p>{translate('menu.restaurantInfo.businessHours')}</p>
+              <p>{translate('menu.restaurantInfo.regularHoliday')}</p>
+              <p>{translate('menu.restaurantInfo.reservation')}</p>
             </div>
           </footer>
         </FeatureGate>

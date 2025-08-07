@@ -55,7 +55,7 @@ export const CourseItem: React.FC<CourseItemProps> = ({
             <p className="description">{item.description[language]}</p>
           )}
           <ul>
-            {item.items.map((menuItem, index) => (
+            {item.items.map((menuItem: any, index: number) => (
               <li key={`${item.id}-${index}`}>
                 <span>{menuItem[language]}</span>
               </li>

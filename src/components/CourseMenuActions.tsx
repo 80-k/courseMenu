@@ -11,7 +11,7 @@ export const CourseMenuActions: React.FC<CourseMenuActionsProps> = ({
   allExpanded,
   onToggleAll,
 }) => {
-  const { t } = useI18n();
+  const { translate } = useI18n();
   const { isAtBottom, scrollToTop, scrollToBottom } = useScrollPosition();
 
   const handleScrollClick = (e: React.MouseEvent) => {
@@ -33,17 +33,17 @@ export const CourseMenuActions: React.FC<CourseMenuActionsProps> = ({
   const getScrollButtonText = () => {
     if (isAtBottom) {
       // 맨 아래에 있으면 '맨 위로' 버튼 표시
-      return t('floating.scrollUp');
+      return translate('floating.scrollUp');
     }
     // 그 외에는 '맨 아래로' 버튼 표시
-    return t('floating.scrollDown');
+    return translate('floating.scrollDown');
   };
 
   const getToggleAllText = () => {
     if (allExpanded) {
-      return t('floating.toggleAllClose');
+      return translate('floating.toggleAllClose');
     }
-    return t('floating.toggleAllOpen');
+    return translate('floating.toggleAllOpen');
   };
 
   return (
@@ -51,7 +51,7 @@ export const CourseMenuActions: React.FC<CourseMenuActionsProps> = ({
       <button 
         className={`toggle-all-btn ${!allExpanded ? 'all-collapsed' : ''}`}
         onClick={onToggleAll}
-        aria-label={allExpanded ? t('floating.toggleAllCloseAria') : t('floating.toggleAllOpenAria')}
+        aria-label={allExpanded ? translate('floating.toggleAllCloseAria') : translate('floating.toggleAllOpenAria')}
       >
         <span className="toggle-all-icon">
           <ToggleAllIcon isExpanded={allExpanded} />
@@ -64,7 +64,7 @@ export const CourseMenuActions: React.FC<CourseMenuActionsProps> = ({
       <button 
         className={`scroll-btn ${isAtBottom ? 'scroll-up' : ''}`}
         onClick={handleScrollClick}
-        aria-label={isAtBottom ? t('floating.scrollToTopAria') : t('floating.scrollToBottomAria')}
+        aria-label={isAtBottom ? translate('floating.scrollToTopAria') : translate('floating.scrollToBottomAria')}
       >
         <span className="scroll-btn-icon">
           <ScrollIcon direction={isAtBottom ? 'up' : 'down'} />

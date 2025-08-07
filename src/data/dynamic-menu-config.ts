@@ -58,7 +58,7 @@ const weddingMenuData: ConfigurableMenuItem[] = [
     },
     href: "/course",
     enabled: true,
-    visibleInModes: ["wedding", "restaurant"],
+    visibleInModes: ["wedding", "sanggyeonrye"],
     requiredFeatures: ["showCourseMenu"],
   },
   {
@@ -123,8 +123,8 @@ const weddingMenuData: ConfigurableMenuItem[] = [
   },
 ];
 
-// 레스토랑 모드 메뉴 데이터
-const restaurantMenuData: ConfigurableMenuItem[] = [
+// 상견례 모드 메뉴 데이터
+const sanggyeonryeMenuData: ConfigurableMenuItem[] = [
   {
     id: "course",
     icon: "🍱",
@@ -142,27 +142,27 @@ const restaurantMenuData: ConfigurableMenuItem[] = [
     },
     href: "/course",
     enabled: true,
-    visibleInModes: ["restaurant"],
+    visibleInModes: ["sanggyeonrye"],
     requiredFeatures: ["showCourseMenu"],
   },
   {
-    id: "reservation",
-    icon: "📞",
+    id: "sanggyeonrye_info",
+    icon: "🤝",
     title: {
-      ko: "예약",
-      ja: "ご予約",
+      ko: "상견례 정보",
+      ja: "顔合わせ情報",
     },
     description: {
-      ko: "레스토랑 예약 및 문의",
-      ja: "レストランご予約・お問い合わせ",
+      ko: "상견례 일정 및 준비사항",
+      ja: "顔合わせの日程と準備事項",
     },
     items: {
-      ko: "전화 예약, 온라인 예약, 영업시간",
-      ja: "電話予約、オンライン予約、営業時間",
+      ko: "만남 시간, 장소 안내, 준비물",
+      ja: "面会時間、場所のご案内、準備物",
     },
-    href: "/reservation",
+    href: "/sanggyeonrye/info",
     enabled: true,
-    visibleInModes: ["restaurant"],
+    visibleInModes: ["sanggyeonrye"],
   },
   {
     id: "about",
@@ -181,12 +181,12 @@ const restaurantMenuData: ConfigurableMenuItem[] = [
     },
     href: "/about",
     enabled: true,
-    visibleInModes: ["restaurant"],
+    visibleInModes: ["sanggyeonrye"],
   },
 ];
 
-// 이벤트 모드 메뉴 데이터
-const eventMenuData: ConfigurableMenuItem[] = [
+// 뒷풀이 모드 메뉴 데이터
+const afterpartyMenuData: ConfigurableMenuItem[] = [
   {
     id: "program",
     icon: "📋",
@@ -204,7 +204,7 @@ const eventMenuData: ConfigurableMenuItem[] = [
     },
     href: "/program",
     enabled: true,
-    visibleInModes: ["event"],
+    visibleInModes: ["afterparty"],
   },
   {
     id: "registration",
@@ -223,15 +223,15 @@ const eventMenuData: ConfigurableMenuItem[] = [
     },
     href: "/registration",
     enabled: true,
-    visibleInModes: ["event"],
+    visibleInModes: ["afterparty"],
   },
 ];
 
 // 모든 메뉴 데이터 통합
 const allMenuData = {
   wedding: weddingMenuData,
-  restaurant: restaurantMenuData,
-  event: eventMenuData,
+  sanggyeonrye: sanggyeonryeMenuData,
+  afterparty: afterpartyMenuData,
 };
 
 /**
@@ -266,12 +266,12 @@ export function isMenuItemVisibleInCurrentMode(menuItemId: string): boolean {
 /**
  * 현재 언어에 맞는 메뉴 데이터 가져오기
  */
-export function getMenuItemsWithTranslations(targetLanguage: SupportedLanguage): any[] {
+export function getMenuItemsWithTranslations(targetLanguage: SupportedLanguage): Array<{id: string, icon: string, title: LocalizedContent, description: LocalizedContent, items: LocalizedContent, href?: string}> {
   const availableItems = getAvailableMenuItemsForCurrentEnvironment();
   
   return availableItems.map(item => ({
     id: item.id,
-    icon: item.icon,
+    icon: item.icon || '📋',
     title: {
       ko: item.title.ko || item.title[targetLanguage] || item.id,
       ja: item.title.ja || item.title[targetLanguage] || item.id,
@@ -281,8 +281,8 @@ export function getMenuItemsWithTranslations(targetLanguage: SupportedLanguage):
       ja: item.description?.ja || item.description?.[targetLanguage] || '',
     },
     items: {
-      ko: typeof item.items === 'object' ? (item.items.ko || item.items[targetLanguage] || '') : (item.items || ''),
-      ja: typeof item.items === 'object' ? (item.items.ja || item.items[targetLanguage] || '') : (item.items || ''),
+      ko: typeof item.items === 'object' && !Array.isArray(item.items) ? ((item.items as LocalizedContent).ko || (item.items as LocalizedContent)[targetLanguage] || '') : (String(item.items) || ''),
+      ja: typeof item.items === 'object' && !Array.isArray(item.items) ? ((item.items as LocalizedContent).ja || (item.items as LocalizedContent)[targetLanguage] || '') : (String(item.items) || ''),
     },
     href: item.href,
   }));

@@ -17,7 +17,7 @@ export const getTranslations = () => translations;
 
 // 특정 언어 번역 데이터 가져오기
 export const getLanguageTranslations = (language: string) => {
-  return translations[language] || translations.ko; // 기본값은 한국어
+  return translations[language as keyof typeof translations] || translations.ko; // 기본값은 한국어
 };
 
 // 지원되는 언어 목록
@@ -30,5 +30,4 @@ export const DEFAULT_LANGUAGE = 'ko';
 export const LANGUAGE_NAMES = {
   ko: '한국어',
   ja: '日本語',
-  en: 'English',
 } as const;

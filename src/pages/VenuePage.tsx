@@ -4,7 +4,7 @@ import { ASSETS } from "../constants/assets";
 import "../styles/global.css";
 
 export const VenuePage: React.FC = () => {
-  const { t } = useI18n();
+  const { translate } = useI18n();
 
   return (
     <div className='container'>
@@ -20,23 +20,23 @@ export const VenuePage: React.FC = () => {
               <div className='card-header'>
                 <h3 className='card-title'>
                   <span className='card-icon'>🏛️</span>
-                  {t('leftPage.aboutWedding.venueInfo.title')}
+                  {translate('leftPage.aboutWedding.venueInfo.title')}
                 </h3>
               </div>
 
               <div className='card-content'>
                 <div className='venue-main-info'>
                   <p className='date-time'>
-                    {t('leftPage.aboutWedding.venueInfo.dateTime')}
+                    {translate('leftPage.aboutWedding.venueInfo.dateTime')}
                   </p>
                   <p className='venue-name-jp'>
-                    {t('leftPage.aboutWedding.venueInfo.venueNameJp')}
+                    {translate('leftPage.aboutWedding.venueInfo.venueNameJp')}
                   </p>
                   <p className='venue-name-en'>
-                    {t('leftPage.aboutWedding.venueInfo.venueNameEn')}
+                    {translate('leftPage.aboutWedding.venueInfo.venueNameEn')}
                   </p>
                   <p className='venue-description'>
-                    {t('leftPage.aboutWedding.venueInfo.description')}
+                    {translate('leftPage.aboutWedding.venueInfo.description')}
                   </p>
                 </div>
 
@@ -44,19 +44,19 @@ export const VenuePage: React.FC = () => {
                   <div className='contact-item'>
                     <span className='contact-icon'>📍</span>
                     <span className='contact-text'>
-                      {t('leftPage.aboutWedding.venueInfo.address')}
+                      {translate('leftPage.aboutWedding.venueInfo.address')}
                     </span>
                   </div>
                   <div className='contact-item'>
                     <span className='contact-icon'>📞</span>
                     <span className='contact-text'>
-                      {t('leftPage.aboutWedding.venueInfo.phone')}
+                      {translate('leftPage.aboutWedding.venueInfo.phone')}
                     </span>
                   </div>
                   <div className='contact-item'>
                     <span className='contact-icon'>🌐</span>
                     <span className='contact-text'>
-                      {t('leftPage.aboutWedding.venueInfo.website')}
+                      {translate('leftPage.aboutWedding.venueInfo.website')}
                     </span>
                   </div>
                 </div>
@@ -68,7 +68,7 @@ export const VenuePage: React.FC = () => {
               <div className='card-header'>
                 <h3 className='card-title'>
                   <span className='card-icon'>🚇</span>
-                  {t('leftPage.aboutWedding.transportation.title')}
+                  {translate('leftPage.aboutWedding.transportation.title')}
                 </h3>
               </div>
 
@@ -78,11 +78,11 @@ export const VenuePage: React.FC = () => {
                     <div className='transport-header'>
                       <span className='transport-icon'>🚗</span>
                       <h4 className='transport-title'>
-                        {t('leftPage.aboutWedding.transportation.byCar.title')}
+                        {translate('leftPage.aboutWedding.transportation.byCar.title')}
                       </h4>
                     </div>
                     <div className='transport-details'>
-                      {t('leftPage.aboutWedding.transportation.byCar.details')
+                      {translate('leftPage.aboutWedding.transportation.byCar.details')
                         .split("\n")
                         .map((line, index) => (
                           <p key={index} className='transport-detail-line'>
@@ -96,11 +96,11 @@ export const VenuePage: React.FC = () => {
                     <div className='transport-header'>
                       <span className='transport-icon'>🚆</span>
                       <h4 className='transport-title'>
-                        {t('leftPage.aboutWedding.transportation.byTrain.title')}
+                        {translate('leftPage.aboutWedding.transportation.byTrain.title')}
                       </h4>
                     </div>
                     <div className='transport-details'>
-                      {t('leftPage.aboutWedding.transportation.byTrain.details')
+                      {translate('leftPage.aboutWedding.transportation.byTrain.details')
                         .split("\n")
                         .map((line, index) => (
                           <p key={index} className='transport-detail-line'>
@@ -114,11 +114,11 @@ export const VenuePage: React.FC = () => {
                     <div className='transport-header'>
                       <span className='transport-icon'>✈️</span>
                       <h4 className='transport-title'>
-                        {t('leftPage.aboutWedding.transportation.byPlane.title')}
+                        {translate('leftPage.aboutWedding.transportation.byPlane.title')}
                       </h4>
                     </div>
                     <div className='transport-details'>
-                      {t('leftPage.aboutWedding.transportation.byPlane.details')
+                      {translate('leftPage.aboutWedding.transportation.byPlane.details')
                         .split("\n")
                         .map((line, index) => (
                           <p key={index} className='transport-detail-line'>
@@ -132,11 +132,11 @@ export const VenuePage: React.FC = () => {
                     <div className='transport-header'>
                       <span className='transport-icon'>🚌</span>
                       <h4 className='transport-title'>
-                        {t('leftPage.aboutWedding.transportation.shuttle.title')}
+                        {translate('leftPage.aboutWedding.transportation.shuttle.title')}
                       </h4>
                     </div>
                     <div className='transport-details'>
-                      {t('leftPage.aboutWedding.transportation.shuttle.details')
+                      {translate('leftPage.aboutWedding.transportation.shuttle.details')
                         .split("\n")
                         .map((line, index) => (
                           <p key={index} className='transport-detail-line'>

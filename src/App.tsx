@@ -25,7 +25,7 @@ import "./styles/global.css";
 
 function AppContent() {
   const location = useLocation();
-  const { t } = useI18n();
+  const { translate } = useI18n();
   const { isExpanded, toggle, toggleAll, allExpanded } = useToggleState(
     courseMenuData.map((item) => item.id)
   );
@@ -52,8 +52,8 @@ function AppContent() {
     if (path === ROUTES.COURSE_MENU.path || path === "/course") {
       return {
         title: {
-          ko: t("header.courseTitle"),
-          ja: t("header.courseTitle"),
+          ko: translate("header.courseTitle"),
+          ja: translate("header.courseTitle"),
         },
         linkTo: "/",
         showBackLink: true,
@@ -61,8 +61,8 @@ function AppContent() {
     } else if (path === ROUTES.WEDDING_INFO.path || path === "/left") {
       return {
         title: {
-          ko: t("header.scheduleWeddingTitle"),
-          ja: t("header.scheduleWeddingTitle"),
+          ko: translate("header.scheduleWeddingTitle"),
+          ja: translate("header.scheduleWeddingTitle"),
         },
         linkTo: "/",
         showBackLink: true,
@@ -70,8 +70,8 @@ function AppContent() {
     } else if (path === ROUTES.SCHEDULE.path || path === "/schedule") {
       return {
         title: {
-          ko: t("header.scheduleMenuTitle"),
-          ja: t("header.scheduleMenuTitle"),
+          ko: translate("header.scheduleMenuTitle"),
+          ja: translate("header.scheduleMenuTitle"),
         },
         linkTo: "/",
         showBackLink: true,
@@ -79,8 +79,8 @@ function AppContent() {
     } else if (path === ROUTES.VENUE.path || path === "/venue") {
       return {
         title: {
-          ko: t("venue.title"),
-          ja: t("venue.title"),
+          ko: translate("venue.title"),
+          ja: translate("venue.title"),
         },
         linkTo: "/",
         showBackLink: true,
@@ -88,8 +88,8 @@ function AppContent() {
     } else if (path === ROUTES.PROGRAM.path || path === "/right") {
       return {
         title: {
-          ko: t("header.programMenuTitle"),
-          ja: t("header.programMenuTitle"),
+          ko: translate("header.programMenuTitle"),
+          ja: translate("header.programMenuTitle"),
         },
         linkTo: "/",
         showBackLink: true,

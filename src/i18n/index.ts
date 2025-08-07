@@ -17,7 +17,8 @@ export type {
 } from './types';
 
 // 컨텍스트와 프로바이더
-export { I18nContext, I18nProvider } from './translation-provider';
+export { I18nContext } from './translation-context';
+export { I18nProvider } from './translation-provider';
 
 // 훅들
 export { 

@@ -5,9 +5,12 @@
 import type { 
   SupportedLanguage, 
   TranslationNamespace, 
-  LocalizedText,
-  NestedLocalizedText 
-} from './types';
+  NestedLocalizedText
+} from '../types';
+import { 
+  isObject, 
+  isString
+} from '../types';
 import { getLanguageTranslations, LANGUAGE_NAMES } from './language-data/translation-registry';
 
 /**
@@ -65,10 +68,19 @@ export function createTranslationHelpers(namespace: TranslationNamespace) {
 /**
  * 중첩된 객체에서 점 표기법을 사용하여 속성 값을 가져옴
  */
-function getNestedProperty(obj: any, path: string): any {
-  return path.split('.').reduce((current, key) => {
-    return current && typeof current === 'object' ? current[key] : undefined;
-  }, obj);
+function getNestedProperty(obj: NestedLocalizedText, path: string): string | undefined {
+  const keys = path.split('.');
+  let current: unknown = obj;
+  
+  for (const key of keys) {
+    if (isObject(current) && key in current) {
+      current = current[key];
+    } else {
+      return undefined;
+    }
+  }
+  
+  return isString(current) ? current : undefined;
 }
 
 /**
@@ -137,7 +149,7 @@ export function findMissingTranslations(
   const baseTranslations = getLanguageTranslations(baseLanguage);
   const targetTranslations = getLanguageTranslations(targetLanguage);
   
-  function checkObject(baseObj: any, targetObj: any, path = '') {
+  function checkObject(baseObj: NestedLocalizedText, targetObj: NestedLocalizedText, path = '') {
     Object.keys(baseObj).forEach(key => {
       const currentPath = path ? `${path}.${key}` : key;
       const baseValue = baseObj[key];
@@ -148,7 +160,9 @@ export function findMissingTranslations(
           missing.push(currentPath);
         }
       } else if (typeof baseValue === 'object' && baseValue !== null) {
-        checkObject(baseValue, targetValue, currentPath);
+        if (isObject(baseValue) && isObject(targetValue)) {
+          checkObject(baseValue as NestedLocalizedText, targetValue as NestedLocalizedText, currentPath);
+        }
       }
     });
   }
@@ -161,7 +175,7 @@ export function findMissingTranslations(
  * 개발 모드에서 번역 통계 출력
  */
 export function logTranslationStats() {
-  if (process.env.NODE_ENV === 'development') {
+  if (import.meta.env.DEV) {
     const languages = Object.keys(LANGUAGE_NAMES);
     console.group('🌐 Translation Statistics');
     
@@ -189,15 +203,15 @@ export function logTranslationStats() {
 /**
  * 번역 키 개수를 세는 헬퍼 함수
  */
-function countTranslationKeys(obj: any): number {
+function countTranslationKeys(obj: NestedLocalizedText): number {
   let count = 0;
   
-  function countRecursive(current: any) {
-    Object.values(current).forEach(value => {
+  function countRecursive(current: NestedLocalizedText) {
+    Object.values(current as Record<string, unknown>).forEach((value: unknown) => {
       if (typeof value === 'string') {
         count++;
-      } else if (typeof value === 'object' && value !== null) {
-        countRecursive(value);
+      } else if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        countRecursive(value as NestedLocalizedText);
       }
     });
   }

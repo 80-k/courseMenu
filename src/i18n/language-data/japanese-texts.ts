@@ -20,11 +20,22 @@ export const ja = {
 
   // 헤더
   header: {
-    mainTitle: "顔合わせご案内",
+    // 모드별 메인 타이틀
+    mainTitle: {
+      wedding: "ウェディングご案内",
+      sanggyeonrye: "顔合わせご案内", 
+      afterparty: "アフターパーティーご案内"
+    },
     courseTitle: "コース料理",
     scheduleWeddingTitle: "スケジュール & 式場",
     scheduleMenuTitle: "日程案内",
     programMenuTitle: "タイムテーブル",
+    // 모드별 부제목
+    subtitle: {
+      wedding: "大切な日を一緒にお祝いいただき、ありがとうございます",
+      sanggyeonrye: "ご両家の出会いの記念すべき時間です",
+      afterparty: "楽しい時間をご一緒しましょう"
+    }
   },
 
   // 언어 선택
@@ -57,6 +68,24 @@ export const ja = {
       description: "当日のプログラムのご案内",
       items: "進行順序と内容",
     },
+    // 상견례 관련 메뉴
+    sanggyeonryeInfo: {
+      title: "顔合わせ情報",
+      description: "ご両家の出会いに関するご案内",
+      items: "お会いする時間、会場案内、準備物"
+    },
+    sanggyeonryeRestaurant: {
+      title: "レストランのご案内", 
+      description: "顔合わせ会場の情報",
+      items: "レストラン紹介、アクセス、駐車場情報"
+    },
+    // 뒷풀이 관련 메뉴
+    afterpartyInfo: {
+      title: "アフターパーティーご案内",
+      description: "お食事後のパーティー情報",
+      items: "時間、会場、プログラム"
+    },
+    // 기존 레스토랑 정보
     restaurantInfo: {
       businessHours: "日時: 2025年8月11日",
       regularHoliday: "会場: 観山荘別館",
@@ -123,7 +152,7 @@ export const ja = {
           date: "令和7年7月7日",
           event: "入籍",
         },
-        meeting: {
+        sanggyeonrye: {
           date: "令和7年8月11日",
           event: "顔合わせ",
         },
@@ -202,7 +231,7 @@ export const ja = {
       date: "令和7年7月7日",
       event: "入籍",
     },
-    meeting: {
+    sanggyeonrye: {
       date: "令和7年8月11日",
       event: "顔合わせ",
     },

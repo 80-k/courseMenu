@@ -2,21 +2,49 @@
  * 다국어 시스템 컨텍스트
  */
 
-import React, { createContext, useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import { I18nContext } from './translation-context';
+import { getLanguageTranslations } from './language-data/translation-registry';
+import type { 
+  TranslationKey, 
+  TranslationNamespace,
+  TranslationOptions,
+  SupportedLanguage,
+  I18nContextType,
+  TranslationFunction
+} from '../types';
+
+// 유틸리티 함수들
+function getNestedValue(obj: any, path: string): string | null {
+  const keys = path.split('.');
+  let result = obj;
+  
+  for (const key of keys) {
+    if (result && typeof result === 'object' && key in result) {
+      result = result[key];
+    } else {
+      return null;
+    }
+  }
+  
+  return typeof result === 'string' ? result : null;
+}
+
+function interpolateParams(text: string, params?: Record<string, string | number | boolean>): string {
+  if (!params) return text;
+  
+  let result = text;
+  Object.entries(params).forEach(([key, value]) => {
+    const placeholder = `{{${key}}}`;
+    result = result.replace(new RegExp(placeholder, 'g'), String(value));
+  });
+  
+  return result;
+}
+
 // 순환 참조 방지를 위해 직접 설정값 사용
 const DEFAULT_SUPPORTED_LANGUAGES: SupportedLanguage[] = ['ko', 'ja'];
 const DEFAULT_LANGUAGE: SupportedLanguage = 'ko';
-import { getLanguageTranslations } from './language-data/translation-registry';
-import type { 
-  I18nContextType, 
-  TranslationKey, 
-  TranslationParams, 
-  TranslationNamespace,
-  SupportedLanguage 
-} from './types';
-
-// 컨텍스트 생성
-export const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
 interface I18nProviderProps {
   children: React.ReactNode;
@@ -48,6 +76,7 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({
   });
   
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   /**
    * 언어 변경 함수
@@ -72,23 +101,98 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({
   }, []);
 
   /**
-   * 번역 함수
+   * 네임스페이스별 번역 함수 팩토리
+   */
+  const createNamespacedTranslation = useCallback((namespace: TranslationNamespace) => {
+    return (key: string, options?: Omit<TranslationOptions, 'namespace'>) => {
+      // translateText 함수를 직접 호출하지 말고 내재화를 사용
+      const translations = getLanguageTranslations(language);
+      const namespaceData = translations[namespace as keyof typeof translations];
+      if (namespaceData && typeof namespaceData === 'object') {
+        const value = getNestedValue(namespaceData, key);
+        if (value) {
+          return interpolateParams(value, options?.params);
+        }
+      }
+      console.warn(`Translation not found: ${namespace}.${key} (language: ${language})`);
+      return `${namespace}.${key}`;
+    };
+  }, [language]);
+
+  /**
+   * 번역 데이터 다시 로드
+   */
+  const reloadTranslations = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      // 실제로는 여기서 번역 데이터를 다시 로드할 수 있음
+      await new Promise(resolve => setTimeout(resolve, 100));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Translation reload failed');
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  /**
+   * 특정 네임스페이스 프리로드
+   */
+  const preloadNamespace = useCallback(async (_namespace: TranslationNamespace) => {
+    try {
+      setError(null);
+      // 실제로는 여기서 특정 네임스페이스를 프리로드할 수 있음
+      await new Promise(resolve => setTimeout(resolve, 50));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Namespace preload failed');
+    }
+  }, []);
+
+  /**
+   * 에러 클리어
+   */
+  const clearError = useCallback(() => {
+    setError(null);
+  }, []);
+
+  /**
+   * 번역 함수 - 두 가지 시그니처를 지원
    */
   const translateText = useCallback((
-    translationKey: TranslationKey,
-    interpolationParams?: TranslationParams,
-    textNamespace?: TranslationNamespace
+    keyOrNamespace: TranslationKey | TranslationNamespace,
+    keyOrOptions?: string | TranslationOptions,
+    options?: TranslationOptions
   ): string => {
     try {
       const translations = getLanguageTranslations(language);
       
-      // 네임스페이스가 지정된 경우 해당 네임스페이스에서 찾기
-      if (textNamespace) {
-        const namespaceData = translations[textNamespace];
+      // 첫 번째 인자가 네임스페이스인지 확인 (3개 인자 형태)
+      if (typeof keyOrOptions === 'string') {
+        // (namespace: TranslationNamespace, key: string, options?: TranslationOptions)
+        const namespace = keyOrNamespace as TranslationNamespace;
+        const key = keyOrOptions;
+        const namespaceData = translations[namespace as keyof typeof translations];
+        if (namespaceData) {
+          const value = getNestedValue(namespaceData, key);
+          if (value) {
+            return interpolateParams(value, options?.params);
+          }
+        }
+        console.warn(`Translation not found: ${namespace}.${key} (language: ${language})`);
+        return `${namespace}.${key}`;
+      }
+      
+      // 첫 번째 인자가 TranslationKey (2개 인자 형태)
+      const translationKey = keyOrNamespace;
+      const translationOptions = keyOrOptions as TranslationOptions | undefined;
+      
+      // 옵션에 네임스페이스가 지정된 경우
+      if (translationOptions && translationOptions.namespace) {
+        const namespaceData = translations[translationOptions.namespace as keyof typeof translations];
         if (namespaceData) {
           const value = getNestedValue(namespaceData, translationKey);
           if (value) {
-            return interpolateParams(value, interpolationParams);
+            return interpolateParams(value, translationOptions.params);
           }
         }
       }
@@ -96,27 +200,27 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({
       // 전체 번역 데이터에서 키로 검색
       const value = getNestedValue(translations, translationKey);
       if (value) {
-        return interpolateParams(value, interpolationParams);
+        return interpolateParams(value, translationOptions?.params);
       }
       
       // 네임스페이스.키 형태로 재시도
-      if (translationKey.includes('.')) {
-        const [ns, ...keyParts] = translationKey.split('.');
-        const nsData = translations[ns];
-        if (nsData) {
-          const nestedValue = getNestedValue(nsData, keyParts.join('.'));
+      if (typeof translationKey === 'string' && translationKey.includes('.')) {
+        const [namespace, ...keyParts] = translationKey.split('.');
+        const namespaceData = translations[namespace as keyof typeof translations];
+        if (namespaceData) {
+          const nestedValue = getNestedValue(namespaceData, keyParts.join('.'));
           if (nestedValue) {
-            return interpolateParams(nestedValue, interpolationParams);
+            return interpolateParams(nestedValue, translationOptions?.params);
           }
         }
       }
       
-      console.warn(`Translation not found: ${translationKey} (language: ${language}, namespace: ${textNamespace})`);
-      return translationKey; // 번역을 찾을 수 없으면 키 자체를 반환
+      console.warn(`Translation not found: ${translationKey} (language: ${language})`);
+      return String(translationKey); // 번역을 찾을 수 없으면 키 자체를 반환
       
     } catch (error) {
       console.error('Translation error:', error);
-      return translationKey;
+      return String(keyOrNamespace);
     }
   }, [language]);
 
@@ -127,10 +231,16 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({
 
   const value: I18nContextType = {
     language,
-    setLanguage: switchToLanguage,
-    t: translateText,
     supportedLanguages: DEFAULT_SUPPORTED_LANGUAGES,
     isLoading,
+    error,
+    isTranslationsLoaded: true, // 정적 번역이므로 항상 로드됨
+    setLanguage: switchToLanguage,
+    reloadTranslations,
+    preloadNamespace,
+    clearError,
+    translate: translateText as any as TranslationFunction,
+    createNamespacedTranslator: createNamespacedTranslation,
   };
 
   return (
@@ -140,31 +250,3 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({
   );
 };
 
-/**
- * 중첩된 객체에서 점 표기법으로 값을 가져오는 헬퍼 함수
- */
-function getNestedValue(obj: any, path: string): string | undefined {
-  const keys = path.split('.');
-  let current = obj;
-  
-  for (const key of keys) {
-    if (current && typeof current === 'object' && key in current) {
-      current = current[key];
-    } else {
-      return undefined;
-    }
-  }
-  
-  return typeof current === 'string' ? current : undefined;
-}
-
-/**
- * 파라미터 보간을 수행하는 헬퍼 함수
- */
-function interpolateParams(text: string, params?: TranslationParams): string {
-  if (!params) return text;
-  
-  return text.replace(/\{\{(\w+)\}\}/g, (match, key) => {
-    return params[key]?.toString() || match;
-  });
-}

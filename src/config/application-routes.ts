@@ -2,7 +2,7 @@
  * 애플리케이션 라우트 설정 및 관리
  */
 
-export type AppMode = 'wedding' | 'restaurant' | 'event';
+export type AppMode = 'wedding' | 'sanggyeonrye' | 'afterparty';
 
 // 라우트 인터페이스
 export interface AppRoute {
@@ -13,7 +13,7 @@ export interface AppRoute {
     ko: string;
     ja: string;
   };
-  visibleInModes: AppMode[];
+  visibleInModes: readonly AppMode[];
   requiresAuth?: boolean;
   isPublic?: boolean;
 }
@@ -29,7 +29,7 @@ export const ROUTES = {
       ko: '메인',
       ja: 'メイン',
     },
-    visibleInModes: ['wedding', 'restaurant', 'event'],
+    visibleInModes: ['wedding', 'sanggyeonrye', 'afterparty'],
     isPublic: true,
   },
   
@@ -42,7 +42,7 @@ export const ROUTES = {
       ko: '코스 요리',
       ja: 'コース料理',
     },
-    visibleInModes: ['wedding', 'restaurant'],
+    visibleInModes: ['wedding', 'sanggyeonrye'],
     isPublic: true,
   },
   
@@ -81,7 +81,7 @@ export const ROUTES = {
       ko: '프로그램',
       ja: 'プログラム',
     },
-    visibleInModes: ['wedding', 'event'],
+    visibleInModes: ['wedding', 'afterparty'],
     isPublic: true,
   },
   
@@ -98,42 +98,42 @@ export const ROUTES = {
     isPublic: true,
   },
   
-  // 레스토랑 예약 (레스토랑 전용)
-  RESERVATION: {
-    path: '/restaurant/reservation',
-    name: 'restaurantReservation',
-    component: 'ReservationPage',
+  // 상견례 정보 (상견례 전용)
+  SANGGYEONRYE_INFO: {
+    path: '/sanggyeonrye/info',
+    name: 'sanggyeonryeInfo',
+    component: 'SanggyeonryeInfoPage',
     title: {
-      ko: '예약',
-      ja: 'ご予約',
+      ko: '상견례 안내',
+      ja: '顔合わせのご案内',
     },
-    visibleInModes: ['restaurant'],
+    visibleInModes: ['sanggyeonrye'],
     isPublic: true,
   },
   
-  // 레스토랑 소개 (레스토랑 전용)
-  ABOUT_RESTAURANT: {
-    path: '/restaurant/about',
-    name: 'aboutRestaurant',
-    component: 'AboutPage',
+  // 뒷풀이 정보 (뒷풀이 전용)
+  AFTERPARTY_INFO: {
+    path: '/afterparty/info',
+    name: 'afterpartyInfo',
+    component: 'AfterpartyInfoPage',
     title: {
-      ko: '레스토랑 소개',
-      ja: 'レストラン紹介',
+      ko: '뒷풀이 안내',
+      ja: 'アフターパーティーのご案内',
     },
-    visibleInModes: ['restaurant'],
+    visibleInModes: ['afterparty'],
     isPublic: true,
   },
   
-  // 이벤트 등록 (이벤트 전용)
-  EVENT_REGISTRATION: {
-    path: '/event/registration',
-    name: 'eventRegistration',
-    component: 'RegistrationPage',
+  // 상견례 식당 정보 (상견례 전용)
+  SANGGYEONRYE_RESTAURANT: {
+    path: '/sanggyeonrye/restaurant',
+    name: 'sanggyeonryeRestaurant',
+    component: 'SanggyeonryeRestaurantPage',
     title: {
-      ko: '참가 신청',
-      ja: '参加申込',
+      ko: '식당 안내',
+      ja: 'レストランのご案内',
     },
-    visibleInModes: ['event'],
+    visibleInModes: ['sanggyeonrye'],
     isPublic: true,
   },
 } as const;
@@ -157,7 +157,7 @@ export const LEGACY_ROUTE_MAPPING = {
  */
 export function getAvailableRoutes(mode: AppMode): AppRoute[] {
   return Object.values(ROUTES).filter(route => 
-    route.visibleInModes.includes(mode)
+    (route.visibleInModes as unknown as AppMode[]).includes(mode)
   );
 }
 
@@ -187,7 +187,7 @@ export function transformLegacyPath(legacyPath: string): string {
  */
 export function isRouteAccessible(routeKey: RouteKey, mode: AppMode): boolean {
   const route = ROUTES[routeKey];
-  return route.visibleInModes.includes(mode);
+  return (route.visibleInModes as unknown as AppMode[]).includes(mode);
 }
 
 /**
@@ -200,9 +200,9 @@ export const createNavigationUrl = {
   venue: () => ROUTES.VENUE.path,
   program: () => ROUTES.PROGRAM.path,
   weddingInfo: () => ROUTES.WEDDING_INFO.path,
-  reservation: () => ROUTES.RESERVATION.path,
-  aboutRestaurant: () => ROUTES.ABOUT_RESTAURANT.path,
-  eventRegistration: () => ROUTES.EVENT_REGISTRATION.path,
+  sanggyeonryeInfo: () => ROUTES.SANGGYEONRYE_INFO.path,
+  afterpartyInfo: () => ROUTES.AFTERPARTY_INFO.path,
+  sanggyeonryeRestaurant: () => ROUTES.SANGGYEONRYE_RESTAURANT.path,
 };
 
 /**
@@ -226,9 +226,9 @@ export const ROUTE_HIERARCHY = {
   [ROUTES.VENUE.path]: [ROUTES.HOME.path],
   [ROUTES.PROGRAM.path]: [ROUTES.HOME.path],
   [ROUTES.WEDDING_INFO.path]: [ROUTES.HOME.path],
-  [ROUTES.RESERVATION.path]: [ROUTES.HOME.path],
-  [ROUTES.ABOUT_RESTAURANT.path]: [ROUTES.HOME.path],
-  [ROUTES.EVENT_REGISTRATION.path]: [ROUTES.HOME.path],
+  [ROUTES.SANGGYEONRYE_INFO.path]: [ROUTES.HOME.path],
+  [ROUTES.AFTERPARTY_INFO.path]: [ROUTES.HOME.path],
+  [ROUTES.SANGGYEONRYE_RESTAURANT.path]: [ROUTES.HOME.path],
 } as const;
 
 /**

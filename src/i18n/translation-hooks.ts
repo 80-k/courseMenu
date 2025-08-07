@@ -3,7 +3,7 @@
  */
 
 import { useContext } from 'react';
-import { I18nContext } from './translation-provider';
+import { I18nContext } from './translation-context';
 import type { TranslationKey, TranslationParams, TranslationNamespace } from './types';
 
 /**
@@ -21,8 +21,8 @@ export const useI18n = () => {
  * 번역 함수만 가져오는 간단한 훅
  */
 export const useTranslation = () => {
-  const { t } = useI18n();
-  return { t };
+  const { translate } = useI18n();
+  return { translate };
 };
 
 /**
@@ -45,13 +45,13 @@ export const useLanguageSwitcher = () => {
  * 네임스페이스별 번역 함수를 제공하는 훅
  */
 export const useNamespacedTranslation = (namespace: TranslationNamespace) => {
-  const { t } = useI18n();
+  const { translate } = useI18n();
   
-  const nsT = (key: TranslationKey, params?: TranslationParams) => {
-    return t(key, params, namespace);
+  const namespacedTranslate = (key: TranslationKey, params?: TranslationParams) => {
+    return translate(key, { params, namespace });
   };
   
-  return { t: nsT, namespace };
+  return { translate: namespacedTranslate, namespace };
 };
 
 /**

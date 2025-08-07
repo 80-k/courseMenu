@@ -1,6 +1,6 @@
-import type { MenuItem, MenuCategory } from "../types";
+import type { CourseMenuItem, MenuCategory } from "../types";
 
-export const courseMenuData: MenuItem[] = [
+export const courseMenuData: CourseMenuItem[] = [
   {
     id: "zenpu",
     title: {
@@ -17,6 +17,8 @@ export const courseMenuData: MenuItem[] = [
         ja: "冷たい笹豆腐",
       },
     ],
+    enabled: true,
+    visibleInModes: ['wedding', 'sanggyeonrye'],
   },
   {
     id: "shunsai",
@@ -38,6 +40,8 @@ export const courseMenuData: MenuItem[] = [
         ja: "ほうれん草とえのき茸の菊花煮",
       },
     ],
+    enabled: true,
+    visibleInModes: ['wedding', 'sanggyeonrye'],
   },
   {
     id: "shiruwan",
@@ -51,6 +55,8 @@ export const courseMenuData: MenuItem[] = [
         ja: "冷たいにゅうめん",
       },
     ],
+    enabled: true,
+    visibleInModes: ['wedding', 'sanggyeonrye'],
   },
   {
     id: "tsukuri",
@@ -64,6 +70,8 @@ export const courseMenuData: MenuItem[] = [
         ja: "ハンチ活き造り他2種",
       },
     ],
+    enabled: true,
+    visibleInModes: ['wedding', 'sanggyeonrye'],
   },
   {
     id: "yakimono",
@@ -77,6 +85,8 @@ export const courseMenuData: MenuItem[] = [
         ja: "イサキ梅味噌焼き",
       },
     ],
+    enabled: true,
+    visibleInModes: ['wedding', 'sanggyeonrye'],
   },
   {
     id: "agemono",
@@ -90,6 +100,8 @@ export const courseMenuData: MenuItem[] = [
         ja: "ハンチの天ぷらまたは塩焼き",
       },
     ],
+    enabled: true,
+    visibleInModes: ['wedding', 'sanggyeonrye'],
   },
   {
     id: "yosai",
@@ -103,6 +115,8 @@ export const courseMenuData: MenuItem[] = [
         ja: "和牛ローストビーフと夏野菜グリル",
       },
     ],
+    enabled: true,
+    visibleInModes: ['wedding', 'sanggyeonrye'],
   },
   {
     id: "gohan",
@@ -116,6 +130,8 @@ export const courseMenuData: MenuItem[] = [
         ja: "とうもろこし釜炊きご飯",
       },
     ],
+    enabled: true,
+    visibleInModes: ['wedding', 'sanggyeonrye'],
   },
   {
     id: "tomewan",
@@ -129,6 +145,8 @@ export const courseMenuData: MenuItem[] = [
         ja: "赤だし",
       },
     ],
+    enabled: true,
+    visibleInModes: ['wedding', 'sanggyeonrye'],
   },
   {
     id: "dessert",
@@ -142,6 +160,8 @@ export const courseMenuData: MenuItem[] = [
         ja: "赤肉メロン、巨峰",
       },
     ],
+    enabled: true,
+    visibleInModes: ['wedding', 'sanggyeonrye'],
   },
 ];
 

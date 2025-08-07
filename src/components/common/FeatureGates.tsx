@@ -23,7 +23,7 @@ const DEFAULT_MENU_VISIBILITY = {
 const DEFAULT_APP_MODE = 'wedding' as const;
 const DEFAULT_ENVIRONMENT = 'development' as const;
 
-type AppMode = 'wedding' | 'restaurant' | 'event';
+type AppMode = 'wedding' | 'sanggyeonrye' | 'afterparty';
 
 // 조건부 렌더링 타입들
 interface BaseConditionalProps {
@@ -116,7 +116,7 @@ export const ConditionalRenderer: React.FC<CustomConditionalProps> = ({
 /**
  * 복합 조건부 렌더링 (여러 조건을 조합)
  */
-interface MultiConditionalProps extends BaseConditionalProps {
+export interface MultiConditionalProps extends BaseConditionalProps {
   conditions: {
     feature?: keyof typeof DEFAULT_FEATURES;
     menuId?: string;
@@ -206,72 +206,24 @@ export const WeddingOnly: React.FC<{ children: React.ReactNode }> = ({ children 
 };
 
 /**
- * 레스토랑 모드 전용 컴포넌트
+ * 상견례 모드 전용 컴포넌트
  */
-export const RestaurantOnly: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const SanggyeonryeOnly: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <ModeGate modes={['restaurant']}>
+    <ModeGate modes={['sanggyeonrye']}>
       {children}
     </ModeGate>
   );
 };
 
 /**
- * 조건부 렌더링을 위한 HOC (Higher-Order Component)
+ * 뒷풀이 모드 전용 컴포넌트
  */
-export function withConditionalRendering<P extends object>(
-  WrappedComponent: React.ComponentType<P>,
-  conditions: MultiConditionalProps['conditions'],
-  operator: 'AND' | 'OR' = 'AND'
-) {
-  return function ConditionalComponent(props: P) {
-    return (
-      <MultiConditionalRenderer conditions={conditions} operator={operator}>
-        <WrappedComponent {...props} />
-      </MultiConditionalRenderer>
-    );
-  };
-}
+export const AfterpartyOnly: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+    <ModeGate modes={['afterparty']}>
+      {children}
+    </ModeGate>
+  );
+};
 
-/**
- * 조건부 렌더링을 위한 커스텀 훅
- */
-export function useConditionalRendering() {
-  return {
-    isFeatureEnabled: (feature: keyof typeof DEFAULT_FEATURES) => DEFAULT_FEATURES[feature],
-    isMenuVisible: (menuId: string) => DEFAULT_MENU_VISIBILITY[menuId as keyof typeof DEFAULT_MENU_VISIBILITY] ?? true,
-    getAppMode: () => DEFAULT_APP_MODE,
-    checkCondition: (conditions: MultiConditionalProps['conditions'], operator: 'AND' | 'OR' = 'AND'): boolean => {
-      const results: boolean[] = [];
-      
-      if (conditions.feature !== undefined) {
-        results.push(DEFAULT_FEATURES[conditions.feature]);
-      }
-      
-      if (conditions.menuId !== undefined) {
-        results.push(DEFAULT_MENU_VISIBILITY[conditions.menuId as keyof typeof DEFAULT_MENU_VISIBILITY] ?? true);
-      }
-      
-      if (conditions.modes !== undefined) {
-        const currentMode = DEFAULT_APP_MODE;
-        results.push(conditions.modes.includes(currentMode));
-      }
-      
-      if (conditions.environments !== undefined) {
-        const currentEnv = DEFAULT_ENVIRONMENT;
-        results.push(conditions.environments.includes(currentEnv));
-      }
-      
-      if (conditions.custom !== undefined) {
-        const customResult = typeof conditions.custom === 'function' 
-          ? conditions.custom() 
-          : conditions.custom;
-        results.push(customResult);
-      }
-      
-      return operator === 'OR' 
-        ? results.some(result => result)
-        : results.every(result => result);
-    }
-  };
-}

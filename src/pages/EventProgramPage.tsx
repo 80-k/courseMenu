@@ -4,7 +4,7 @@ import { ASSETS } from "../constants/assets";
 import "../styles/global.css";
 
 export const EventProgramPage: React.FC = () => {
-  const { t } = useI18n();
+  const { translate } = useI18n();
   
   // 현재 진행 중인 항목을 추적하는 상태
   const [currentStep, setCurrentStep] = useState<string | null>(null);
@@ -25,10 +25,10 @@ export const EventProgramPage: React.FC = () => {
         <div className='page-layout'>
           <div className='program-section'>
             <h2 className='section-title'>
-              {t('rightPage.program.title')}
+              {translate('rightPage.program.title')}
             </h2>
             <p className='section-subtitle'>
-              {t('rightPage.program.subtitle')}
+              {translate('rightPage.program.subtitle')}
             </p>
 
             <div className='program-list'>
@@ -44,7 +44,7 @@ export const EventProgramPage: React.FC = () => {
                   }
                 }}
               >
-                <span className="step-text">{t('rightPage.program.steps.opening')}</span>
+                <span className="step-text">{translate('rightPage.program.steps.opening')}</span>
               </div>
               <div 
                 className={`step ${currentStep === 'familyGreeting' ? 'current' : ''}`}
@@ -58,7 +58,7 @@ export const EventProgramPage: React.FC = () => {
                   }
                 }}
               >
-                <span className="step-text">{t('rightPage.program.steps.familyGreeting')}</span>
+                <span className="step-text">{translate('rightPage.program.steps.familyGreeting')}</span>
               </div>
               <div 
                 className={`step ${currentStep === 'photoSession' ? 'current' : ''}`}
@@ -72,7 +72,7 @@ export const EventProgramPage: React.FC = () => {
                   }
                 }}
               >
-                <span className="step-text">{t('rightPage.program.steps.photoSession')}</span>
+                <span className="step-text">{translate('rightPage.program.steps.photoSession')}</span>
               </div>
               <div 
                 className={`step ${currentStep === 'toast' ? 'current' : ''}`}
@@ -86,7 +86,7 @@ export const EventProgramPage: React.FC = () => {
                   }
                 }}
               >
-                <span className="step-text">{t('rightPage.program.steps.toast')}</span>
+                <span className="step-text">{translate('rightPage.program.steps.toast')}</span>
               </div>
               <div 
                 className={`step ${currentStep === 'dining' ? 'current' : ''}`}
@@ -100,7 +100,7 @@ export const EventProgramPage: React.FC = () => {
                   }
                 }}
               >
-                <span className="step-text">{t('rightPage.program.steps.dining')}</span>
+                <span className="step-text">{translate('rightPage.program.steps.dining')}</span>
               </div>
               <div 
                 className={`step ${currentStep === 'quiz' ? 'current' : ''}`}
@@ -114,7 +114,7 @@ export const EventProgramPage: React.FC = () => {
                   }
                 }}
               >
-                <span className="step-text">{t('rightPage.program.steps.quiz')}</span>
+                <span className="step-text">{translate('rightPage.program.steps.quiz')}</span>
               </div>
               <div 
                 className={`step ${currentStep === 'closing' ? 'current' : ''}`}
@@ -128,7 +128,7 @@ export const EventProgramPage: React.FC = () => {
                   }
                 }}
               >
-                <span className="step-text">{t('rightPage.program.steps.closing')}</span>
+                <span className="step-text">{translate('rightPage.program.steps.closing')}</span>
               </div>
               <div 
                 className={`step ${currentStep === 'gardenPhoto' ? 'current' : ''}`}
@@ -142,7 +142,7 @@ export const EventProgramPage: React.FC = () => {
                   }
                 }}
               >
-                <span className="step-text">{t('rightPage.program.steps.gardenPhoto')}</span>
+                <span className="step-text">{translate('rightPage.program.steps.gardenPhoto')}</span>
               </div>
             </div>
           </div>
