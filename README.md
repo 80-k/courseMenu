@@ -71,6 +71,27 @@ npm run build
 npm run deploy
 ```
 
+### 📚 GitHub Pages 배포 설정
+
+이 프로젝트는 **BrowserRouter**를 사용하여 깔끔한 URL을 제공합니다. GitHub Pages에서 SPA(Single Page Application)가 정상 작동하도록 다음 설정이 적용되어 있습니다:
+
+#### 🔧 SPA 리다이렉트 설정
+- **`public/404.html`**: 존재하지 않는 경로 접근 시 URL을 인코딩하여 index.html로 리다이렉트
+- **`index.html`**: 리다이렉트된 URL 파라미터를 디코딩하여 올바른 경로로 복구
+- **`vite.config.ts`**: `base: '/courseMenu/'` 설정으로 GitHub Pages 경로와 일치
+
+#### 📝 작동 원리
+1. `/courseMenu/menu/course` 직접 접근
+2. GitHub Pages가 404.html 실행
+3. 404.html이 URL을 `/?/menu/course` 형태로 리다이렉트
+4. index.html이 파라미터를 파싱하여 `/menu/course`로 복구
+5. React Router가 정상 라우팅 수행
+
+#### ⚠️ 중요: BrowserRouter 우선 정책
+- **HashRouter 사용 금지**: 깔끔한 URL을 위해 BrowserRouter만 사용
+- GitHub Pages 배포 시 위의 SPA 리다이렉트 설정 필수 유지
+- `spa-github-pages` 방식을 사용한 완전한 BrowserRouter 지원
+
 ### 5. 타입 체크 및 린팅
 ```bash
 npm run typecheck
