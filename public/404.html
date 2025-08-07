@@ -5,9 +5,18 @@
     <title>Course Menu</title>
     <script type="text/javascript">
       // GitHub Pages SPA 리다이렉트 핸들러
-      // URL을 sessionStorage에 저장하고 index.html로 리다이렉트
-      sessionStorage.setItem('pathToRedirect', window.location.pathname + window.location.search);
-      window.location.replace('/courseMenu/');
+      // spa-github-pages 방식: https://github.com/rafgraph/spa-github-pages
+      var pathSegmentsToKeep = 1;
+
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + 
+        '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
     </script>
   </head>
   <body>

@@ -227,21 +227,23 @@ export const ja = {
   schedule: {
     title: "SCHEDULE",
     subtitle: "今後の予定",
-    marriageRegistration: {
-      date: "令和7年7月7日",
-      event: "入籍",
-    },
-    sanggyeonrye: {
-      date: "令和7年8月11日",
-      event: "顔合わせ",
-    },
-    preWedding: {
-      date: "令和0年0月0日",
-      event: "前撮り",
-    },
-    wedding: {
-      date: "令和8年3月8日",
-      event: "結婚式",
+    items: {
+      marriageRegistration: {
+        date: "令和7年7月7日",
+        event: "入籍",
+      },
+      sanggyeonrye: {
+        date: "令和7年8月11日",
+        event: "顔合わせ",
+      },
+      preWedding: {
+        date: "令和0年0月0日",
+        event: "前撮り",
+      },
+      wedding: {
+        date: "令和8年3月8日",
+        event: "結婚式",
+      },
     },
   },
 

@@ -146,7 +146,7 @@ export const ko = {
   leftPage: {
     schedule: {
       title: "SCHEDULE",
-      subtitle: "今後の予定",
+      subtitle: "앞으로의 예정",
       items: {
         marriageRegistration: {
           date: "2025년 7월 7일",
@@ -225,22 +225,24 @@ export const ko = {
   // 일정 (기존 호환성)
   schedule: {
     title: "SCHEDULE",
-    subtitle: "今後の予定",
-    marriageRegistration: {
-      date: "2025년 7월 7일",
-      event: "혼인신고",
-    },
-    sanggyeonrye: {
-      date: "2025년 8월 11일",
-      event: "상견례",
-    },
-    preWedding: {
-      date: "0000년 0월 0일",
-      event: "웨딩촬영",
-    },
-    wedding: {
-      date: "2026년 3월 8일",
-      event: "결혼식",
+    subtitle: "앞으로의 예정",
+    items: {
+      marriageRegistration: {
+        date: "2025년 7월 7일",
+        event: "혼인신고",
+      },
+      sanggyeonrye: {
+        date: "2025년 8월 11일",
+        event: "상견례",
+      },
+      preWedding: {
+        date: "0000년 0월 0일",
+        event: "웨딩촬영",
+      },
+      wedding: {
+        date: "2026년 3월 8일",
+        event: "결혼식",
+      },
     },
   },
 
