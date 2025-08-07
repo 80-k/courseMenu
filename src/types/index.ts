@@ -282,10 +282,10 @@ export type ValuesOf<T> = T[keyof T];
 /**
  * 함수의 첫 번째 파라미터 타입 추출
  */
-export type FirstParameter<T extends (...args: any[]) => any> = T extends (
+export type FirstParameter<T extends (...args: unknown[]) => unknown> = T extends (
   first: infer P,
-  ...args: any[]
-) => any
+  ...args: unknown[]
+) => unknown
   ? P
   : never;
 
@@ -310,6 +310,7 @@ export type DeepPartial<T> = {
  * 함수가 아닌 프로퍼티들만 추출
  */
 export type NonFunctionPropertyNames<T> = {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   [K in keyof T]: T[K] extends Function ? never : K;
 }[keyof T];
 

@@ -11,17 +11,18 @@ import type {
   TranslationOptions,
   SupportedLanguage,
   I18nContextType,
-  TranslationFunction
+  TranslationFunction,
+  NestedLocalizedText
 } from '../types';
 
 // 유틸리티 함수들
-function getNestedValue(obj: any, path: string): string | null {
+function getNestedValue(obj: NestedLocalizedText, path: string): string | null {
   const keys = path.split('.');
-  let result = obj;
+  let result: unknown = obj;
   
   for (const key of keys) {
     if (result && typeof result === 'object' && key in result) {
-      result = result[key];
+      result = (result as Record<string, unknown>)[key];
     } else {
       return null;
     }
@@ -138,10 +139,11 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({
   /**
    * 특정 네임스페이스 프리로드
    */
-  const preloadNamespace = useCallback(async (_namespace: TranslationNamespace) => {
+  const preloadNamespace = useCallback(async (namespace: TranslationNamespace) => {
     try {
       setError(null);
       // 실제로는 여기서 특정 네임스페이스를 프리로드할 수 있음
+      console.debug(`Preloading namespace: ${namespace}`);
       await new Promise(resolve => setTimeout(resolve, 50));
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Namespace preload failed');
@@ -239,7 +241,7 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({
     reloadTranslations,
     preloadNamespace,
     clearError,
-    translate: translateText as any as TranslationFunction,
+    translate: translateText as TranslationFunction,
     createNamespacedTranslator: createNamespacedTranslation,
   };
 

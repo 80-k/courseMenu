@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Course Menu</title>
+    <script type="text/javascript">
+      // GitHub Pages SPA 리다이렉트 핸들러
+      var pathName = window.location.pathname;
+      var baseUrl = '/courseMenu/';
+      
+      if (pathName.startsWith(baseUrl)) {
+        var redirect = pathName.slice(baseUrl.length - 1);
+        window.location.replace(
+          window.location.protocol +
+          '//' +
+          window.location.host +
+          baseUrl +
+          '#' +
+          (redirect || '/')
+        );
+      }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

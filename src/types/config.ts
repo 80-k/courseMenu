@@ -402,7 +402,7 @@ export function getCurrentRuntimeConfig(): RuntimeConfig {
     // Node.js 환경에서는 process.env가 있을 수 있음
     const processEnv = typeof globalThis !== 'undefined' && 
       'process' in globalThis ? 
-      (globalThis as any).process?.env : undefined;
+      (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env : undefined;
     if (processEnv) {
       return buildRuntimeConfig(processEnv as Record<string, string | undefined>);
     }

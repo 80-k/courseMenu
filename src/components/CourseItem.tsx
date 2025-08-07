@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import type { MenuItem } from '../types';
+import type { CourseMenuItem, LocalizedText } from '../types';
 import { useI18n } from '../i18n';
 
 interface CourseItemProps {
-  item: MenuItem;
+  item: CourseMenuItem;
   isExpanded: boolean;
   onToggle: () => void;
 }
@@ -55,7 +55,7 @@ export const CourseItem: React.FC<CourseItemProps> = ({
             <p className="description">{item.description[language]}</p>
           )}
           <ul>
-            {item.items.map((menuItem: any, index: number) => (
+            {item.items.map((menuItem: LocalizedText, index: number) => (
               <li key={`${item.id}-${index}`}>
                 <span>{menuItem[language]}</span>
               </li>

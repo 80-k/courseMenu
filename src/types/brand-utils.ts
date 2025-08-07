@@ -57,7 +57,7 @@ export function createRoutePath(value: string): RoutePath | null {
   }
   
   // 유효한 URL 경로 패턴 검증
-  const validPathPattern = /^\/[\w\-\/]*$/;
+  const validPathPattern = /^\/[\w\-/]*$/;
   if (!validPathPattern.test(value)) {
     return null;
   }

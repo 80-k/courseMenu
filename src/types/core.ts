@@ -12,7 +12,7 @@
 /**
  * 메뉴 항목의 고유 식별자
  * 
- * @description 메뉴 항목을 거하기 위한 고유 문자열 ID
+ * @description 메뉴 항목을 식별하기 위한 고유 문자열 ID
  * @example 'course', 'schedule', 'venue', 'program'
  * @pattern 영숫자, 하이픈(-), 언더스코어(_)만 허용
  */
