@@ -160,7 +160,7 @@ function AppContent() {
 function App() {
   return (
     <I18nProvider>
-      <Router>
+      <Router basename="/courseMenu">
         <AppContent />
       </Router>
     </I18nProvider>
