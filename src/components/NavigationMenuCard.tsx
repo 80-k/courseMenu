@@ -1,6 +1,6 @@
 import type { MenuCategory } from '../types';
 import { useI18n } from '../i18n';
-import { CourseIcon, ScheduleIcon, VenueIcon, ProgramIcon } from './icons';
+import { CourseIcon, ScheduleIcon, LocationIcon, ProgramIcon } from './icons';
 
 interface NavigationMenuCardProps {
   category: MenuCategory;
@@ -20,8 +20,8 @@ export const NavigationMenuCard: React.FC<NavigationMenuCardProps> = ({
         return <CourseIcon className="w-8 h-8 flex-shrink-0" />;
       case 'schedule':
         return <ScheduleIcon className="w-8 h-8 flex-shrink-0" />;
-      case 'venue':
-        return <VenueIcon className="w-8 h-8 flex-shrink-0" />;
+      case 'location':
+        return <LocationIcon className="w-8 h-8 flex-shrink-0" />;
       case 'right':
         return <ProgramIcon className="w-8 h-8 flex-shrink-0" />;
       default:

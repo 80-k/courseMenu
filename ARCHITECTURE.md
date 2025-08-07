@@ -38,12 +38,12 @@ app-wrapper (fixed positioning container)
 - **주요 기능**: 일정표와 예식장 정보 표시
 - **CSS 클래스**: `.schedule-section`, `.schedule-list`
 
-### 4. VenuePage (/venue) - 예식장 페이지
-- **컴포넌트**: `VenuePage.tsx`
+### 4. LocationPage (/location) - 예식장 페이지
+- **컴포넌트**: `LocationPage.tsx`
 - **주요 기능**: 2개 카드 레이아웃 (예식장 정보 + 교통 정보)
 - **CSS 클래스**:
-  - `.venue-cards-container` - 2열 그리드
-  - `.venue-card` - 카드 기본 스타일
+  - `.location-cards-container` - 2열 그리드
+  - `.location-card` - 카드 기본 스타일
   - `.transportation-grid` - 교통수단 그리드
 
 ### 5. RightPage (/right) - 시간표 페이지
@@ -53,7 +53,7 @@ app-wrapper (fixed positioning container)
 
 ### 6. LeftPage (/left) - 레거시 페이지
 - **상태**: 자동 리다이렉트 (3초 후 메인으로)
-- **참고**: VenuePage로 기능 이전됨
+- **참고**: LocationPage로 기능 이전됨
 
 ## 🎨 디자인 시스템
 
@@ -125,7 +125,7 @@ font-family: 'Noto Serif KR', 'Noto Serif JP', 'Playfair Display', serif
 /* Tablet/Mobile */
 @media (max-width: 768px) {
   .menu-grid { grid-template-columns: 1fr; }
-  .venue-cards-container { grid-template-columns: 1fr; }
+  .location-cards-container { grid-template-columns: 1fr; }
   .container { padding: 20px 16px 80px 16px; }
 }
 
@@ -160,7 +160,7 @@ font-family: 'Noto Serif KR', 'Noto Serif JP', 'Playfair Display', serif
 
 ### 제거된 Legacy 코드
 - ❌ `.about-wedding-section`
-- ❌ `.venue-info-section`
+- ❌ `.location-info-section`
 - ❌ `.wedding-images`
 - ❌ `.transportation-options`
 - ❌ 중복된 반응형 스타일 20여 개
@@ -188,7 +188,7 @@ font-family: 'Noto Serif KR', 'Noto Serif JP', 'Playfair Display', serif
 ### 스타일 네이밍 규칙
 ```css
 /* 컴포넌트 기반 */
-.menu-card, .venue-card, .course-item
+.menu-card, .location-card, .course-item
 
 /* 기능 기반 */
 .floating-island, .language-toggle

@@ -58,7 +58,7 @@ export const ja = {
       description: "今後の予定と大切な日",
       items: "入籍、顔合わせ、前撮り、結婚式日程",
     },
-    venue: {
+    location: {
       title: "会場",
       description: "アモレヴォレ サンマルコ",
       items: "位置情報、施設案内、住所、連絡先",
@@ -168,11 +168,11 @@ export const ja = {
     },
     aboutWedding: {
       title: "式場のご案内",
-      venueInfo: {
+      locationInfo: {
         title: "式場情報",
         dateTime: "2026年3月8日(日)10:30〜予定",
-        venueNameJp: "アモーレヴォレ サンマルコ",
-        venueNameEn: "amorevole SAN MARCO",
+        locationNameJp: "アモーレヴォレ サンマルコ",
+        locationNameEn: "amorevole SAN MARCO",
         address: "福岡県北九州市門司区松原1-8-12",
         phone: "0120-825-305",
         website: "www.amorevole-sanmarco.jp",
@@ -246,13 +246,13 @@ export const ja = {
   },
 
   // 예식장
-  venue: {
+  location: {
     title: "式場のご案内",
     facility: {
       title: "施設",
       dateTime: "2026年3月8日(日)10:30〜予定",
-      venueNameJp: "アモーレヴォレ サンマルコ",
-      venueNameEn: "amorevole SAN MARCO",
+      locationNameJp: "アモーレヴォレ サンマルコ",
+      locationNameEn: "amorevole SAN MARCO",
       address: "福岡県北九州市門司区松原1-8-12",
       phone: "0120-825-305",
       website: "www.amorevole-sanmarco.jp",
@@ -314,7 +314,7 @@ export const ja = {
   ui: {
     menuIcon: "🍱",
     scheduleIcon: "📅",
-    venueIcon: "🏛️",
+    locationIcon: "🏛️",
     programIcon: "📋",
   },
 
@@ -324,9 +324,11 @@ export const ja = {
     scrollDown: "一番下へ",
     toggleAllOpen: "すべて 開く",
     toggleAllClose: "すべて 閉じる",
+    home: "ホーム",
     scrollToTopAria: "一番上へスクロール",
     scrollToBottomAria: "一番下へスクロール",
     toggleAllOpenAria: "すべての項目を開く",
     toggleAllCloseAria: "すべての項目を閉じる",
+    homeAria: "ホームへ移動",
   },
 };

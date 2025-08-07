@@ -9,7 +9,7 @@ const DEFAULT_APP_MODE = 'wedding' as const;
 const DEFAULT_MENU_VISIBILITY = {
   course: true,
   schedule: true,
-  venue: true,
+  location: true,
   program: true,
 };
 
@@ -20,6 +20,7 @@ export interface LocalizedContent {
 
 export interface ConfigurableMenuItem {
   id: string;
+  sortId: number;
   title: LocalizedContent;
   description?: LocalizedContent;
   items?: LocalizedContent[] | LocalizedContent;
@@ -32,6 +33,7 @@ export interface ConfigurableMenuItem {
 
 export interface ConfigurableCourseItem {
   id: string;
+  sortId: number;
   title: LocalizedContent;
   description?: LocalizedContent;
   items: LocalizedContent[];
@@ -43,6 +45,7 @@ export interface ConfigurableCourseItem {
 const weddingMenuData: ConfigurableMenuItem[] = [
   {
     id: "course",
+    sortId: 2,
     icon: "🍱",
     title: {
       ko: "식사",
@@ -56,13 +59,14 @@ const weddingMenuData: ConfigurableMenuItem[] = [
       ko: "선부, 슌사이, 시루완, 쓰쿠리, 야키모노 등",
       ja: "先付、旬彩、汁椀、造里、焼物など",
     },
-    href: "/course",
+    href: "/menu/course",
     enabled: true,
     visibleInModes: ["wedding", "sanggyeonrye"],
     requiredFeatures: ["showCourseMenu"],
   },
   {
     id: "schedule",
+    sortId: 4,
     icon: "📅",
     title: {
       ko: "일정",
@@ -76,13 +80,14 @@ const weddingMenuData: ConfigurableMenuItem[] = [
       ko: "혼인신고, 상견례, 전촬영, 결혼식 일정",
       ja: "入籍、顔合わせ、前撮り、結婚式日程",
     },
-    href: "/schedule",
+    href: "/wedding/schedule",
     enabled: true,
     visibleInModes: ["wedding"],
     requiredFeatures: ["showSchedule"],
   },
   {
-    id: "venue",
+    id: "location",
+    sortId: 3,
     icon: "🏛️",
     title: {
       ko: "장소",
@@ -96,13 +101,14 @@ const weddingMenuData: ConfigurableMenuItem[] = [
       ko: "위치 정보, 시설, 주소, 연락처, 길안내",
       ja: "位置情報、施設案内、住所、連絡先",
     },
-    href: "/venue",
+    href: "/wedding/location",
     enabled: true,
     visibleInModes: ["wedding"],
-    requiredFeatures: ["showVenue"],
+    requiredFeatures: ["showLocation"],
   },
   {
     id: "program",
+    sortId: 1,
     icon: "📋",
     title: {
       ko: "시간표",
@@ -116,7 +122,7 @@ const weddingMenuData: ConfigurableMenuItem[] = [
       ko: "예식 내용, 진행 순서 안내",
       ja: "進行順序と内容",
     },
-    href: "/right",
+    href: "/event/program",
     enabled: true,
     visibleInModes: ["wedding"],
     requiredFeatures: ["showProgram"],
@@ -127,6 +133,7 @@ const weddingMenuData: ConfigurableMenuItem[] = [
 const sanggyeonryeMenuData: ConfigurableMenuItem[] = [
   {
     id: "course",
+    sortId: 2,
     icon: "🍱",
     title: {
       ko: "코스 메뉴",
@@ -140,13 +147,14 @@ const sanggyeonryeMenuData: ConfigurableMenuItem[] = [
       ko: "계절 요리, 특선 요리, 디저트",
       ja: "季節料理、特選料理、デザート",
     },
-    href: "/course",
+    href: "/menu/course",
     enabled: true,
     visibleInModes: ["sanggyeonrye"],
     requiredFeatures: ["showCourseMenu"],
   },
   {
     id: "sanggyeonrye_info",
+    sortId: 1,
     icon: "🤝",
     title: {
       ko: "상견례 정보",
@@ -166,6 +174,7 @@ const sanggyeonryeMenuData: ConfigurableMenuItem[] = [
   },
   {
     id: "about",
+    sortId: 3,
     icon: "🏪",
     title: {
       ko: "레스토랑 소개",
@@ -189,6 +198,7 @@ const sanggyeonryeMenuData: ConfigurableMenuItem[] = [
 const afterpartyMenuData: ConfigurableMenuItem[] = [
   {
     id: "program",
+    sortId: 1,
     icon: "📋",
     title: {
       ko: "프로그램",
@@ -202,12 +212,13 @@ const afterpartyMenuData: ConfigurableMenuItem[] = [
       ko: "일정, 순서, 참가 안내",
       ja: "日程、順序、参加案内",
     },
-    href: "/program",
+    href: "/event/program",
     enabled: true,
     visibleInModes: ["afterparty"],
   },
   {
     id: "registration",
+    sortId: 2,
     icon: "✍️",
     title: {
       ko: "참가 신청",
@@ -252,7 +263,7 @@ export function getAvailableMenuItemsForCurrentEnvironment(): ConfigurableMenuIt
     if (!DEFAULT_MENU_VISIBILITY[item.id as keyof typeof DEFAULT_MENU_VISIBILITY]) return false;
     
     return true;
-  });
+  }).sort((a, b) => a.sortId - b.sortId);
 }
 
 /**

@@ -1,5 +1,5 @@
 // 예식장 메뉴를 위한 우아한 교회/성당 아이콘
-export const VenueIcon: React.FC<{ className?: string }> = ({ className = "w-12 h-12" }) => (
+export const LocationIcon: React.FC<{ className?: string }> = ({ className = "w-12 h-12" }) => (
   <svg 
     className={className} 
     viewBox="0 0 64 64" 
@@ -13,14 +13,14 @@ export const VenueIcon: React.FC<{ className?: string }> = ({ className = "w-12 
       width="28" 
       height="24" 
       rx="2" 
-      fill="url(#venueGradient)" 
+      fill="url(#locationGradient)" 
       opacity="0.9"
     />
     
     {/* 지붕 */}
     <path 
       d="M14 30 L32 16 L50 30 L46 30 L32 20 L18 30 Z" 
-      fill="url(#venueGradient)"
+      fill="url(#locationGradient)"
     />
     
     {/* 종탑 */}
@@ -30,7 +30,7 @@ export const VenueIcon: React.FC<{ className?: string }> = ({ className = "w-12 
       width="8" 
       height="16" 
       rx="1" 
-      fill="url(#venueGradient)"
+      fill="url(#locationGradient)"
     />
     
     {/* 십자가 */}
@@ -48,7 +48,7 @@ export const VenueIcon: React.FC<{ className?: string }> = ({ className = "w-12 
     {/* 출입문 */}
     <path 
       d="M28 54 L28 44 A4 4 0 0 1 36 44 L36 54 Z" 
-      fill="url(#venueGradient)" 
+      fill="url(#locationGradient)" 
       opacity="0.7"
     />
     
@@ -67,7 +67,7 @@ export const VenueIcon: React.FC<{ className?: string }> = ({ className = "w-12 
     
     {/* 그라디언트 정의 */}
     <defs>
-      <linearGradient id="venueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <linearGradient id="locationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#744fa8" />
         <stop offset="50%" stopColor="#5a67d8" />
         <stop offset="100%" stopColor="#8b5cf6" />

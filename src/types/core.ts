@@ -13,7 +13,7 @@
  * 메뉴 항목의 고유 식별자
  * 
  * @description 메뉴 항목을 식별하기 위한 고유 문자열 ID
- * @example 'course', 'schedule', 'venue', 'program'
+ * @example 'course', 'schedule', 'location', 'program'
  * @pattern 영숫자, 하이픈(-), 언더스코어(_)만 허용
  */
 export type MenuItemId = string;
@@ -22,7 +22,7 @@ export type MenuItemId = string;
  * 라우터 URL 경로
  * 
  * @description React Router에서 사용되는 애플리케이션 내 경로
- * @example '/', '/course', '/schedule', '/venue'
+ * @example '/', '/course', '/schedule', '/location'
  * @pattern 반드시 /로 시작해야 함
  */
 export type RoutePath = string;
@@ -222,7 +222,7 @@ export type TypeGuard<T> = (value: unknown) => value is T;
  */
 export interface FeatureFlags {
   readonly showSchedule: boolean;
-  readonly showVenue: boolean;
+  readonly showLocation: boolean;
   readonly showCourseMenu: boolean;
   readonly showProgram: boolean;
   readonly showFloatingButtons: boolean;
@@ -235,7 +235,7 @@ export interface FeatureFlags {
 export interface MenuVisibility {
   readonly course: boolean;
   readonly schedule: boolean;
-  readonly venue: boolean;
+  readonly location: boolean;
   readonly program: boolean;
 }
 

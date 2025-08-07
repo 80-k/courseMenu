@@ -16,6 +16,13 @@ html {
     width: 100%;
     overflow-x: hidden;
     box-sizing: border-box;
+    /* 스크롤바 숨기기 */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
 }
 
 body {
@@ -36,6 +43,13 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    /* 스크롤바 숨기기 */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
 }
 
 .container {
@@ -93,7 +107,7 @@ header, .app-header {
     padding: 16px 24px;
     border-top: 2px solid rgba(226, 232, 240, 0.2);
     border-bottom: none;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(25px) saturate(180%);
     -webkit-backdrop-filter: blur(25px) saturate(180%);
     transition: all 0.3s ease;
@@ -546,7 +560,7 @@ footer {
     border-color: rgba(255, 255, 255, 0.3);
 }
 
-.scroll-btn, .toggle-all-btn {
+.scroll-btn, .toggle-all-btn, .home-btn {
     min-width: 100px;
     width: auto;
     height: 52px;
@@ -579,7 +593,7 @@ footer {
         0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
-.scroll-btn:hover, .toggle-all-btn:hover {
+.scroll-btn:hover, .toggle-all-btn:hover, .home-btn:hover {
     transform: scale(1.02);
     box-shadow: 
         0 6px 20px rgba(116, 79, 168, 0.25),
@@ -691,6 +705,33 @@ footer {
     box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
+/* 홈 버튼 전용 스타일 */
+.home-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.home-btn:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(102, 126, 234, 0.4),
+        0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.home-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.home-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
 /* Page Layout Styles */
 .page-content {
     min-height: calc(100vh - 80px);
@@ -782,16 +823,16 @@ footer {
     border-radius: 2px;
 }
 
-/* Venue Cards Container */
-.venue-cards-container {
+/* Location Cards Container */
+.location-cards-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
     margin-top: 10px;
 }
 
-/* Individual Venue Card */
-.venue-card {
+/* Individual Location Card */
+.location-card {
     background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
     border: 1px solid #e6eaf0;
     border-radius: 16px;
@@ -801,7 +842,7 @@ footer {
     position: relative;
 }
 
-.venue-card::before {
+.location-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -812,7 +853,7 @@ footer {
     border-radius: 16px 16px 0 0;
 }
 
-.venue-card:hover {
+.location-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
 }
@@ -847,7 +888,7 @@ footer {
 
 /* Remove card-specific overrides to maintain consistency */
 
-.venue-main-info {
+.location-main-info {
     margin-bottom: 24px;
     padding: 22px;
     background: linear-gradient(135deg, #FEFCFF 0%, #FAF5FF 100%);
@@ -856,7 +897,7 @@ footer {
     box-shadow: 0 2px 8px rgba(139, 92, 246, 0.05);
 }
 
-.venue-contact-details {
+.location-contact-details {
     margin-bottom: 24px;
 }
 
@@ -888,14 +929,14 @@ footer {
     flex: 1;
 }
 
-.venue-images {
+.location-images {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     margin-top: 20px;
 }
 
-.venue-image {
+.location-image {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -966,7 +1007,7 @@ footer {
     margin-bottom: 0;
 }
 
-/* Legacy styles removed - now using VenuePage components */
+/* Legacy styles removed - now using LocationPage components */
 
 /* Program Section */
 .program-section {
@@ -1096,7 +1137,7 @@ footer {
     header, .app-header {
         margin: 0;
         padding: 12px 16px;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.75);
         backdrop-filter: blur(25px) saturate(180%);
         -webkit-backdrop-filter: blur(25px) saturate(180%);
         border-top: 2px solid rgba(226, 232, 240, 0.4);
@@ -1192,7 +1233,7 @@ footer {
     }
     
     
-    .scroll-btn, .toggle-all-btn {
+    .scroll-btn, .toggle-all-btn, .home-btn {
         min-width: 75px;
         width: auto;
         height: 44px;
@@ -1228,6 +1269,25 @@ footer {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
     
+    .home-btn {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+        color: #374151 !important;
+    }
+    
+    .home-btn .home-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .home-btn .home-text {
+        display: none;
+    }
+    
     .scroll-btn {
         background: rgba(255, 255, 255, 0.95) !important;
         backdrop-filter: none !important;
@@ -1253,13 +1313,13 @@ footer {
         padding: 24px;
     }
     
-    /* VenuePage 반응형 스타일 */
+    /* LocationPage 반응형 스타일 */
     .main-section-title {
         font-size: 1.6rem;
         margin-bottom: 30px;
     }
     
-    .venue-cards-container {
+    .location-cards-container {
         grid-template-columns: 1fr;
         gap: 20px;
     }
@@ -1276,12 +1336,12 @@ footer {
         padding: 24px;
     }
     
-    .venue-images {
+    .location-images {
         grid-template-columns: 1fr;
         gap: 12px;
     }
     
-    .venue-image {
+    .location-image {
         height: 180px;
     }
     
@@ -1324,7 +1384,7 @@ footer {
     header, .app-header {
         margin: 0;
         padding: 10px 12px;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.75);
         backdrop-filter: blur(20px) saturate(160%);
         -webkit-backdrop-filter: blur(20px) saturate(160%);
         border-top: 2px solid rgba(226, 232, 240, 0.5);
@@ -1434,7 +1494,7 @@ footer {
     }
     
     
-    .scroll-btn, .toggle-all-btn {
+    .scroll-btn, .toggle-all-btn, .home-btn {
         min-width: 70px;
         width: auto;
         height: 40px;
@@ -1470,6 +1530,25 @@ footer {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
     
+    .home-btn {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+        color: #374151 !important;
+    }
+    
+    .home-btn .home-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .home-btn .home-text {
+        display: none;
+    }
+    
     .scroll-btn {
         background: rgba(255, 255, 255, 0.95) !important;
         backdrop-filter: none !important;
@@ -1496,13 +1575,13 @@ footer {
         padding: 20px;
     }
     
-    /* VenuePage 모바일 스타일 */
+    /* LocationPage 모바일 스타일 */
     .main-section-title {
         font-size: 1.4rem;
         margin-bottom: 25px;
     }
     
-    .venue-cards-container {
+    .location-cards-container {
         gap: 20px;
     }
     
@@ -1522,12 +1601,12 @@ footer {
         padding: 20px;
     }
     
-    .venue-main-info {
+    .location-main-info {
         padding: 18px;
         margin-bottom: 20px;
     }
     
-    .venue-name-jp {
+    .location-name-jp {
         font-size: 1.2rem;
     }
     
@@ -1536,7 +1615,7 @@ footer {
         font-size: 0.9rem;
     }
     
-    .venue-image {
+    .location-image {
         height: 160px;
     }
     
@@ -1569,5 +1648,25 @@ footer {
     
     .step:hover {
         transform: translateX(2px);
+    }
+    
+    /* 홈 버튼 모바일 스타일 - 최소 화면 */
+    .home-btn {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+        color: #374151 !important;
+    }
+    
+    .home-btn .home-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .home-btn .home-text {
+        display: none;
     }
 }

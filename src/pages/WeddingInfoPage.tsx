@@ -63,16 +63,16 @@ export const WeddingInfoPage: React.FC = () => {
             </h2>
             
             <div className="wedding-info">
-              <p>{translate('leftPage.aboutWedding.venueInfo.dateTime')}</p>
-              <p>{translate('leftPage.aboutWedding.venueInfo.venueNameJp')}</p>
-              <p>{translate('leftPage.aboutWedding.venueInfo.venueNameEn')}</p>
-              <p>{translate('leftPage.aboutWedding.venueInfo.address')}</p>
-              <p>{translate('leftPage.aboutWedding.venueInfo.phone')}</p>
+              <p>{translate('leftPage.aboutWedding.locationInfo.dateTime')}</p>
+              <p>{translate('leftPage.aboutWedding.locationInfo.venueNameJp')}</p>
+              <p>{translate('leftPage.aboutWedding.locationInfo.venueNameEn')}</p>
+              <p>{translate('leftPage.aboutWedding.locationInfo.address')}</p>
+              <p>{translate('leftPage.aboutWedding.locationInfo.phone')}</p>
             </div>
             
             <div className="wedding-images">
-              <img src={ASSETS.WEDDING.IMAGE_1} alt={translate('common.weddingVenueAlt')} className="wedding-image" />
-              <img src={ASSETS.WEDDING.IMAGE_2} alt={translate('common.weddingVenueAlt')} className="wedding-image" />
+              <img src={ASSETS.WEDDING.IMAGE_1} alt={translate('common.weddingLocationAlt')} className="wedding-image" />
+              <img src={ASSETS.WEDDING.IMAGE_2} alt={translate('common.weddingLocationAlt')} className="wedding-image" />
             </div>
           </div>
         </div>

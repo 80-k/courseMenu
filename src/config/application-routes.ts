@@ -59,14 +59,14 @@ export const ROUTES = {
     isPublic: true,
   },
   
-  // 예식장 정보 (웨딩 전용)
-  VENUE: {
-    path: '/wedding/venue',
-    name: 'weddingVenue',
-    component: 'VenuePage',
+  // 장소 정보 (웨딩 전용)
+  LOCATION: {
+    path: '/wedding/location',
+    name: 'weddingLocation',
+    component: 'LocationPage',
     title: {
-      ko: '예식장 안내',
-      ja: '式場のご案内',
+      ko: '장소 안내',
+      ja: '会場のご案内',
     },
     visibleInModes: ['wedding'],
     isPublic: true,
@@ -149,7 +149,7 @@ export const LEGACY_ROUTE_MAPPING = {
   '/left': ROUTES.WEDDING_INFO.path,
   '/right': ROUTES.PROGRAM.path,
   '/schedule': ROUTES.SCHEDULE.path,
-  '/venue': ROUTES.VENUE.path,
+  '/location': ROUTES.LOCATION.path,
 } as const;
 
 /**
@@ -197,7 +197,7 @@ export const createNavigationUrl = {
   home: () => ROUTES.HOME.path,
   courseMenu: () => ROUTES.COURSE_MENU.path,
   schedule: () => ROUTES.SCHEDULE.path,
-  venue: () => ROUTES.VENUE.path,
+  location: () => ROUTES.LOCATION.path,
   program: () => ROUTES.PROGRAM.path,
   weddingInfo: () => ROUTES.WEDDING_INFO.path,
   sanggyeonryeInfo: () => ROUTES.SANGGYEONRYE_INFO.path,
@@ -223,7 +223,7 @@ export const ROUTE_HIERARCHY = {
   [ROUTES.HOME.path]: [],
   [ROUTES.COURSE_MENU.path]: [ROUTES.HOME.path],
   [ROUTES.SCHEDULE.path]: [ROUTES.HOME.path],
-  [ROUTES.VENUE.path]: [ROUTES.HOME.path],
+  [ROUTES.LOCATION.path]: [ROUTES.HOME.path],
   [ROUTES.PROGRAM.path]: [ROUTES.HOME.path],
   [ROUTES.WEDDING_INFO.path]: [ROUTES.HOME.path],
   [ROUTES.SANGGYEONRYE_INFO.path]: [ROUTES.HOME.path],

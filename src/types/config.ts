@@ -50,7 +50,7 @@ export const DEFAULT_ENVIRONMENT: Environment = 'development';
  */
 export const DEFAULT_FEATURE_FLAGS: FeatureFlags = {
   showSchedule: true,
-  showVenue: true,
+  showLocation: true,
   showCourseMenu: true,
   showProgram: true,
   showFloatingButtons: true,
@@ -63,7 +63,7 @@ export const DEFAULT_FEATURE_FLAGS: FeatureFlags = {
 export const DEFAULT_MENU_VISIBILITY: MenuVisibility = {
   course: true,
   schedule: true,
-  venue: true,
+  location: true,
   program: true,
 } as const;
 
@@ -76,7 +76,7 @@ export const DEFAULT_NAMESPACES: readonly TranslationNamespace[] = [
   'menu',
   'course',
   'schedule',
-  'venue',
+  'location',
   'program',
   'ui',
   'floating'
@@ -256,7 +256,7 @@ export function validateFeatureFlags(features: unknown): ValidationResult<Featur
   const featureObj = features as Record<string, unknown>;
   const requiredFeatures: (keyof FeatureFlags)[] = [
     'showSchedule',
-    'showVenue', 
+    'showLocation', 
     'showCourseMenu',
     'showProgram',
     'showFloatingButtons',
@@ -301,7 +301,7 @@ export function validateMenuVisibility(menuVisibility: unknown): ValidationResul
   const requiredMenus: (keyof MenuVisibility)[] = [
     'course',
     'schedule',
-    'venue',
+    'location',
     'program'
   ];
   

@@ -5,20 +5,9 @@
     <title>Course Menu</title>
     <script type="text/javascript">
       // GitHub Pages SPA 리다이렉트 핸들러
-      var pathName = window.location.pathname;
-      var baseUrl = '/courseMenu/';
-      
-      if (pathName.startsWith(baseUrl)) {
-        var redirect = pathName.slice(baseUrl.length - 1);
-        window.location.replace(
-          window.location.protocol +
-          '//' +
-          window.location.host +
-          baseUrl +
-          '#' +
-          (redirect || '/')
-        );
-      }
+      // URL을 sessionStorage에 저장하고 index.html로 리다이렉트
+      sessionStorage.setItem('pathToRedirect', window.location.pathname + window.location.search);
+      window.location.replace('/courseMenu/');
     </script>
   </head>
   <body>

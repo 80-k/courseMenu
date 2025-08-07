@@ -3,7 +3,7 @@ import { useI18n } from "../i18n";
 import { ASSETS } from "../constants/assets";
 import "../styles/global.css";
 
-export const VenuePage: React.FC = () => {
+export const LocationPage: React.FC = () => {
   const { translate } = useI18n();
 
   return (
@@ -14,49 +14,54 @@ export const VenuePage: React.FC = () => {
         </div>
 
         <div className='page-layout'>
-          <div className='venue-cards-container'>
+          <div className="location-section">
+            <h2 className="section-title">
+              {translate('location.title')}
+            </h2>
+            
+            <div className='location-cards-container'>
             {/* 예식장 정보 카드 */}
-            <div className='venue-card venue-info-card'>
+            <div className='location-card location-info-card'>
               <div className='card-header'>
                 <h3 className='card-title'>
                   <span className='card-icon'>🏛️</span>
-                  {translate('leftPage.aboutWedding.venueInfo.title')}
+                  {translate('leftPage.aboutWedding.locationInfo.title')}
                 </h3>
               </div>
 
               <div className='card-content'>
-                <div className='venue-main-info'>
+                <div className='location-main-info'>
                   <p className='date-time'>
-                    {translate('leftPage.aboutWedding.venueInfo.dateTime')}
+                    {translate('leftPage.aboutWedding.locationInfo.dateTime')}
                   </p>
-                  <p className='venue-name-jp'>
-                    {translate('leftPage.aboutWedding.venueInfo.venueNameJp')}
+                  <p className='location-name-jp'>
+                    {translate('leftPage.aboutWedding.locationInfo.locationNameJp')}
                   </p>
-                  <p className='venue-name-en'>
-                    {translate('leftPage.aboutWedding.venueInfo.venueNameEn')}
+                  <p className='location-name-en'>
+                    {translate('leftPage.aboutWedding.locationInfo.locationNameEn')}
                   </p>
-                  <p className='venue-description'>
-                    {translate('leftPage.aboutWedding.venueInfo.description')}
+                  <p className='location-description'>
+                    {translate('leftPage.aboutWedding.locationInfo.description')}
                   </p>
                 </div>
 
-                <div className='venue-contact-details'>
+                <div className='location-contact-details'>
                   <div className='contact-item'>
                     <span className='contact-icon'>📍</span>
                     <span className='contact-text'>
-                      {translate('leftPage.aboutWedding.venueInfo.address')}
+                      {translate('leftPage.aboutWedding.locationInfo.address')}
                     </span>
                   </div>
                   <div className='contact-item'>
                     <span className='contact-icon'>📞</span>
                     <span className='contact-text'>
-                      {translate('leftPage.aboutWedding.venueInfo.phone')}
+                      {translate('leftPage.aboutWedding.locationInfo.phone')}
                     </span>
                   </div>
                   <div className='contact-item'>
                     <span className='contact-icon'>🌐</span>
                     <span className='contact-text'>
-                      {translate('leftPage.aboutWedding.venueInfo.website')}
+                      {translate('leftPage.aboutWedding.locationInfo.website')}
                     </span>
                   </div>
                 </div>
@@ -64,7 +69,7 @@ export const VenuePage: React.FC = () => {
             </div>
 
             {/* 교통 정보 카드 */}
-            <div className='venue-card transportation-card'>
+            <div className='location-card transportation-card'>
               <div className='card-header'>
                 <h3 className='card-title'>
                   <span className='card-icon'>🚇</span>
@@ -147,6 +152,7 @@ export const VenuePage: React.FC = () => {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>

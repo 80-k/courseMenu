@@ -6,7 +6,7 @@ import React from 'react';
 // 임시로 기본값 사용 (순환 참조 방지)
 const DEFAULT_FEATURES = {
   showSchedule: true,
-  showVenue: true,
+  showLocation: true,
   showCourseMenu: true,
   showProgram: true,
   showFloatingButtons: true,
@@ -16,7 +16,7 @@ const DEFAULT_FEATURES = {
 const DEFAULT_MENU_VISIBILITY = {
   course: true,
   schedule: true,
-  venue: true,
+  location: true,
   program: true,
 };
 

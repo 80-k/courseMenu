@@ -58,7 +58,7 @@ export const ko = {
       description: "앞으로의 일정과 중요한 날",
       items: "혼인신고, 상견례, 전촬영, 결혼식 일정",
     },
-    venue: {
+    location: {
       title: "장소",
       description: "아모레볼레 산마르코",
       items: "위치 정보, 시설, 주소, 연락처, 길안내",
@@ -168,11 +168,11 @@ export const ko = {
     },
     aboutWedding: {
       title: "예식장 안내",
-      venueInfo: {
+      locationInfo: {
         title: "예식장 정보",
         dateTime: "2026년 3월 8일(일) 10:30~ 예정",
-        venueNameJp: "아모레볼레 산마르코",
-        venueNameEn: "amorevole SAN MARCO",
+        locationNameJp: "아모레볼레 산마르코",
+        locationNameEn: "amorevole SAN MARCO",
         address: "후쿠오카현 기타큐슈시 몬시구 마츠바라 1-8-12",
         phone: "0120-825-305",
         website: "www.amorevole-sanmarco.jp",
@@ -245,13 +245,13 @@ export const ko = {
   },
 
   // 예식장
-  venue: {
+  location: {
     title: "예식장 안내",
     facility: {
       title: "시설",
       dateTime: "2026년 3월 8일(일) 10:30~ 예정",
-      venueNameJp: "아모레볼레 산마르코",
-      venueNameEn: "amorevole SAN MARCO",
+      locationNameJp: "아모레볼레 산마르코",
+      locationNameEn: "amorevole SAN MARCO",
       address: "후쿠오카현 기타큐슈시 몬시구 마츠바라 1-8-12",
       phone: "0120-825-305",
       website: "www.amorevole-sanmarco.jp",
@@ -312,7 +312,7 @@ export const ko = {
   ui: {
     menuIcon: "🍱",
     scheduleIcon: "📅",
-    venueIcon: "🏛️",
+    locationIcon: "🏛️",
     programIcon: "📋",
   },
 
@@ -322,9 +322,11 @@ export const ko = {
     scrollDown: "맨 아래로",
     toggleAllOpen: "모두 열기",
     toggleAllClose: "모두 닫기",
+    home: "홈",
     scrollToTopAria: "맨 위로 스크롤",
     scrollToBottomAria: "맨 아래로 스크롤",
     toggleAllOpenAria: "모든 항목 열기",
     toggleAllCloseAria: "모든 항목 닫기",
+    homeAria: "홈으로 이동",
   },
 };

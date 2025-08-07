@@ -201,7 +201,7 @@ export const menuCategories: MenuCategory[] = [
     href: "/schedule",
   },
   {
-    id: "venue",
+    id: "location",
     icon: "🏛️",
     title: {
       ko: "장소",
@@ -215,7 +215,7 @@ export const menuCategories: MenuCategory[] = [
       ko: "위치 정보, 시설, 주소, 연락처, 길안내",
       ja: "位置情報、施設案内、住所、連絡先",
     },
-    href: "/venue",
+    href: "/location",
   },
   {
     id: "right",
