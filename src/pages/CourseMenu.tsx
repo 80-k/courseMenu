@@ -1,4 +1,3 @@
-import React from "react";
 import { CourseItem } from "../components/CourseItem";
 import { courseMenuData } from "../data/menuData";
 import { ASSETS } from "../constants/assets";

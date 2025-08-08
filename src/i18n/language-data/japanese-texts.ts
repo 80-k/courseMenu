@@ -55,7 +55,7 @@ export const ja = {
     },
     schedule: {
       title: "日程",
-      description: "今後の予定と大切な日",
+      description: "主要な日付と予定",
       items: "入籍、顔合わせ、前撮り、結婚式日程",
     },
     location: {
@@ -146,7 +146,7 @@ export const ja = {
   leftPage: {
     schedule: {
       title: "SCHEDULE",
-      subtitle: "今後の予定",
+      subtitle: "主要な日付",
       items: {
         marriageRegistration: {
           date: "令和7年7月7日",
@@ -220,30 +220,6 @@ export const ja = {
         quiz: "6. クイズ大会",
         closing: "7. 結びの挨拶",
         gardenPhoto: "8. 記念撮影(庭園)",
-      },
-    },
-  },
-
-  // 일정 (기존 호환성)
-  schedule: {
-    title: "SCHEDULE",
-    subtitle: "今後の予定",
-    items: {
-      marriageRegistration: {
-        date: "令和7年7月7日",
-        event: "入籍",
-      },
-      sanggyeonrye: {
-        date: "令和7年8月11日",
-        event: "顔合わせ",
-      },
-      preWedding: {
-        date: "令和0年0月0日",
-        event: "前撮り",
-      },
-      wedding: {
-        date: "令和8年3月8日",
-        event: "結婚式",
       },
     },
   },

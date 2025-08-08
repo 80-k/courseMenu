@@ -19,6 +19,15 @@ export const MainMenu: React.FC = () => {
     navigate(path);
   };
 
+  // 타입 안전성 개선: RouteConfig를 MenuCategory로 안전하게 변환
+  const createMenuCategory = (route: typeof navigationRoutes[0]): MenuCategory => ({
+    id: route.path,
+    icon: route.icon,
+    title: route.title,
+    description: route.description,
+    items: route.items
+  });
+
   return (
     <div className={COMPONENT_STYLES.container.main}>
         <div className={COMPONENT_STYLES.container.logoSection}>
@@ -34,13 +43,7 @@ export const MainMenu: React.FC = () => {
             {navigationRoutes.map(route => (
               <NavigationMenuCard
                 key={route.path}
-                category={{
-                  id: route.path,
-                  icon: route.icon,
-                  title: route.title,
-                  description: route.description,
-                  items: { ko: '', ja: '' }
-                } as unknown as MenuCategory}
+                category={createMenuCategory(route)}
                 onClick={() => navigateToMenuPage(route.path)}
               />
             ))}

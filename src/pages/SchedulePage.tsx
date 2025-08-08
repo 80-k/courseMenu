@@ -1,4 +1,3 @@
-import React from 'react';
 import { useI18n } from '../i18n';
 import { ASSETS } from '../constants/assets';
 import '../styles/global.css';

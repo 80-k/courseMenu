@@ -4,7 +4,7 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { I18nProvider } from "./i18n";
 import { MainMenu } from "./pages/MainMenu";
 import { CourseMenu } from "./pages/CourseMenu";
@@ -22,9 +22,14 @@ import "./styles/global.css";
 
 function AppContent() {
   const location = useLocation();
-  const { isExpanded, toggle, toggleAll, allExpanded } = useToggleState(
-    courseMenuData.map((item) => item.id)
+  
+  // 성능 최적화: menuIds를 메모이제이션하여 불필요한 재계산 방지
+  const menuIds = useMemo(() => 
+    courseMenuData.map((item) => item.id), 
+    [courseMenuData]
   );
+  
+  const { isExpanded, toggle, toggleAll, allExpanded } = useToggleState(menuIds);
 
   useEffect(() => {
     document.body.style.backgroundImage = `url(${ASSETS.BACKGROUND})`;

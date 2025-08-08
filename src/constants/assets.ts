@@ -12,7 +12,7 @@ import weddingImage1 from '../assets/3.png';
 import weddingImage2 from '../assets/4.png';
 
 // Gallery
-import galleryImage from '../assets/이미지.png';
+import galleryImage from '../assets/gallery-image.png';
 
 export const ASSETS = {
   // 로고

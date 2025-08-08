@@ -14,6 +14,10 @@ export interface RouteConfig {
     ko: string;
     ja: string;
   };
+  items: {
+    ko: string;
+    ja: string;
+  };
   icon: string;
   isPublic: boolean;
 }
@@ -34,6 +38,10 @@ export const ROUTES = {
       ko: '메인 페이지',
       ja: 'メインページ',
     },
+    items: {
+      ko: '',
+      ja: '',
+    },
     icon: '🏠',
     isPublic: true,
   },
@@ -50,6 +58,10 @@ export const ROUTES = {
       ko: '정통 일본 요리의 정수를 담은 특별한 코스 메뉴',
       ja: '本格的な日本料理の真髄を込めた特別なコース料理',
     },
+    items: {
+      ko: '선부, 순채, 국물, 회, 구이 등',
+      ja: '先付、旬彩、汁椀、造里、焼物など',
+    },
     icon: '🍱',
     isPublic: true,
   },
@@ -64,7 +76,11 @@ export const ROUTES = {
     },
     description: {
       ko: '주요 날짜와 일정',
-      ja: '今後の予定と大切な日',
+      ja: '主要な日付と予定',
+    },
+    items: {
+      ko: '입적, 상견례, 본식 일정',
+      ja: '入籍、顔合わせ、結婚式日程',
     },
     icon: '📅',
     isPublic: true,
@@ -82,6 +98,10 @@ export const ROUTES = {
       ko: '아모레볼레 산마르코 - 위치와 시설 안내',
       ja: 'アモレヴォレ サンマルコ - 位置と施設案内',
     },
+    items: {
+      ko: '위치정보, 시설안내, 주소, 연락처',
+      ja: '位置情報、施設案内、住所、連絡先',
+    },
     icon: '🏛️',
     isPublic: true,
   },
@@ -95,8 +115,12 @@ export const ROUTES = {
       ja: 'タイムテーブル',
     },
     description: {
-      ko: '당일 프로그램과 진행 순서',
-      ja: '当日のプログラムと進行順序',
+      ko: '상견례 진행 순서',
+      ja: '顔合わせの進行順序',
+    },
+    items: {
+      ko: '오늘의 전체 스케줄',
+      ja: '本日の全体スケジュール',
     },
     icon: '📋',
     isPublic: true,

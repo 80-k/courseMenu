@@ -3,25 +3,26 @@
  */
 
 import React from 'react';
-// 임시로 기본값 사용 (순환 참조 방지)
+
+// 환경변수에서 설정값 가져오기 (기본값 포함)
 const DEFAULT_FEATURES = {
-  showSchedule: true,
-  showLocation: true,
-  showCourseMenu: true,
-  showProgram: true,
-  showFloatingButtons: true,
-  showLanguageToggle: true,
+  showSchedule: import.meta.env.VITE_SHOW_SCHEDULE !== 'false',
+  showLocation: import.meta.env.VITE_SHOW_LOCATION !== 'false', 
+  showCourseMenu: import.meta.env.VITE_SHOW_COURSE_MENU !== 'false',
+  showProgram: import.meta.env.VITE_SHOW_PROGRAM !== 'false',
+  showFloatingButtons: import.meta.env.VITE_SHOW_FLOATING_BUTTONS !== 'false',
+  showLanguageToggle: import.meta.env.VITE_SHOW_LANGUAGE_TOGGLE !== 'false',
 };
 
 const DEFAULT_MENU_VISIBILITY = {
-  course: true,
-  schedule: true,
-  location: true,
-  program: true,
+  course: import.meta.env.VITE_MENU_COURSE !== 'false',
+  schedule: import.meta.env.VITE_MENU_SCHEDULE !== 'false',
+  location: import.meta.env.VITE_MENU_LOCATION !== 'false',
+  program: import.meta.env.VITE_MENU_PROGRAM !== 'false',
 };
 
-const DEFAULT_APP_MODE = 'wedding' as const;
-const DEFAULT_ENVIRONMENT = 'development' as const;
+const DEFAULT_APP_MODE = (import.meta.env.VITE_APP_MODE || 'wedding') as AppMode;
+const DEFAULT_ENVIRONMENT = (import.meta.env.VITE_ENVIRONMENT || 'development') as 'development' | 'staging' | 'production';
 
 type AppMode = 'wedding' | 'sanggyeonrye' | 'afterparty';
 
