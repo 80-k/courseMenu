@@ -1,0 +1,119 @@
+/**
+ * 복잡한 스타일을 CSS 클래스로 정의
+ * Tailwind와 함께 사용하되, 매우 긴 클래스 문자열은 CSS로 분리
+ */
+
+/* 기본 컨테이너 스타일들 */
+.main-container {
+  @apply max-w-6xl mx-auto bg-white/80 min-h-screen shadow-2xl px-4 py-6 pb-32 backdrop-blur-sm;
+  @apply md:px-8 md:py-10 md:pb-40;
+}
+
+.logo-section {
+  @apply flex justify-center items-center py-3 mb-3 border-b border-gray-200/30;
+  @apply md:py-5 md:mb-5;
+}
+
+.logo-image {
+  @apply max-w-16 h-auto object-contain opacity-90 transition-all duration-300;
+  @apply hover:opacity-100 hover:scale-105 md:max-w-24;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* 카드 관련 스타일들 */
+.card-base {
+  @apply bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-2xl;
+  @apply shadow-md relative overflow-hidden transition-all duration-300;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover {
+  @apply hover:-translate-y-2 hover:shadow-xl hover:border-gray-300;
+}
+
+/* 그라디언트 상단 바 효과 */
+.card-with-gradient-bar::before {
+  content: '';
+  @apply absolute top-0 left-0 right-0 h-1;
+  @apply bg-gradient-to-r from-primary-600 via-secondary-600 to-blue-500;
+  @apply opacity-0 transition-opacity duration-300;
+}
+
+.card-with-gradient-bar:hover::before {
+  @apply opacity-100;
+}
+
+/* 텍스트 스타일들 */
+.page-title {
+  @apply text-2xl font-semibold text-gray-800 mb-2 tracking-wider font-serif;
+  @apply md:text-3xl;
+}
+
+.section-title {
+  @apply text-xl font-semibold -tracking-wide leading-tight font-serif text-left m-0;
+  @apply md:text-2xl;
+}
+
+/* 레이아웃 스타일들 */
+.menu-grid {
+  @apply grid grid-cols-1 gap-5 my-6;
+  @apply md:grid-cols-2 lg:grid-cols-2 md:gap-8 md:my-10;
+}
+
+.page-layout {
+  @apply flex flex-col gap-8 mt-5;
+  @apply md:gap-10 md:mt-8;
+}
+
+/* 복잡한 컴포넌트 스타일들 */
+.navigation-card {
+  @apply cursor-pointer transition-all duration-300;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigation-card-inner {
+  @apply bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-2xl;
+  @apply p-6 shadow-md relative overflow-hidden h-full flex flex-col;
+  @apply transition-all duration-300;
+  @apply group-hover:-translate-y-2 group-hover:shadow-xl group-hover:border-gray-300;
+  @apply md:p-8;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigation-card-inner::before {
+  content: '';
+  @apply absolute top-0 left-0 right-0 h-1;
+  @apply bg-gradient-to-r from-primary-600 via-secondary-600 to-blue-500;
+  @apply opacity-0 transition-opacity duration-300;
+}
+
+.navigation-card:hover .navigation-card-inner::before {
+  @apply opacity-100;
+}
+
+.card-arrow {
+  @apply text-xl text-primary-600 font-bold flex-shrink-0;
+  @apply transition-all duration-300;
+  @apply group-hover:translate-x-2 group-hover:text-secondary-600;
+  @apply md:text-2xl;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 스케줄 아이템 */
+.schedule-item {
+  @apply p-4 bg-primary-600/5 rounded-xl border-l-4 border-primary-600/30;
+}
+
+.schedule-date {
+  @apply text-lg font-medium text-primary-600 font-serif;
+  @apply md:text-xl;
+}
+
+/* 유틸리티 클래스들 */
+.space-between {
+  @apply flex justify-between items-center;
+}
+
+.text-highlight {
+  @apply text-primary-600 font-medium font-serif;
+}

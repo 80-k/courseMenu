@@ -61,64 +61,80 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
   };
 
   const renderActionButtons = () => {
+    const baseButtonClass = `
+      group flex items-center gap-2 md:gap-3 px-3 py-2 md:px-4 md:py-3 rounded-xl md:rounded-2xl
+      text-white font-medium shadow-lg backdrop-blur-sm
+      border transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1)
+      hover:scale-105 hover:-translate-y-0.5 hover:shadow-xl
+      active:scale-95 active:duration-150
+      touch-manipulation select-none
+    `;
+
     if (actionType === 'toggle') {
       return (
         <button 
-          className={`toggle-all-btn ${!allExpanded ? 'all-collapsed' : ''}`}
+          className={`
+            ${baseButtonClass}
+            ${allExpanded 
+              ? 'bg-gradient-to-r from-blue-600 to-blue-700 border-blue-500/30 hover:shadow-blue-500/30' 
+              : 'bg-gradient-to-r from-indigo-600 to-indigo-700 border-indigo-500/30 hover:shadow-indigo-500/30'
+            }
+          `}
           onClick={onToggleAll}
           aria-label={allExpanded ? translate('floating.toggleAllCloseAria') : translate('floating.toggleAllOpenAria')}
         >
-          <span className="toggle-all-icon">
+          <span className={`flex-shrink-0 transition-transform duration-300 group-hover:scale-110 ${!allExpanded ? '-rotate-90' : ''}`}>
             <ToggleAllIcon isExpanded={allExpanded} />
           </span>
-          <span className="toggle-all-text">
+          <span className="text-xs md:text-sm font-medium whitespace-nowrap">
             {getToggleAllText()}
           </span>
         </button>
       );
     }
 
+    const homeButton = (
+      <button 
+        className={`
+          ${baseButtonClass}
+          bg-gradient-to-r from-indigo-600 to-purple-600
+          border-indigo-500/30 hover:shadow-indigo-500/30
+        `}
+        onClick={handleHomeClick}
+        aria-label={translate('floating.homeAria')}
+      >
+        <span className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+          <HomeIcon />
+        </span>
+        <span className="text-xs md:text-sm font-medium whitespace-nowrap">
+          {translate('floating.home')}
+        </span>
+      </button>
+    );
+
     if (actionType === 'home') {
-      return (
-        <button 
-          className="home-btn"
-          onClick={handleHomeClick}
-          aria-label={translate('floating.homeAria')}
-        >
-          <span className="home-icon">
-            <HomeIcon />
-          </span>
-          <span className="home-text">
-            {translate('floating.home')}
-          </span>
-        </button>
-      );
+      return homeButton;
     }
 
     // actionType === 'home-and-toggle'
     return (
       <>
+        {homeButton}
         <button 
-          className="home-btn"
-          onClick={handleHomeClick}
-          aria-label={translate('floating.homeAria')}
-        >
-          <span className="home-icon">
-            <HomeIcon />
-          </span>
-          <span className="home-text">
-            {translate('floating.home')}
-          </span>
-        </button>
-        <button 
-          className={`toggle-all-btn ${!allExpanded ? 'all-collapsed' : ''}`}
+          className={`
+            ${baseButtonClass}
+            ${allExpanded 
+              ? 'bg-gradient-to-r from-blue-600 to-blue-700 border-blue-500/30 hover:shadow-blue-500/30' 
+              : 'bg-gradient-to-r from-indigo-600 to-indigo-700 border-indigo-500/30 hover:shadow-indigo-500/30'
+            }
+          `}
           onClick={onToggleAll}
           aria-label={allExpanded ? translate('floating.toggleAllCloseAria') : translate('floating.toggleAllOpenAria')}
         >
-          <span className="toggle-all-icon">
+          <span className={`flex-shrink-0 transition-transform duration-300 group-hover:scale-110 ${!allExpanded ? '-rotate-90' : ''}`}>
             <ToggleAllIcon isExpanded={allExpanded} />
           </span>
-          <span className="toggle-all-text">
+          <span className="text-xs md:text-sm font-medium whitespace-nowrap">
             {getToggleAllText()}
           </span>
         </button>
@@ -127,18 +143,28 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
   };
 
   return (
-    <div className="floating-island">
+    <div className="fixed bottom-4 right-3 md:bottom-6 md:right-4 z-50 flex flex-col gap-2 md:gap-3 animate-fade-in">
       {renderActionButtons()}
       
       <button 
-        className={`scroll-btn ${isAtBottom ? 'scroll-up' : ''}`}
+        className={`
+          group flex items-center gap-2 md:gap-3 px-3 py-2 md:px-4 md:py-3 rounded-xl md:rounded-2xl
+          bg-gradient-to-r from-purple-600 to-purple-700
+          text-white font-medium shadow-lg backdrop-blur-sm
+          border border-purple-500/30
+          transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1)
+          hover:scale-105 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-purple-500/30
+          active:scale-95 active:duration-150
+          touch-manipulation select-none
+          ${isAtBottom ? 'from-purple-700 to-purple-800' : ''}
+        `}
         onClick={handleScrollClick}
         aria-label={isAtBottom ? translate('floating.scrollToTopAria') : translate('floating.scrollToBottomAria')}
       >
-        <span className="scroll-btn-icon">
+        <span className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
           <ScrollIcon direction={isAtBottom ? 'up' : 'down'} />
         </span>
-        <span className="scroll-btn-text">{getScrollButtonText()}</span>
+        <span className="text-xs md:text-sm font-medium whitespace-nowrap">{getScrollButtonText()}</span>
       </button>
     </div>
   );

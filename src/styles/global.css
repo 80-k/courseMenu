@@ -1,6 +1,9 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
+/* 컴포넌트 스타일 import */
+@import './component-styles.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -52,6 +55,7 @@ body::-webkit-scrollbar {
     display: none; /* Chrome, Safari and Opera */
 }
 
+/* Container styles moved to components - kept for backward compatibility */
 .container {
     @apply max-w-6xl mx-auto bg-white/80 min-h-screen shadow-2xl;
     padding: 40px 30px 140px 30px;
@@ -60,7 +64,7 @@ body::-webkit-scrollbar {
     transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Logo section at the top */
+/* Legacy logo styles - moved to components */
 .logo-section {
     @apply flex justify-center items-center py-5 mb-5 border-b border-gray-200/30;
     padding-top: 20px;
@@ -76,7 +80,7 @@ body::-webkit-scrollbar {
     @apply opacity-100 scale-105;
 }
 
-/* App wrapper for fixed positioning */
+/* Legacy app wrapper styles - moved to components */
 .app-wrapper {
     min-height: 100vh;
     width: 100%;
@@ -257,104 +261,8 @@ h1 a:active {
     transform: translateY(-0.5px);
 }
 
-/* Menu Grid Styles */
-.menu-grid {
-    @apply grid gap-8 my-10;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-}
-
-.menu-category {
-    @apply cursor-pointer transition-all duration-300;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Base card styles - can be converted to Tailwind */
-.menu-card {
-    @apply bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md relative overflow-hidden h-full flex flex-col;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.menu-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #744fa8 0%, #5a67d8 50%, #4299e1 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.menu-category:hover .menu-card {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    border-color: #d1d9e0;
-}
-
-.menu-category:hover .menu-card::before {
-    opacity: 1;
-}
-
-.menu-header {
-    @apply flex items-center mb-4 justify-between;
-}
-
-.menu-header-left {
-    @apply flex items-center gap-4;
-}
-
-.menu-icon {
-    @apply flex-shrink-0;
-    font-size: 2rem;
-    line-height: 1;
-}
-
-.menu-title {
-    color: #2d3748;
-    font-size: 1.5rem;
-    margin: 0;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
-    font-family: 'Noto Serif KR', 'Noto Serif JP', 'Playfair Display', serif;
-    text-align: left;
-}
-
-.menu-description {
-    color: #718096;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    font-weight: 400;
-    text-align: center;
-    flex-grow: 1;
-}
-
-.menu-items {
-    color: #4a5568;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    padding: 16px;
-    background-color: rgba(116, 79, 168, 0.05);
-    border-radius: 12px;
-    border-left: 3px solid rgba(116, 79, 168, 0.3);
-    text-align: center;
-}
-
-.menu-arrow {
-    font-size: 1.5rem;
-    color: #744fa8;
-    font-weight: bold;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    @apply flex-shrink-0;
-}
-
-.menu-category:hover .menu-arrow {
-    transform: translateX(8px);
-    color: #5a67d8;
-}
+/* Legacy menu styles - converted to Tailwind components */
+/* Kept for any remaining legacy usage - can be removed after full migration */
 
 footer {
     border-top: 2px solid #e2e8f0;
@@ -378,148 +286,8 @@ footer {
     font-family: 'Noto Serif KR', 'Noto Serif JP', serif;
 }
 
-/* Course Menu Styles */
-.course-menu {
-    display: grid;
-    gap: 24px;
-    padding-bottom: 120px;
-}
-
-.course-item {
-    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
-    border: 1px solid #e6eaf0;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-    position: relative;
-}
-
-.course-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #744fa8 0%, #5a67d8 50%, #4299e1 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.course-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    border-color: #d1d9e0;
-}
-
-.course-item:hover::before {
-    opacity: 1;
-}
-
-.course-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 28px 32px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.8) 100%);
-}
-
-.course-header:hover {
-    background: linear-gradient(135deg, rgba(116, 79, 168, 0.03) 0%, rgba(90, 103, 216, 0.03) 100%);
-}
-
-.course-item h2 {
-    color: #2d3748;
-    font-size: 1.5rem;
-    margin: 0;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
-    font-family: 'Noto Serif KR', 'Noto Serif JP', 'Playfair Display', serif;
-}
-
-.toggle-icon {
-    color: #744fa8;
-    font-size: 1.1rem;
-    font-weight: bold;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background: linear-gradient(135deg, #744fa8 0%, #5a67d8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.course-item.collapsed .toggle-icon {
-    transform: rotate(-90deg);
-}
-
-.course-content {
-    padding: 0 32px 32px 32px;
-    overflow: hidden;
-    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s ease;
-    opacity: 1;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(248, 250, 252, 0.6) 100%);
-}
-
-.course-item.collapsed .course-content {
-    height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    opacity: 0;
-}
-
-.description {
-    font-style: italic;
-    color: #718096;
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    font-weight: 400;
-    font-family: 'Noto Serif KR', 'Noto Serif JP', 'Playfair Display', serif;
-}
-
-.course-item ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-}
-
-.course-item li {
-    padding: 12px 0;
-    padding-left: 28px;
-    position: relative;
-    color: #4a5568;
-    line-height: 1.8;
-    font-size: 0.95rem;
-    font-weight: 400;
-    border-left: 2px solid transparent;
-    transition: all 0.2s ease;
-    font-family: 'Noto Serif KR', 'Noto Serif JP', Georgia, serif;
-}
-
-.course-item li:hover {
-    background-color: rgba(116, 79, 168, 0.02);
-    border-left-color: rgba(116, 79, 168, 0.2);
-    transform: translateX(2px);
-}
-
-.course-item li:before {
-    content: "●";
-    background: linear-gradient(135deg, #744fa8 0%, #5a67d8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: bold;
-    position: absolute;
-    left: 8px;
-    font-size: 0.7rem;
-    top: 16px;
-}
+/* Legacy course styles - converted to Tailwind components */
+/* Kept for any remaining legacy usage - can be removed after full migration */
 
 /* Floating Island */
 .floating-island {
@@ -594,10 +362,11 @@ footer {
 }
 
 .scroll-btn:hover, .toggle-all-btn:hover, .home-btn:hover {
-    transform: scale(1.02);
+    transform: scale(1.05) translateY(-2px);
     box-shadow: 
-        0 6px 20px rgba(116, 79, 168, 0.25),
-        0 2px 6px rgba(0, 0, 0, 0.15);
+        0 8px 25px rgba(116, 79, 168, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scroll-btn:active, .toggle-all-btn:active {
@@ -683,26 +452,18 @@ footer {
 
 .scroll-btn:hover {
     background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-    transform: scale(1.05) translateY(-1px);
-    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .scroll-btn.scroll-up:hover {
     background: linear-gradient(135deg, #9333ea 0%, #7e22ce 100%);
-    transform: scale(1.05) translateY(-1px);
-    box-shadow: 0 4px 12px rgba(147, 51, 234, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .toggle-all-btn:hover {
     background: linear-gradient(135deg, #5a67d8 0%, #4f46e5 100%);
-    transform: scale(1.05) translateY(-1px);
-    box-shadow: 0 4px 12px rgba(90, 103, 216, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .toggle-all-btn.all-collapsed:hover {
     background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
-    transform: scale(1.05) translateY(-1px);
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 /* 홈 버튼 전용 스타일 */
@@ -713,10 +474,6 @@ footer {
 
 .home-btn:hover {
     background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
-    transform: scale(1.05) translateY(-2px);
-    box-shadow: 
-        0 8px 25px rgba(102, 126, 234, 0.4),
-        0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
 .home-icon {

@@ -31,7 +31,7 @@ export const NavigationMenuCard: React.FC<NavigationMenuCardProps> = ({
 
   return (
     <div 
-      className="menu-category" 
+      className="navigation-card group" 
       onClick={onClick}
       role="button"
       tabIndex={0}
@@ -42,18 +42,20 @@ export const NavigationMenuCard: React.FC<NavigationMenuCardProps> = ({
         }
       }}
     >
-      <div className="menu-card">
-        <div className="menu-header">
-          <div className="menu-header-left">
-            <div className="menu-icon" role="img" aria-label={category.title[language]}>
+      <div className="navigation-card-inner">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className="flex-shrink-0 text-2xl leading-none md:text-3xl" role="img" aria-label={category.title[language]}>
               {getIconComponent(category.id)}
             </div>
-            <h2 className="menu-title">{category.title[language]}</h2>
+            <h2 className="section-title">{category.title[language]}</h2>
           </div>
-          <div className="menu-arrow">→</div>
+          <div className="card-arrow">→</div>
         </div>
-        <p className="menu-description">{category.description[language]}</p>
-        <div className="menu-items">
+        <p className="text-gray-600 text-base leading-relaxed mb-5 font-normal text-center flex-grow md:text-lg md:mb-6">
+          {category.description[language]}
+        </p>
+        <div className="text-gray-700 text-sm leading-relaxed mb-5 p-3 bg-primary-600/5 rounded-xl border-l-3 border-primary-600/30 text-center md:text-base md:p-4 md:mb-6">
           <span>{category.items[language]}</span>
         </div>
       </div>

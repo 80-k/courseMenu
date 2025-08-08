@@ -14,7 +14,7 @@
 
 - **Frontend**: React 18 + TypeScript + Vite
 - **Routing**: React Router v6 (BrowserRouter 우선 정책)
-- **Styling**: CSS + Tailwind CSS
+- **Styling**: **모바일 우선 Tailwind CSS** + 최소한의 순수 CSS
 - **언어**: TypeScript (엄격한 타입 체크)
 - **배포**: GitHub Pages (SPA 지원)
 
@@ -104,6 +104,19 @@ npm run build      # 프로덕션 빌드 테스트
 
 ## 📝 중요한 개발 원칙
 
+### 0. 모바일 우선 Tailwind CSS 정책 🎆
+- **Tailwind CSS 기본 사용**: 모든 새로운 컴포넌트는 Tailwind CSS로 구현
+- **모바일 퍼스트**: `sm:`, `md:`, `lg:` 브레이크포인트 적극 활용
+- **긴 클래스 문제 해결**: 외부 라이브러리 없이 순수 CSS + Tailwind 조합
+  - `/src/styles/component-styles.css`: 반복되는 긴 클래스를 CSS로 정의
+  - `/src/utils/simple-styles.ts`: 기본 스타일 상수들
+  - 조건부 스타일은 순수 JavaScript 템플릿 리터럴 사용
+- **순수 CSS 사용 기준**: 다음의 경우에만 순수 CSS 사용 허용
+  - Tailwind로 구현 불가능한 복잡한 애니메이션
+  - 브라우저 호환성을 위한 특수 스타일 (backdrop-filter 등)
+  - 복잡한 의사요소 (::before, ::after)
+- **단순성 원칙**: clsx 등 외부 스타일 라이브러리 사용 금지
+
 ### 1. 라우팅 정책
 - **BrowserRouter 우선**: HashRouter 사용 절대 금지
 - GitHub Pages 배포 시 SPA 리다이렉트 설정 필수 유지
@@ -119,10 +132,11 @@ npm run build      # 프로덕션 빌드 테스트
 - 번역 키는 네임스페이스.키 형태로 구조화
 - 언어별 텍스트 파일 분리 관리
 
-### 4. 모바일 최적화
-- 터치 친화적 인터페이스
-- 반응형 디자인
-- 접근성 고려 (고령층 사용자 포함)
+### 4. 모바일 우선 Tailwind CSS 정책 🎆
+- **Tailwind CSS 우선**: 모든 UI 컴포넌트는 모바일 우선 Tailwind 클래스로 구현
+- **순수 CSS 최소화**: 필수적이거나 적절한 이유가 있는 경우만 순수 CSS 사용
+- **모바일 우선 설계**: 작은 화면부터 시작하여 점진적 확장
+- **터치 친화적**: 터치 영역 최적화 및 접근성 고려
 
 ## 🐛 트러블슈팅
 
