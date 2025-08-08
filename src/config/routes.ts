@@ -125,10 +125,13 @@ export const findRouteByPath = (path: string): RouteConfig | undefined => {
 
 /**
  * 메인 페이지에서 표시할 네비게이션 카드용 라우트들 
- * (홈 제외한 모든 라우트)
+ * (홈 제외한 모든 라우트, 지정된 순서대로 정렬)
+ * 순서: 1.시간표 → 2.식사 → 3.장소 → 4.일정
  */
 export const getNavigationRoutes = (): RouteConfig[] => {
-  return Object.values(ROUTES).filter(route => route.path !== '/');
+  const routeOrder = ['PROGRAM', 'COURSE', 'LOCATION', 'SCHEDULE'] as const;
+  
+  return routeOrder.map(key => ROUTES[key]);
 };
 
 /**

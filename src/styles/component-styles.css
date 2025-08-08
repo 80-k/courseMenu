@@ -9,6 +9,12 @@
   @apply md:px-8 md:py-10 md:pb-40;
 }
 
+/* Legacy 호환성을 위한 추가 컨테이너 */
+.container {
+  @apply max-w-6xl mx-auto bg-white/80 min-h-screen shadow-2xl px-4 py-6 pb-32 backdrop-blur-sm;
+  @apply md:px-8 md:py-10 md:pb-40;
+}
+
 .logo-section {
   @apply flex justify-center items-center py-3 mb-3 border-b border-gray-200/30;
   @apply md:py-5 md:mb-5;
@@ -107,6 +113,227 @@
 .schedule-date {
   @apply text-lg font-medium text-primary-600 font-serif;
   @apply md:text-xl;
+}
+
+/* Course Item 스타일들 */
+.course-item-card {
+  @apply bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-2xl;
+  @apply overflow-hidden shadow-md relative transition-all duration-300;
+  @apply hover:-translate-y-1 hover:shadow-xl hover:border-gray-300;
+}
+
+.course-item-card::before {
+  content: '';
+  @apply absolute top-0 left-0 right-0 h-1;
+  @apply bg-gradient-to-r from-primary-600 via-secondary-600 to-blue-500;
+  @apply opacity-0 transition-opacity duration-300;
+}
+
+.course-item-card:hover::before {
+  @apply opacity-100;
+}
+
+.course-item-header {
+  @apply flex justify-between items-center p-5 cursor-pointer;
+  @apply bg-gradient-to-br from-white/80 to-gray-50/80;
+  @apply transition-colors duration-300 md:p-7;
+}
+
+.course-item-header:hover {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.03) 0%, rgba(90, 103, 216, 0.03) 100%);
+}
+
+.course-item-title {
+  @apply text-gray-800 text-xl font-semibold m-0 -tracking-wide leading-tight font-serif;
+  @apply md:text-2xl;
+}
+
+.course-item-arrow {
+  @apply text-primary-600 text-lg font-bold transition-all duration-300;
+  @apply bg-gradient-to-br from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+}
+
+.course-item-arrow.collapsed {
+  @apply -rotate-90;
+}
+
+.course-item-content {
+  @apply overflow-hidden bg-gradient-to-br from-white/60 to-gray-50/60;
+  @apply transition-all duration-300;
+}
+
+.course-item-content-inner {
+  @apply transition-all duration-300;
+}
+
+.course-item-content-inner.expanded {
+  @apply p-5 md:p-7;
+}
+
+.course-item-content-inner.collapsed {
+  @apply p-0;
+}
+
+.course-item-description {
+  @apply italic text-gray-600 mb-5 text-sm leading-relaxed font-serif;
+  @apply md:text-base md:mb-6;
+}
+
+.course-item-list {
+  @apply list-none p-0 m-0;
+}
+
+.course-item-list-item {
+  @apply py-2 px-0 pl-6 relative text-gray-700 leading-7 text-sm font-normal;
+  @apply border-l-2 border-transparent transition-all duration-200 font-serif;
+  @apply hover:translate-x-0.5 md:text-base md:py-3 md:pl-7;
+}
+
+.course-item-list-item:hover {
+  background-color: rgba(168, 85, 247, 0.02);
+  border-left-color: rgba(168, 85, 247, 0.20);
+}
+
+.course-item-list-item::before {
+  content: '●';
+  @apply absolute left-2 text-xs top-3 font-bold;
+  @apply bg-gradient-to-br from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+  @apply md:top-4;
+}
+
+/* Header 관련 스타일들 */
+.app-header {
+  @apply fixed bottom-0 left-0 w-full z-50 text-center;
+  @apply px-6 py-4 border-t-2 border-gray-200/20;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  @apply md:px-6 md:py-4;
+}
+
+.header-title {
+  @apply text-2xl font-semibold text-gray-800 mb-5 font-serif;
+  @apply md:text-3xl md:mb-6;
+}
+
+.header-link {
+  @apply text-gray-800 no-underline transition-all duration-300;
+  @apply inline-block px-2 py-1 rounded-lg;
+  @apply hover:text-primary-600 hover:-translate-y-0.5;
+  @apply hover:bg-primary-600/5 active:translate-y-0 active:bg-primary-600/10;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.language-toggle {
+  @apply inline-flex justify-center bg-gray-50 p-1 rounded-full;
+  @apply border border-gray-200 relative overflow-hidden;
+  @apply transition-all duration-300;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.language-toggle::before {
+  content: '';
+  @apply absolute top-1 left-1 h-full w-1/2;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background: linear-gradient(135deg, #744fa8 0%, #5a67d8 100%);
+  @apply rounded-full transition-transform duration-300 z-10;
+  box-shadow: 0 2px 8px rgba(116, 79, 168, 0.25), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.language-toggle.ja-active::before {
+  transform: translateX(calc(100% + 4px));
+}
+
+.lang-btn {
+  @apply px-5 py-2 border-0 bg-transparent text-gray-600 cursor-pointer;
+  @apply rounded-full text-sm font-semibold transition-all duration-300;
+  @apply relative z-20 min-w-20 outline-none;
+  @apply hover:text-primary-600 hover:-translate-y-0.5;
+  letter-spacing: 0.025em;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lang-btn.active {
+  @apply text-white -translate-y-0.5;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.lang-btn:hover.active {
+  @apply text-white;
+}
+
+/* Schedule 페이지 전용 스타일 */
+.schedule-section {
+  @apply bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-2xl;
+  @apply p-6 shadow-md md:p-8;
+}
+
+.schedule-list {
+  @apply flex flex-col gap-5;
+}
+
+.schedule-item {
+  @apply flex justify-between items-center p-4 bg-primary-600/5 rounded-xl;
+  @apply border-l-4 border-primary-600/30;
+}
+
+.schedule-date {
+  @apply text-lg font-medium text-primary-600 font-serif md:text-xl;
+}
+
+.schedule-event {
+  @apply text-base text-gray-700 font-serif md:text-lg;
+}
+
+/* Program 페이지 전용 스타일 */
+.program-section {
+  @apply bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-2xl;
+  @apply p-6 shadow-md md:p-8;
+}
+
+.program-list {
+  @apply grid grid-cols-1 gap-5;
+}
+
+.step {
+  @apply p-3 bg-primary-600/5 rounded-lg border-l-4 border-primary-600/30;
+  @apply text-sm cursor-pointer transition-all duration-300;
+  @apply flex justify-between items-center select-none;
+}
+
+.step:hover {
+  background-color: rgba(168, 85, 247, 0.10);
+  border-left-color: rgba(168, 85, 247, 0.50);
+  transform: translateX(4px);
+}
+
+.step.current {
+  background: linear-gradient(135deg, rgba(251, 146, 60, 0.15) 0%, rgba(249, 115, 22, 0.15) 100%);
+  @apply border-l-orange-500 text-orange-700 border-l-4;
+}
+
+.step.current:hover {
+  background: linear-gradient(135deg, rgba(251, 146, 60, 0.25) 0%, rgba(249, 115, 22, 0.25) 100%);
+  border-left-color: #ea580c;
+  border-left-width: 5px;
+}
+
+.step-text {
+  @apply transition-all duration-300 text-gray-600 font-serif flex-1;
+}
+
+.step.current .step-text {
+  @apply text-orange-700 font-semibold;
+}
+
+.step:active {
+  @apply scale-95;
+}
+
+.step:focus {
+  @apply outline outline-2 outline-primary-600/50 outline-offset-2;
 }
 
 /* 유틸리티 클래스들 */

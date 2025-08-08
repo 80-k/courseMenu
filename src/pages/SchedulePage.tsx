@@ -18,7 +18,7 @@ export const SchedulePage: React.FC = () => {
         </div>
         
         <div className="page-layout">
-          <div className="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-2xl p-6 shadow-md md:p-8">
+          <div className="schedule-section">
             <h2 className="page-title">
               {translate('leftPage.schedule.title')}
             </h2>
@@ -26,22 +26,22 @@ export const SchedulePage: React.FC = () => {
               {translate('leftPage.schedule.subtitle')}
             </p>
             
-            <div className="flex flex-col gap-5">
-              <div className="space-between schedule-item">
+            <div className="schedule-list">
+              <div className="schedule-item">
                 <span className="schedule-date">{translate('leftPage.schedule.items.marriageRegistration.date')}</span>
-                <span className="text-base text-gray-700 font-serif md:text-lg">{translate('leftPage.schedule.items.marriageRegistration.event')}</span>
+                <span className="schedule-event">{translate('leftPage.schedule.items.marriageRegistration.event')}</span>
               </div>
-              <div className="space-between schedule-item">
+              <div className="schedule-item">
                 <span className="schedule-date">{translate('leftPage.schedule.items.sanggyeonrye.date')}</span>
-                <span className="text-base text-gray-700 font-serif md:text-lg">{translate('leftPage.schedule.items.sanggyeonrye.event')}</span>
+                <span className="schedule-event">{translate('leftPage.schedule.items.sanggyeonrye.event')}</span>
               </div>
-              <div className="space-between schedule-item">
+              <div className="schedule-item">
                 <span className="schedule-date">{translate('leftPage.schedule.items.preWedding.date')}</span>
-                <span className="text-base text-gray-700 font-serif md:text-lg">{translate('leftPage.schedule.items.preWedding.event')}</span>
+                <span className="schedule-event">{translate('leftPage.schedule.items.preWedding.event')}</span>
               </div>
-              <div className="space-between schedule-item">
+              <div className="schedule-item">
                 <span className="schedule-date">{translate('leftPage.schedule.items.wedding.date')}</span>
-                <span className="text-base text-gray-700 font-serif md:text-lg">{translate('leftPage.schedule.items.wedding.event')}</span>
+                <span className="schedule-event">{translate('leftPage.schedule.items.wedding.event')}</span>
               </div>
             </div>
           </div>
