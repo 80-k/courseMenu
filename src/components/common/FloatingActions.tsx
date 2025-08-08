@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useI18n } from '../../i18n';
-import { useScrollPosition } from '../../hooks/useScrollPosition';
-import { ToggleAllIcon, ScrollIcon, HomeIcon } from '../icons';
+import { ToggleAllIcon, HomeIcon } from '../icons';
 
 type ActionType = 'toggle' | 'home' | 'home-and-toggle';
 
@@ -24,33 +23,15 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
 }) => {
   const { translate } = useI18n();
   const navigate = useNavigate();
-  const { isAtBottom, scrollToTop, scrollToBottom } = useScrollPosition();
-
-  const handleScrollClick = (e: React.MouseEvent) => {
-    // 클릭 애니메이션 효과
-    const button = e.currentTarget as HTMLButtonElement;
-    button.style.transform = 'scale(0.95)';
-    setTimeout(() => {
-      button.style.transform = '';
-    }, 150);
-    
-    if (isAtBottom) {
-      scrollToTop();
-    } else {
-      scrollToBottom();
-    }
-  };
 
   const handleHomeClick = () => {
     navigate(homeRoute);
   };
 
-  // 스크롤 버튼 텍스트 결정
-  const getScrollButtonText = () => {
-    if (isAtBottom) {
-      return translate('floating.scrollUp');
+  const handleToggleAllClick = () => {
+    if (onToggleAll) {
+      onToggleAll();
     }
-    return translate('floating.scrollDown');
   };
 
   const getToggleAllText = () => {
@@ -80,7 +61,7 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
               : 'bg-gradient-to-r from-indigo-600 to-indigo-700 border-indigo-500/30 hover:shadow-indigo-500/30'
             }
           `}
-          onClick={onToggleAll}
+          onClick={handleToggleAllClick}
           aria-label={allExpanded ? translate('floating.toggleAllCloseAria') : translate('floating.toggleAllOpenAria')}
         >
           <span className={`flex-shrink-0 transition-transform duration-300 group-hover:scale-110 ${!allExpanded ? '-rotate-90' : ''}`}>
@@ -128,7 +109,7 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
               : 'bg-gradient-to-r from-indigo-600 to-indigo-700 border-indigo-500/30 hover:shadow-indigo-500/30'
             }
           `}
-          onClick={onToggleAll}
+          onClick={handleToggleAllClick}
           aria-label={allExpanded ? translate('floating.toggleAllCloseAria') : translate('floating.toggleAllOpenAria')}
         >
           <span className={`flex-shrink-0 transition-transform duration-300 group-hover:scale-110 ${!allExpanded ? '-rotate-90' : ''}`}>
@@ -145,27 +126,6 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
   return (
     <div className="fixed bottom-4 right-3 md:bottom-6 md:right-4 z-50 flex flex-col gap-2 md:gap-3 animate-fade-in">
       {renderActionButtons()}
-      
-      <button 
-        className={`
-          group flex items-center gap-2 md:gap-3 px-3 py-2 md:px-4 md:py-3 rounded-xl md:rounded-2xl
-          bg-gradient-to-r from-purple-600 to-purple-700
-          text-white font-medium shadow-lg backdrop-blur-sm
-          border border-purple-500/30
-          transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1)
-          hover:scale-105 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-purple-500/30
-          active:scale-95 active:duration-150
-          touch-manipulation select-none
-          ${isAtBottom ? 'from-purple-700 to-purple-800' : ''}
-        `}
-        onClick={handleScrollClick}
-        aria-label={isAtBottom ? translate('floating.scrollToTopAria') : translate('floating.scrollToBottomAria')}
-      >
-        <span className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
-          <ScrollIcon direction={isAtBottom ? 'up' : 'down'} />
-        </span>
-        <span className="text-xs md:text-sm font-medium whitespace-nowrap">{getScrollButtonText()}</span>
-      </button>
     </div>
   );
 };

@@ -55,7 +55,7 @@ export const ko = {
     },
     schedule: {
       title: "일정",
-      description: "앞으로의 일정과 중요한 날",
+      description: "주요 날짜와 일정",
       items: "혼인신고, 상견례, 전촬영, 결혼식 일정",
     },
     location: {
@@ -146,7 +146,7 @@ export const ko = {
   leftPage: {
     schedule: {
       title: "SCHEDULE",
-      subtitle: "앞으로의 예정",
+      subtitle: "주요 날짜",
       items: {
         marriageRegistration: {
           date: "2025년 7월 7일",
@@ -174,6 +174,7 @@ export const ko = {
         locationNameJp: "아모레볼레 산마르코",
         locationNameEn: "amorevole SAN MARCO",
         address: "후쿠오카현 기타큐슈시 몬시구 마츠바라 1-8-12",
+        googleMapsUrl: "https://maps.google.com/?q=福岡県北九州市門司区松原1-8-12",
         phone: "0120-825-305",
         website: "www.amorevole-sanmarco.jp",
         description: "역사적인 건물과 아름다운 정원이 어우러진 클래식한 웨딩홀",
@@ -225,7 +226,7 @@ export const ko = {
   // 일정 (기존 호환성)
   schedule: {
     title: "SCHEDULE",
-    subtitle: "앞으로의 예정",
+    subtitle: "주요 날짜",
     items: {
       marriageRegistration: {
         date: "2025년 7월 7일",
@@ -255,6 +256,7 @@ export const ko = {
       locationNameJp: "아모레볼레 산마르코",
       locationNameEn: "amorevole SAN MARCO",
       address: "후쿠오카현 기타큐슈시 몬시구 마츠바라 1-8-12",
+      googleMapsUrl: "https://maps.google.com/?q=福岡県北九州市門司区松原1-8-12",
       phone: "0120-825-305",
       website: "www.amorevole-sanmarco.jp",
       description: "역사적인 건물과 아름다운 정원이 어우러진 클래식한 웨딩홀",

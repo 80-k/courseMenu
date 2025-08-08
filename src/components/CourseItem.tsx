@@ -1,4 +1,3 @@
-import { useState, useRef, useEffect } from 'react';
 import type { CourseMenuItem, LocalizedText } from '../types';
 import { useI18n } from '../i18n';
 
@@ -14,16 +13,6 @@ export const CourseItem: React.FC<CourseItemProps> = ({
   onToggle,
 }) => {
   const { language } = useI18n();
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [contentHeight, setContentHeight] = useState<number>(0);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setContentHeight(contentRef.current.scrollHeight);
-    }
-  }, [item, language, isExpanded]);
-
-  // const styles = useCourseItemStyles(isExpanded); // TODO: 나중에 적용
 
   return (
     <div className="course-item-card">
@@ -46,16 +35,10 @@ export const CourseItem: React.FC<CourseItemProps> = ({
       </div>
       <div 
         id={`course-content-${item.id}`}
-        className="course-item-content"
-        style={{
-          height: isExpanded ? `${contentHeight}px` : '0px',
-          paddingTop: isExpanded ? '0px' : '0px',
-          paddingBottom: isExpanded ? '0px' : '0px',
-          opacity: isExpanded ? 1 : 0,
-        }}
+        className={`course-item-content ${isExpanded ? 'expanded' : 'collapsed'}`}
         aria-hidden={!isExpanded}
       >
-        <div ref={contentRef} className={`course-item-content-inner ${isExpanded ? 'expanded' : 'collapsed'}`}>
+        <div className={`course-item-content-inner ${isExpanded ? 'expanded' : 'collapsed'}`}>
           {item.description && (
             <p className="course-item-description">{item.description[language]}</p>
           )}

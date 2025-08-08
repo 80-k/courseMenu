@@ -1,6 +1,6 @@
 import type { MenuCategory } from '../types';
 import { useI18n } from '../i18n';
-import { CourseIcon, ScheduleIcon, LocationIcon, ProgramIcon } from './icons';
+import { MenuIcons, type MenuIconKey } from './icons/MenuIcons';
 
 interface NavigationMenuCardProps {
   category: MenuCategory;
@@ -13,20 +13,24 @@ export const NavigationMenuCard: React.FC<NavigationMenuCardProps> = ({
 }) => {
   const { language } = useI18n();
 
-  // 카테고리 ID에 따라 적절한 아이콘 컴포넌트 선택
+  // 라우트 경로에 따라 적절한 SVG 아이콘 컴포넌트 선택
   const getIconComponent = (categoryId: string) => {
-    switch (categoryId) {
-      case 'course':
-        return <CourseIcon className="w-8 h-8 flex-shrink-0" />;
-      case 'schedule':
-        return <ScheduleIcon className="w-8 h-8 flex-shrink-0" />;
-      case 'location':
-        return <LocationIcon className="w-8 h-8 flex-shrink-0" />;
-      case 'right':
-        return <ProgramIcon className="w-8 h-8 flex-shrink-0" />;
-      default:
-        return <span className="text-3xl flex-shrink-0">{category.icon}</span>;
+    // 라우트 경로를 아이콘 키로 매핑
+    const pathToIconKey: Record<string, MenuIconKey> = {
+      '/program': 'PROGRAM',
+      '/course': 'COURSE', 
+      '/location': 'LOCATION',
+      '/schedule': 'SCHEDULE',
+    };
+    
+    const iconKey = pathToIconKey[categoryId];
+    if (iconKey && MenuIcons[iconKey]) {
+      const IconComponent = MenuIcons[iconKey];
+      return <IconComponent size={32} className="text-primary-600 group-hover:text-secondary-600 transition-colors duration-300" />;
     }
+    
+    // 폴백: 기본 이모지 아이콘
+    return <span className="text-3xl flex-shrink-0">{category.icon}</span>;
   };
 
   return (
@@ -45,7 +49,7 @@ export const NavigationMenuCard: React.FC<NavigationMenuCardProps> = ({
       <div className="navigation-card-inner">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3 md:gap-4">
-            <div className="flex-shrink-0 text-2xl leading-none md:text-3xl" role="img" aria-label={category.title[language]}>
+            <div className="flex-shrink-0" role="img" aria-label={category.title[language]}>
               {getIconComponent(category.id)}
             </div>
             <h2 className="section-title">{category.title[language]}</h2>

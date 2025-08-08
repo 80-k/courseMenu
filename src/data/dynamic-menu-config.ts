@@ -73,7 +73,7 @@ const weddingMenuData: ConfigurableMenuItem[] = [
       ja: "日程",
     },
     description: {
-      ko: "앞으로의 일정과 중요한 날",
+      ko: "주요 날짜와 일정",
       ja: "今後の予定と大切な日",
     },
     items: {

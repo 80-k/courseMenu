@@ -162,6 +162,16 @@
   @apply transition-all duration-300;
 }
 
+.course-item-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.course-item-content.expanded {
+  max-height: 2000px; /* 충분히 큰 값 */
+  opacity: 1;
+}
+
 .course-item-content-inner {
   @apply transition-all duration-300;
 }

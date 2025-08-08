@@ -174,6 +174,7 @@ export const ja = {
         locationNameJp: "アモーレヴォレ サンマルコ",
         locationNameEn: "amorevole SAN MARCO",
         address: "福岡県北九州市門司区松原1-8-12",
+        googleMapsUrl: "https://maps.google.com/?q=福岡県北九州市門司区松原1-8-12",
         phone: "0120-825-305",
         website: "www.amorevole-sanmarco.jp",
         description:
@@ -256,6 +257,7 @@ export const ja = {
       locationNameJp: "アモーレヴォレ サンマルコ",
       locationNameEn: "amorevole SAN MARCO",
       address: "福岡県北九州市門司区松原1-8-12",
+      googleMapsUrl: "https://maps.google.com/?q=福岡県北九州市門司区松原1-8-12",
       phone: "0120-825-305",
       website: "www.amorevole-sanmarco.jp",
       description:
