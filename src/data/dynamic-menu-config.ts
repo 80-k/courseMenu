@@ -153,7 +153,7 @@ const sanggyeonryeMenuData: ConfigurableMenuItem[] = [
     requiredFeatures: ["showCourseMenu"],
   },
   {
-    id: "sanggyeonrye_info",
+    id: "sanggyeonrye-info",
     sortId: 1,
     icon: "🤝",
     title: {

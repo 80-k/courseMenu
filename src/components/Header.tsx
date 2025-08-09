@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useI18n } from '../i18n';
@@ -11,7 +12,7 @@ interface HeaderProps {
   showBackLink?: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({ 
+export const Header: React.FC<HeaderProps> = memo(({ 
   title = { ko: '상견례 안내', ja: '顔合わせご案内' },
   linkTo = '/',
   showBackLink = false
@@ -36,4 +37,4 @@ export const Header: React.FC<HeaderProps> = ({
       <LanguageSwitcher />
     </header>
   );
-};
+});

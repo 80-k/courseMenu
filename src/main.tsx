@@ -10,18 +10,18 @@ function updatePageMetadata() {
   
   // 제목 업데이트
   const titleMap: Record<AppMode, string> = {
-    wedding: '웨딩 메뉴 안내',
-    sanggyeonrye: '상견례 메뉴 안내', 
-    afterparty: '뒷풀이 메뉴 안내'
+    wedding: 'S.G. 💍 MIYU',
+    sanggyeonrye: 'S.G. 💍 MIYU', 
+    afterparty: 'S.G. 💍 MIYU'
   };
   
-  document.title = titleMap[mode] || '코스 메뉴 안내';
+  document.title = titleMap[mode] || 'S.G. 💍 MIYU';
   
   // 메타 설명 업데이트
   const descriptionMap: Record<AppMode, string> = {
-    wedding: '웨딩 행사를 위한 특별한 코스 메뉴를 확인하세요',
-    sanggyeonrye: '상견례를 위한 정성스러운 코스 메뉴를 확인하세요',
-    afterparty: '뒷풀이를 위한 즐거운 코스 메뉴를 확인하세요'
+    wedding: 'S.G.와 MIYU의 특별한 상견례 - 정통 일본 요리와 함께하는 소중한 만남의 시간',
+    sanggyeonrye: 'S.G.와 MIYU의 특별한 상견례 - 정통 일본 요리와 함께하는 소중한 만남의 시간',
+    afterparty: 'S.G.와 MIYU의 특별한 상견례 - 정통 일본 요리와 함께하는 소중한 만남의 시간'
   };
   
   let metaDescription = document.querySelector('meta[name="description"]');
@@ -30,7 +30,7 @@ function updatePageMetadata() {
     metaDescription.setAttribute('name', 'description');
     document.head.appendChild(metaDescription);
   }
-  metaDescription.setAttribute('content', descriptionMap[mode] || '코스 메뉴 안내');
+  metaDescription.setAttribute('content', descriptionMap[mode] || 'S.G.와 MIYU의 특별한 상견례 - 정통 일본 요리와 함께하는 소중한 만남의 시간');
 }
 
 // 페이지 로드 시 메타데이터 업데이트

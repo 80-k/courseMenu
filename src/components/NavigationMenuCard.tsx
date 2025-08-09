@@ -1,3 +1,4 @@
+import { memo, useMemo } from 'react';
 import type { MenuCategory } from '../types';
 import { useI18n } from '../i18n';
 import { MenuIcons, type MenuIconKey } from './icons/MenuIcons';
@@ -7,23 +8,23 @@ interface NavigationMenuCardProps {
   onClick?: () => void;
 }
 
-export const NavigationMenuCard: React.FC<NavigationMenuCardProps> = ({
+export const NavigationMenuCard: React.FC<NavigationMenuCardProps> = memo(({
   category,
   onClick,
 }) => {
   const { language } = useI18n();
 
-  // 라우트 경로에 따라 적절한 SVG 아이콘 컴포넌트 선택
-  const getIconComponent = (categoryId: string) => {
-    // 라우트 경로를 아이콘 키로 매핑
-    const pathToIconKey: Record<string, MenuIconKey> = {
-      '/program': 'PROGRAM',
-      '/course': 'COURSE', 
-      '/location': 'LOCATION',
-      '/schedule': 'SCHEDULE',
-    };
-    
-    const iconKey = pathToIconKey[categoryId];
+  // 성능 최적화: 아이콘 매핑을 메모이제이션
+  const pathToIconKey: Record<string, MenuIconKey> = useMemo(() => ({
+    '/program': 'PROGRAM',
+    '/course': 'COURSE', 
+    '/location': 'LOCATION',
+    '/schedule': 'SCHEDULE',
+  }), []);
+
+  // 아이콘 컴포넌트를 메모이제이션
+  const iconComponent = useMemo(() => {
+    const iconKey = pathToIconKey[category.id];
     if (iconKey && MenuIcons[iconKey]) {
       const IconComponent = MenuIcons[iconKey];
       return <IconComponent size={32} className="text-primary-600 group-hover:text-secondary-600 transition-colors duration-300" />;
@@ -31,7 +32,7 @@ export const NavigationMenuCard: React.FC<NavigationMenuCardProps> = ({
     
     // 폴백: 기본 이모지 아이콘
     return <span className="text-3xl flex-shrink-0">{category.icon}</span>;
-  };
+  }, [category.id, category.icon, pathToIconKey]);
 
   return (
     <div 
@@ -50,7 +51,7 @@ export const NavigationMenuCard: React.FC<NavigationMenuCardProps> = ({
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3 md:gap-4">
             <div className="flex-shrink-0" role="img" aria-label={category.title[language]}>
-              {getIconComponent(category.id)}
+              {iconComponent}
             </div>
             <h2 className="section-title">{category.title[language]}</h2>
           </div>
@@ -65,4 +66,4 @@ export const NavigationMenuCard: React.FC<NavigationMenuCardProps> = ({
       </div>
     </div>
   );
-};
+});

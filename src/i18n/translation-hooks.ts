@@ -4,7 +4,7 @@
 
 import { useContext } from 'react';
 import { I18nContext } from './translation-context';
-import type { TranslationKey, TranslationParams, TranslationNamespace } from './types';
+import type { TranslationKey, TranslationParams, TranslationNamespace } from '../types';
 
 /**
  * 다국어 컨텍스트를 사용하는 훅

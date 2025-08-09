@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import type { CourseMenuItem, LocalizedText } from '../types';
 import { useI18n } from '../i18n';
 
@@ -7,7 +8,7 @@ interface CourseItemProps {
   onToggle: () => void;
 }
 
-export const CourseItem: React.FC<CourseItemProps> = ({
+export const CourseItem: React.FC<CourseItemProps> = memo(({
   item,
   isExpanded,
   onToggle,
@@ -53,4 +54,4 @@ export const CourseItem: React.FC<CourseItemProps> = ({
       </div>
     </div>
   );
-};
+});

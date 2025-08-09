@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import { useI18n } from '../i18n';
 
-export const LanguageSwitcher: React.FC = () => {
+export const LanguageSwitcher: React.FC = memo(() => {
   const { language, setLanguage } = useI18n();
 
   return (
@@ -30,4 +31,4 @@ export const LanguageSwitcher: React.FC = () => {
       </button>
     </div>
   );
-};
+});

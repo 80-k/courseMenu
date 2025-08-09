@@ -1,3 +1,4 @@
+import { memo, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NavigationMenuCard } from '../components/NavigationMenuCard';
 import { useI18n } from '../i18n';
@@ -8,12 +9,12 @@ import type { MenuCategory } from '../types';
 import { COMPONENT_STYLES } from '../utils/simple-styles';
 import '../styles/global.css';
 
-export const MainMenu: React.FC = () => {
+export const MainMenu: React.FC = memo(() => {
   const { translate } = useI18n();
   const navigate = useNavigate();
 
-  // 간단한 라우트 정보 가져오기
-  const navigationRoutes = getNavigationRoutes();
+  // 성능 최적화: 네비게이션 라우트를 메모이제이션
+  const navigationRoutes = useMemo(() => getNavigationRoutes(), []);
 
   const navigateToMenuPage = (path: string) => {
     navigate(path);
@@ -34,6 +35,7 @@ export const MainMenu: React.FC = () => {
           <img 
             src={ASSETS.LOGO} 
             alt="Restaurant Logo" 
+            loading="eager"
             className={COMPONENT_STYLES.image.logo}
           />
         </div>
@@ -61,4 +63,4 @@ export const MainMenu: React.FC = () => {
         </FeatureGate>
     </div>
   );
-};
+});
