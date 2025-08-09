@@ -60,7 +60,7 @@ export const ja = {
     },
     location: {
       title: "会場",
-      description: "アモレヴォレ サンマルコ",
+      description: "結婚式場のご案内(アモレヴォレ サンマルコ）",
       items: "位置情報、施設案内、住所、連絡先",
     },
     program: {
@@ -92,7 +92,6 @@ export const ja = {
       reservation: "ご不明な点がございましたらお気軽にお尋ねください",
     },
   },
-
 
   // 左ページ (スケジュール & 結婚式情報)
   leftPage: {

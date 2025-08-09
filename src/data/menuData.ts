@@ -9,7 +9,7 @@ export const courseMenuData: CourseMenuItem[] = [
     },
     description: {
       ko: "일본 요리 코스에서 가장 먼저 나오는 작은 요리를 의미",
-      ja: "日本料理のコースで最初に出される小さな料理を意味",
+      ja: "",
     },
     items: [
       {
@@ -29,15 +29,15 @@ export const courseMenuData: CourseMenuItem[] = [
     items: [
       {
         ko: "아리아케 해파리, 다진 참마",
-        ja: "有明海クラゲ、擦りおろした山芋",
+        ja: "有明クラゲと叩き長芋",
       },
       {
         ko: "동아와 미쓰세 닭고기를 사용한 유바지 앙카케",
-        ja: "冬瓜とみつせ鶏を使った湯葉地あんかけ",
+        ja: "冬瓜とみつせ鶏友地あんかけ",
       },
       {
         ko: "시금치와 팽이버섯 국화 조림",
-        ja: "ほうれん草とえのき茸の菊花煮",
+        ja: "ほうれん草とえのき茸菊花浸し",
       },
     ],
     enabled: true,
@@ -52,7 +52,7 @@ export const courseMenuData: CourseMenuItem[] = [
     items: [
       {
         ko: "차가운 니멘",
-        ja: "冷たいにゅうめん",
+        ja: "冷やし煮麺",
       },
     ],
     enabled: true,
@@ -66,8 +66,8 @@ export const courseMenuData: CourseMenuItem[] = [
     },
     items: [
       {
-        ko: "한치 활어회 외 2종",
-        ja: "ハンチ活き造り他2種",
+        ko: "활어회 한치 외 2종",
+        ja: "やり烏賊活き造り他2種",
       },
     ],
     enabled: true,
@@ -97,7 +97,7 @@ export const courseMenuData: CourseMenuItem[] = [
     items: [
       {
         ko: "한치 튀김 또는 소금구이",
-        ja: "ハンチの天ぷらまたは塩焼き",
+        ja: "あとつくりの烏賊の天ぷら又は塩焼き",
       },
     ],
     enabled: true,
@@ -112,7 +112,7 @@ export const courseMenuData: CourseMenuItem[] = [
     items: [
       {
         ko: "와규 로스트 비프와 여름 채소 구이",
-        ja: "和牛ローストビーフと夏野菜グリル",
+        ja: "黒毛和牛ローストビーフと夏野菜グリル",
       },
     ],
     enabled: true,
@@ -127,7 +127,7 @@ export const courseMenuData: CourseMenuItem[] = [
     items: [
       {
         ko: "옥수수 가마솥 밥",
-        ja: "とうもろこし釜炊きご飯",
+        ja: "もろこし釜飯",
       },
     ],
     enabled: true,
