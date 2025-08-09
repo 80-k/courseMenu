@@ -74,7 +74,6 @@ export const DEFAULT_NAMESPACES: readonly TranslationNamespace[] = [
   'common',
   'header',
   'menu',
-  'course',
   'leftPage',
   'location',
   'program',

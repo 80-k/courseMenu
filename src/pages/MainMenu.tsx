@@ -6,7 +6,6 @@ import { getNavigationRoutes } from '../config/routes';
 import { FeatureGate } from '../components/common/FeatureGates';
 import { ASSETS } from '../constants/assets';
 import type { MenuCategory } from '../types';
-import { COMPONENT_STYLES } from '../utils/simple-styles';
 import '../styles/global.css';
 
 export const MainMenu: React.FC = memo(() => {
@@ -30,18 +29,18 @@ export const MainMenu: React.FC = memo(() => {
   });
 
   return (
-    <div className={COMPONENT_STYLES.container.main}>
-        <div className={COMPONENT_STYLES.container.logoSection}>
+    <div className="main-container">
+        <div className="logo-section">
           <img 
             src={ASSETS.LOGO} 
             alt="Restaurant Logo" 
             loading="eager"
-            className={COMPONENT_STYLES.image.logo}
+            className="logo-image"
           />
         </div>
         
         <main>
-          <div className={COMPONENT_STYLES.layout.menuGrid}>
+          <div className="menu-grid">
             {navigationRoutes.map(route => (
               <NavigationMenuCard
                 key={route.path}

@@ -23,8 +23,8 @@ export const ja = {
     // 모드별 메인 타이틀
     mainTitle: {
       wedding: "ウェディングご案内",
-      sanggyeonrye: "顔合わせご案内", 
-      afterparty: "アフターパーティーご案内"
+      sanggyeonrye: "顔合わせご案内",
+      afterparty: "アフターパーティーご案内",
     },
     courseTitle: "コース料理",
     scheduleWeddingTitle: "スケジュール & 式場",
@@ -34,8 +34,8 @@ export const ja = {
     subtitle: {
       wedding: "大切な日を一緒にお祝いいただき、ありがとうございます",
       sanggyeonrye: "ご両家の出会いの記念すべき時間です",
-      afterparty: "楽しい時間をご一緒しましょう"
-    }
+      afterparty: "楽しい時間をご一緒しましょう",
+    },
   },
 
   // 언어 선택
@@ -72,18 +72,18 @@ export const ja = {
     sanggyeonryeInfo: {
       title: "顔合わせ情報",
       description: "ご両家の出会いに関するご案内",
-      items: "お会いする時間、会場案内、準備物"
+      items: "お会いする時間、会場案内、準備物",
     },
     sanggyeonryeRestaurant: {
-      title: "レストランのご案内", 
+      title: "レストランのご案内",
       description: "顔合わせ会場の情報",
-      items: "レストラン紹介、アクセス、駐車場情報"
+      items: "レストラン紹介、アクセス、駐車場情報",
     },
     // 뒷풀이 관련 메뉴
     afterpartyInfo: {
       title: "アフターパーティーご案内",
       description: "お食事後のパーティー情報",
-      items: "時間、会場、プログラム"
+      items: "時間、会場、プログラム",
     },
     // 기존 레스토랑 정보
     restaurantInfo: {
@@ -93,54 +93,6 @@ export const ja = {
     },
   },
 
-  // 코스 요리
-  course: {
-    zenpu: {
-      title: "先付 (ぜんぷ) - アペタイザー",
-      description: "日本料理のコースで最初に出される小さな料理を意味",
-      items: ["冷たい笹豆腐"],
-    },
-    shunsai: {
-      title: "旬彩 (しゅんさい) - 旬の料理",
-      items: [
-        "有明海クラゲ、擦りおろした山芋",
-        "冬瓜とみつせ鶏を使った湯葉地あんかけ",
-        "ほうれん草とえのき茸の菊花煮",
-      ],
-    },
-    shiruwan: {
-      title: "汁椀 (しるわん) - 澄まし汁",
-      items: ["冷たいにゅうめん"],
-    },
-    tsukuri: {
-      title: "造里 (つくり) - 刺身",
-      items: ["ハンチ活き造り他2種"],
-    },
-    yakimono: {
-      title: "焼物 (やきもの) - 焼き物",
-      items: ["イサキ梅味噌焼き"],
-    },
-    agemono: {
-      title: "揚物 (あげもの) - 揚げ物",
-      items: ["ハンチの天ぷらまたは塩焼き"],
-    },
-    yosai: {
-      title: "洋菜 (ようさい) - 洋食",
-      items: ["和牛ローストビーフと夏野菜グリル"],
-    },
-    gohan: {
-      title: "御飯 (ごはん) - 食事",
-      items: ["とうもろこし釜炊きご飯"],
-    },
-    tomewan: {
-      title: "留椀 (とめわん) - 締めの汁",
-      items: ["赤だし"],
-    },
-    dessert: {
-      title: "デザート",
-      items: ["赤肉メロン、巨峰"],
-    },
-  },
 
   // 左ページ (スケジュール & 結婚式情報)
   leftPage: {
@@ -174,7 +126,8 @@ export const ja = {
         locationNameJp: "アモーレヴォレ サンマルコ",
         locationNameEn: "amorevole SAN MARCO",
         address: "福岡県北九州市門司区松原1-8-12",
-        googleMapsUrl: "https://maps.google.com/?q=福岡県北九州市門司区松原1-8-12",
+        googleMapsUrl:
+          "https://maps.google.com/?q=福岡県北九州市門司区松原1-8-12",
         phone: "0120-825-305",
         website: "www.amorevole-sanmarco.jp",
         description:
@@ -233,7 +186,8 @@ export const ja = {
       locationNameJp: "アモーレヴォレ サンマルコ",
       locationNameEn: "amorevole SAN MARCO",
       address: "福岡県北九州市門司区松原1-8-12",
-      googleMapsUrl: "https://maps.google.com/?q=福岡県北九州市門司区松原1-8-12",
+      googleMapsUrl:
+        "https://maps.google.com/?q=福岡県北九州市門司区松原1-8-12",
       phone: "0120-825-305",
       website: "www.amorevole-sanmarco.jp",
       description:

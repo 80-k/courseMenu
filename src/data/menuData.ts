@@ -4,8 +4,8 @@ export const courseMenuData: CourseMenuItem[] = [
   {
     id: "zenpu",
     title: {
-      ko: "선부 (先付) - 애피타이저",
-      ja: "先付 (ぜんぷ) - アペタイザー",
+      ko: "선부 (先付) - 전채 요리",
+      ja: "先付",
     },
     description: {
       ko: "일본 요리 코스에서 가장 먼저 나오는 작은 요리를 의미",
@@ -18,13 +18,13 @@ export const courseMenuData: CourseMenuItem[] = [
       },
     ],
     enabled: true,
-    visibleInModes: ['wedding', 'sanggyeonrye'],
+    visibleInModes: ["wedding", "sanggyeonrye"],
   },
   {
     id: "shunsai",
     title: {
       ko: "슌사이 (旬彩) - 제철 요리",
-      ja: "旬彩 (しゅんさい) - 旬の料理",
+      ja: "旬彩",
     },
     items: [
       {
@@ -41,13 +41,13 @@ export const courseMenuData: CourseMenuItem[] = [
       },
     ],
     enabled: true,
-    visibleInModes: ['wedding', 'sanggyeonrye'],
+    visibleInModes: ["wedding", "sanggyeonrye"],
   },
   {
     id: "shiruwan",
     title: {
       ko: "시루완 (汁椀) - 맑은 국",
-      ja: "汁椀 (しるわん) - 澄まし汁",
+      ja: "汁椀",
     },
     items: [
       {
@@ -56,13 +56,13 @@ export const courseMenuData: CourseMenuItem[] = [
       },
     ],
     enabled: true,
-    visibleInModes: ['wedding', 'sanggyeonrye'],
+    visibleInModes: ["wedding", "sanggyeonrye"],
   },
   {
     id: "tsukuri",
     title: {
-      ko: "쓰쿠리 (造里) - 사시미",
-      ja: "造里 (つくり) - 刺身",
+      ko: "쓰쿠리 (造里) - 활어회",
+      ja: "造里",
     },
     items: [
       {
@@ -71,13 +71,13 @@ export const courseMenuData: CourseMenuItem[] = [
       },
     ],
     enabled: true,
-    visibleInModes: ['wedding', 'sanggyeonrye'],
+    visibleInModes: ["wedding", "sanggyeonrye"],
   },
   {
     id: "yakimono",
     title: {
       ko: "야키모노 (焼物) - 구이",
-      ja: "焼物 (やきもの) - 焼き物",
+      ja: "焼物",
     },
     items: [
       {
@@ -86,13 +86,13 @@ export const courseMenuData: CourseMenuItem[] = [
       },
     ],
     enabled: true,
-    visibleInModes: ['wedding', 'sanggyeonrye'],
+    visibleInModes: ["wedding", "sanggyeonrye"],
   },
   {
     id: "agemono",
     title: {
       ko: "아게모노 (揚物) - 튀김",
-      ja: "揚物 (あげもの) - 揚げ物",
+      ja: "揚物",
     },
     items: [
       {
@@ -101,13 +101,13 @@ export const courseMenuData: CourseMenuItem[] = [
       },
     ],
     enabled: true,
-    visibleInModes: ['wedding', 'sanggyeonrye'],
+    visibleInModes: ["wedding", "sanggyeonrye"],
   },
   {
     id: "yosai",
     title: {
       ko: "요사이 (洋菜) - 서양 요리",
-      ja: "洋菜 (ようさい) - 洋食",
+      ja: "洋菜",
     },
     items: [
       {
@@ -116,13 +116,13 @@ export const courseMenuData: CourseMenuItem[] = [
       },
     ],
     enabled: true,
-    visibleInModes: ['wedding', 'sanggyeonrye'],
+    visibleInModes: ["wedding", "sanggyeonrye"],
   },
   {
     id: "gohan",
     title: {
-      ko: "고항 (御飯) - 식사",
-      ja: "御飯 (ごはん) - 食事",
+      ko: "고항 (御飯) - 쌀밥",
+      ja: "御飯",
     },
     items: [
       {
@@ -131,13 +131,13 @@ export const courseMenuData: CourseMenuItem[] = [
       },
     ],
     enabled: true,
-    visibleInModes: ['wedding', 'sanggyeonrye'],
+    visibleInModes: ["wedding", "sanggyeonrye"],
   },
   {
     id: "tomewan",
     title: {
       ko: "도메완 (留椀) - 마무리 국",
-      ja: "留椀 (とめわん) - 締めの汁",
+      ja: "留椀",
     },
     items: [
       {
@@ -146,12 +146,12 @@ export const courseMenuData: CourseMenuItem[] = [
       },
     ],
     enabled: true,
-    visibleInModes: ['wedding', 'sanggyeonrye'],
+    visibleInModes: ["wedding", "sanggyeonrye"],
   },
   {
     id: "dessert",
     title: {
-      ko: "디저트 (デザート)",
+      ko: "디저트",
       ja: "デザート",
     },
     items: [
@@ -161,7 +161,7 @@ export const courseMenuData: CourseMenuItem[] = [
       },
     ],
     enabled: true,
-    visibleInModes: ['wedding', 'sanggyeonrye'],
+    visibleInModes: ["wedding", "sanggyeonrye"],
   },
 ];
 
@@ -170,8 +170,8 @@ export const menuCategories: MenuCategory[] = [
     id: "course",
     icon: "🍱",
     title: {
-      ko: "식사",
-      ja: "食事",
+      ko: "코스 요리",
+      ja: "コース料理",
     },
     description: {
       ko: "정통 일본 요리의 정수를 담은 특별한 코스 메뉴를 경험해보세요",

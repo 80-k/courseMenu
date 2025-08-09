@@ -171,19 +171,6 @@ export type {
   I18nConfig
 } from './i18n';
 
-// =============================================================================
-// LEGACY COMPATIBILITY - 레거시 호환성
-// =============================================================================
-
-/**
- * @deprecated Use CourseMenuItem from core types instead
- */
-export type MenuItem = import('./core').CourseMenuItem;
-
-/**
- * @deprecated Use SupportedLanguage from core types instead
- */
-export type Language = import('./core').SupportedLanguage;
 
 // =============================================================================
 // RE-EXPORTS - 기본 React 타입들 재export
@@ -197,35 +184,6 @@ export type {
   PropsWithChildren
 } from 'react';
 
-//=============================================================================
-// BRAND UTILITIES - 브랜드 타입 유틸리티들
-// =============================================================================
-
-export {
-  // Brand type creators
-  createMenuItemId,
-  createRoutePath,
-  createTranslationKey,
-  
-  // Brand type validators
-  validateMenuItemId,
-  validateRoutePath,
-  validateTranslationKey,
-  
-  // Brand type converters
-  toMenuItemId,
-  toRoutePath,
-  toTranslationKey,
-  
-  // Brand type utilities
-  unwrapBrandedType,
-  unwrapBrandedArray,
-  convertBrandedType,
-  
-  // Localized utilities
-  createLocalizedRoutePath,
-  createNamespacedTranslationKey
-} from './brand-utils';
 
 // =============================================================================
 // CONFIGURATION UTILITIES - 구성 유틸리티들

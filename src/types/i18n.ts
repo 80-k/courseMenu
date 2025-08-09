@@ -24,7 +24,6 @@ export type TranslationNamespace =
   | 'common'      // 공통 텍스트
   | 'header'      // 헤더 관련
   | 'menu'        // 메뉴 관련
-  | 'course'      // 코스 요리 관련
   | 'leftPage'    // 왼쪽 페이지 (일정 포함)
   | 'location'    // 장소 관련
   | 'program'     // 프로그램 관련
