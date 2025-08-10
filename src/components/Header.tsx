@@ -15,8 +15,8 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = memo(({ 
   title = { ko: 'S.G. 💍 MIYU', ja: 'S.G. 💍 MIYU' },
-  linkTo = '/',
-  showBackLink = false
+  linkTo: _linkTo = '/',
+  showBackLink: _showBackLink = false
 }) => {
   const { language } = useI18n();
   const headerRef = useRef<HTMLElement>(null);

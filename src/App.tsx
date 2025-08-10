@@ -35,14 +35,14 @@ function AppContent() {
 
   // 자동 로그아웃 설정 (인증된 사용자만)
   useEffect(() => {
-    let autoLogoutManager: any = null;
+    let autoLogoutManagerInstance: import('./auth/LogoutService').AutoLogoutManager | null = null;
     
     const initAutoLogout = async () => {
       if (isAuthenticated) {
         try {
           const { autoLogoutManager: manager } = await import('./auth/LogoutService');
-          autoLogoutManager = manager;
-          autoLogoutManager.enable();
+          autoLogoutManagerInstance = manager;
+          autoLogoutManagerInstance.enable();
           console.log('Auto logout enabled');
         } catch (error) {
           console.error('Failed to initialize auto logout:', error);
@@ -53,8 +53,8 @@ function AppContent() {
     initAutoLogout();
     
     return () => {
-      if (autoLogoutManager) {
-        autoLogoutManager.disable();
+      if (autoLogoutManagerInstance) {
+        autoLogoutManagerInstance.disable();
         console.log('Auto logout disabled');
       }
     };

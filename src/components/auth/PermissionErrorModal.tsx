@@ -190,49 +190,7 @@ export const GlobalPermissionErrorProvider: React.FC<GlobalPermissionErrorProvid
   );
 };
 
-/**
- * 전역 권한 오류 컨텍스트 사용 훅
- */
-export const useGlobalPermissionError = (): GlobalPermissionErrorContextType => {
-  const context = React.useContext(GlobalPermissionErrorContext);
-  
-  if (!context) {
-    throw new Error('useGlobalPermissionError must be used within a GlobalPermissionErrorProvider');
-  }
-  
-  return context;
-};
-
-// =============================================================================
-// FEATURE-SPECIFIC ERROR HANDLERS - 기능별 오류 핸들러
-// =============================================================================
-
-/**
- * 자동 오류 표시 훅
- * 
- * @example
- * ```tsx
- * const { checkAndShowError } = useAutoErrorDisplay();
- * 
- * const handleAction = () => {
- *   checkAndShowError('deleteUser', ['DELETE_USER'], ['admin'], () => {
- *     // 권한이 있을 때만 실행되는 로직
- *     performDelete();
- *   });
- * };
- * ```
- */
-export const useAutoErrorDisplay = () => {
-  const { showError } = useGlobalPermissionError();
-  
-  return {
-    showError,
-    checkAndShowError: (
-      error: PermissionError
-    ) => {
-      showError(error);
-    }
-  };
-};
+// Hooks and utilities moved to separate files for Fast Refresh compatibility
+// Import hooks from: ./permission-error-hooks
 
 export default PermissionErrorModal;

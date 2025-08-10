@@ -3,7 +3,7 @@
  */
 
 import { useContext } from 'react';
-import { AuthContext } from './AuthContext';
+import { AuthContext } from './auth-context-definition';
 import type { AuthContextType } from '../types/auth';
 
 /**

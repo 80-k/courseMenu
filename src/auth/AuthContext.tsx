@@ -6,7 +6,6 @@
  */
 
 import React, { 
-  createContext, 
   useReducer, 
   useEffect, 
   useCallback,
@@ -37,10 +36,10 @@ import {
 import { userHasPermission, userHasRole, getRolePermissions } from './permissions';
 
 // =============================================================================
-// CONTEXT DEFINITION - 컨텍스트 정의
+// CONTEXT IMPORT - 컨텍스트 임포트 (Fast Refresh 호환)
 // =============================================================================
 
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+import { AuthContext } from './auth-context-definition';
 
 // =============================================================================
 // INITIAL STATE - 초기 상태
