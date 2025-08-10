@@ -4,7 +4,7 @@
  * 관리자가 게스트 사용자에게 보여줄 메뉴를 제어할 수 있는 기능 제공
  */
 
-import React, { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import React, { createContext, useState, useEffect, type ReactNode } from 'react';
 
 // 메뉴 설정 타입 정의
 export interface MenuSettings {
@@ -23,7 +23,7 @@ const DEFAULT_MENU_SETTINGS: MenuSettings = {
 };
 
 // 컨텍스트 타입 정의
-interface MenuSettingsContextType {
+export interface MenuSettingsContextType {
   settings: MenuSettings;
   updateSetting: (menu: keyof MenuSettings, enabled: boolean) => void;
   resetSettings: () => void;
@@ -34,6 +34,9 @@ interface MenuSettingsContextType {
 
 // 컨텍스트 생성
 const MenuSettingsContext = createContext<MenuSettingsContextType | undefined>(undefined);
+
+// Context export for hooks
+export { MenuSettingsContext };
 
 // 로컬 스토리지 키
 const STORAGE_KEY = 'courseMenu_menuSettings';
@@ -132,45 +135,15 @@ export const MenuSettingsProvider: React.FC<MenuSettingsProviderProps> = ({ chil
   );
 };
 
-// Hook for using menu settings context
-export const useMenuSettings = (): MenuSettingsContextType => {
-  const context = useContext(MenuSettingsContext);
-  if (!context) {
-    throw new Error('useMenuSettings must be used within a MenuSettingsProvider');
-  }
-  return context;
-};
+// Hook has been moved to menu-settings-hooks.ts for Fast Refresh compatibility
+// import { useMenuSettings } from './menu-settings-hooks';
 
-// 메뉴 표시 여부 확인 유틸리티 함수
-export const isMenuEnabled = (
-  menuId: string, 
-  settings: MenuSettings, 
-  userRole?: string
-): boolean => {
-  // 관리자는 모든 메뉴에 접근 가능
-  if (userRole === 'admin') {
-    return true;
-  }
+// 메뉴 표시 여부 확인 유틸리티 함수 has been moved to menu-settings-hooks.ts for Fast Refresh compatibility
+// import { isMenuEnabled } from './menu-settings-hooks';
 
-  // 게스트는 설정에 따라 메뉴 접근
-  switch (menuId) {
-    case 'course':
-      return settings.course;
-    case 'schedule':
-      return settings.schedule;
-    case 'location':
-      return settings.location;
-    case 'program':
-      return settings.program;
-    case 'home':
-      return true; // 홈은 항상 접근 가능
-    default:
-      return false;
-  }
-};
-
-// 메뉴 설정 정보
-export const MENU_INFO = {
+// MENU_INFO constant has been moved to menu-settings-hooks.ts for Fast Refresh compatibility
+// import { MENU_INFO } from './menu-settings-hooks';
+/*export const MENU_INFO = {
   course: {
     id: 'course',
     name: {
@@ -219,4 +192,4 @@ export const MENU_INFO = {
     },
     icon: '📋'
   }
-} as const;
+} as const;*/

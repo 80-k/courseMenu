@@ -112,7 +112,7 @@ const RouteRenderer: React.FC<RouteRendererProps> = ({
     }
     
     // 다른 컴포넌트들은 props 없이 렌더링
-    const StandardComponent = Component as React.ComponentType<{}>;
+    const StandardComponent = Component as React.ComponentType<Record<string, never>>;
     return <StandardComponent />;
   };
 

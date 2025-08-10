@@ -8,10 +8,11 @@ import React, { memo, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { usePermissions } from '../auth/auth-hooks';
 import { getAccessibleRoutes, ALL_ROUTES } from '../config/routes';
+import type { RouteConfig } from '../config/routes';
 import '../styles/global.css';
 
 interface RouteInfoCardProps {
-  route: any;
+  route: RouteConfig;
   isAccessible: boolean;
 }
 
@@ -30,7 +31,7 @@ const RouteInfoCard: React.FC<RouteInfoCardProps> = memo(({ route, isAccessible 
         <div className="flex items-center space-x-3">
           <span className="text-2xl">{route.icon}</span>
           <div>
-            <h3 className="font-semibold text-gray-800">{route.title.ko}</h3>
+            <h3 className="font-semibold text-gray-800">{route.title?.ko || route.id}</h3>
             <p className="text-sm text-gray-600">{route.path}</p>
           </div>
         </div>

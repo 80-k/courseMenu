@@ -2,7 +2,7 @@
  * 다국어 시스템 컨텍스트 및 프로바이더
  */
 
-import React, { createContext, useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { getLanguageTranslations } from './language-data/translation-registry';
 import type { 
   TranslationKey, 
@@ -14,8 +14,11 @@ import type {
   NestedLocalizedText
 } from '../types';
 
-// 컨텍스트 생성
-export const I18nContext = createContext<I18nContextType | undefined>(undefined);
+// I18nContext has been moved to i18n-context.ts for Fast Refresh compatibility
+import { I18nContext } from './i18n-context';
+
+// Re-export for existing imports
+export { I18nContext };
 
 // 유틸리티 함수들
 function getNestedValue(obj: NestedLocalizedText, path: string): string | string[] | null {

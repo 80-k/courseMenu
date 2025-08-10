@@ -55,13 +55,13 @@ const UserProfile: React.FC = memo(() => {
     navigate('/');
   };
 
-  const handleProfileChange = (field: string, value: any) => {
+  const handleProfileChange = (field: string, value: string | boolean | Date) => {
     if (field.includes('.')) {
       const [parent, child] = field.split('.');
       setProfile(prev => ({
         ...prev,
         [parent]: {
-          ...(prev[parent as keyof UserProfileData] as any),
+          ...(prev[parent as keyof UserProfileData] as Record<string, unknown>),
           [child]: value
         }
       }));

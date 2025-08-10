@@ -31,13 +31,13 @@ export const validateTranslationKey = (
 /**
  * 중첩된 객체에서 번역 값을 가져오는 헬퍼
  */
-const getNestedTranslation = (obj: any, key: string): any => {
+const getNestedTranslation = (obj: Record<string, unknown>, key: string): unknown => {
   const keys = key.split('.');
-  let current = obj;
+  let current: unknown = obj;
   
   for (const k of keys) {
-    if (current && typeof current === 'object' && k in current) {
-      current = current[k];
+    if (current && typeof current === 'object' && k in (current as Record<string, unknown>)) {
+      current = (current as Record<string, unknown>)[k];
     } else {
       return null;
     }
@@ -53,7 +53,7 @@ export const findMissingTranslations = (
   keys: TranslationKey[],
   languages: SupportedLanguage[] = ['ko', 'ja']
 ): Record<SupportedLanguage, TranslationKey[]> => {
-  const missing: Record<SupportedLanguage, TranslationKey[]> = {} as any;
+  const missing: Record<SupportedLanguage, TranslationKey[]> = {} as Record<SupportedLanguage, TranslationKey[]>;
   
   languages.forEach(lang => {
     missing[lang] = keys.filter(key => {
@@ -72,7 +72,7 @@ export const calculateTranslationCompleteness = (
   keys: TranslationKey[],
   languages: SupportedLanguage[] = ['ko', 'ja']
 ): Record<SupportedLanguage, number> => {
-  const completeness: Record<SupportedLanguage, number> = {} as any;
+  const completeness: Record<SupportedLanguage, number> = {} as Record<SupportedLanguage, number>;
   
   languages.forEach(lang => {
     const totalKeys = keys.length;
@@ -167,7 +167,13 @@ export const safeTranslate = (
     return defaultValue || `[${key}]`;
   }
   
-  return translation;
+  // Type guard to ensure proper return type
+  if (typeof translation === 'string' || Array.isArray(translation)) {
+    return translation as string | string[];
+  }
+  
+  // Fallback if translation is not string or string array
+  return defaultValue || `[${key}]`;
 };
 
 /**

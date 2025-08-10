@@ -360,7 +360,7 @@ export const validateAccess = (
 /**
  * 권한 체크 데코레이터 함수
  */
-export const requirePermissions = <T extends any[], R>(
+export const requirePermissions = <T extends unknown[], R>(
   permissions: readonly Permission[],
   fn: (user: User, ...args: T) => R
 ) => {
@@ -376,7 +376,7 @@ export const requirePermissions = <T extends any[], R>(
 /**
  * 역할 체크 데코레이터 함수
  */
-export const requireRoles = <T extends any[], R>(
+export const requireRoles = <T extends unknown[], R>(
   roles: readonly UserRole[],
   fn: (user: User, ...args: T) => R
 ) => {

@@ -46,7 +46,7 @@ const SystemSettings: React.FC = memo(() => {
     navigate('/admin');
   };
 
-  const handleConfigChange = (key: keyof SystemConfig, value: any) => {
+  const handleConfigChange = (key: keyof SystemConfig, value: boolean | string | number) => {
     setConfig(prev => ({ ...prev, [key]: value }));
     setHasChanges(true);
   };

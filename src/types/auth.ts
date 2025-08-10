@@ -290,7 +290,7 @@ export const isTokenPayload = (value: unknown): value is TokenPayload => {
 /**
  * 인증이 필요한 컴포넌트 Props
  */
-export type WithAuthProps<T = {}> = T & {
+export type WithAuthProps<T = Record<string, unknown>> = T & {
   user: User;
   permissions: readonly Permission[];
   hasPermission: (permission: Permission) => boolean;
@@ -300,7 +300,7 @@ export type WithAuthProps<T = {}> = T & {
 /**
  * 선택적 인증 컴포넌트 Props
  */
-export type WithOptionalAuthProps<T = {}> = T & {
+export type WithOptionalAuthProps<T = Record<string, unknown>> = T & {
   user?: User;
   permissions?: readonly Permission[];
   hasPermission?: (permission: Permission) => boolean;

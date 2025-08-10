@@ -205,6 +205,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const refreshToken = `refresh_${token}`;
 
       // 사용자 객체 생성 (비밀번호 제외)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...userWithoutPassword } = user;
       // password 는 로그인 처리에서만 사용되고 사용자 상태에서는 제거
       const authenticatedUser: User = {

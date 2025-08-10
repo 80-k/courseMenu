@@ -4,7 +4,7 @@ import { NavigationMenuCard } from '../components/NavigationMenuCard';
 import { useI18n } from '../i18n';
 import { getNavigationRoutes } from '../config/routes';
 import { usePermissions } from '../auth/auth-hooks';
-import { useMenuSettings, isMenuEnabled } from '../contexts/MenuSettingsContext';
+import { useMenuSettings, isMenuEnabled } from '../contexts/menu-settings-hooks';
 import { FeatureGate } from '../components/common/FeatureGates';
 import { ASSETS } from '../constants/assets';
 import type { MenuCategory } from '../types';

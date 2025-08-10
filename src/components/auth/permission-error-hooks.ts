@@ -4,11 +4,19 @@
 
 import React, { useContext } from 'react';
 
+// Permission error type definition
+export interface PermissionError {
+  code: string;
+  message: string;
+  details?: string;
+  timestamp?: Date;
+}
+
 // Context는 provider 파일에서 import
 export interface GlobalPermissionErrorContextType {
-  showError: (error: any) => void;
+  showError: (error: PermissionError | Error | string) => void;
   hideError: () => void;
-  currentError: any | null;
+  currentError: PermissionError | null;
   isVisible: boolean;
 }
 

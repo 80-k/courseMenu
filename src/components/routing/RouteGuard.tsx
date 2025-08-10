@@ -12,6 +12,7 @@ import { type RouteConfig, findRouteByPath } from '../../config/routes';
 import { createRouteAccessError } from '../../auth/PermissionErrorHandler';
 import { PermissionErrorDisplay } from '../auth/PermissionErrorDisplay';
 import { HierarchicalAccessControl } from '../../auth/HierarchicalPermissionSystem';
+import type { UserRole, Permission } from '../../types/auth';
 
 // =============================================================================
 // COMPONENT PROPS - 컴포넌트 Props
@@ -29,8 +30,8 @@ interface RouteGuardProps {
 interface PermissionErrorWrapperProps {
   route: RouteConfig;
   currentUser: {
-    role: any;
-    permissions: readonly any[];
+    role: UserRole | null;
+    permissions: readonly Permission[] | never[];
     isAuthenticated: boolean;
   };
 }

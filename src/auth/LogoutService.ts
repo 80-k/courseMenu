@@ -484,7 +484,7 @@ export class AutoLogoutManager {
   /**
    * 쓰로틀링 유틸리티
    */
-  private throttle<T extends (...args: any[]) => any>(func: T, limit: number): T {
+  private throttle<T extends (...args: unknown[]) => unknown>(func: T, limit: number): T {
     let inThrottle: boolean;
     return ((...args: Parameters<T>): ReturnType<T> | void => {
       if (!inThrottle) {

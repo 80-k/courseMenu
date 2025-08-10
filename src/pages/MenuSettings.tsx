@@ -7,7 +7,7 @@
 import React, { memo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { usePermissions } from '../auth/auth-hooks';
-import { useMenuSettings, MENU_INFO, type MenuSettings } from '../contexts/MenuSettingsContext';
+import { useMenuSettings, MENU_INFO, type MenuSettings } from '../contexts/menu-settings-hooks';
 import { useI18n } from '../i18n';
 import { translateToString } from '../i18n/translation-string-helpers';
 import '../styles/global.css';
