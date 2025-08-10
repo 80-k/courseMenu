@@ -2,6 +2,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import type { AppMode } from './types/core'
+import { AuthProvider } from './auth/AuthContext'
+import { MenuSettingsProvider } from './contexts/MenuSettingsContext'
+import { GlobalPermissionErrorProvider } from './components/auth/PermissionErrorModal'
 
 // 동적 메타데이터 설정
 function updatePageMetadata() {
@@ -38,6 +41,12 @@ updatePageMetadata();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <AuthProvider>
+      <MenuSettingsProvider>
+        <GlobalPermissionErrorProvider>
+          <App />
+        </GlobalPermissionErrorProvider>
+      </MenuSettingsProvider>
+    </AuthProvider>
   </StrictMode>,
 )

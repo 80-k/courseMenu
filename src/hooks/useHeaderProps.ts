@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ROUTES } from '../config/routes';
+import { ALL_ROUTES } from '../config/routes';
 
 // 성능 최적화: 경로별 루트 조회 맵을 생성 (한 번만 생성됨)
-const routesByPath = Object.values(ROUTES).reduce((acc, route) => {
+const routesByPath = ALL_ROUTES.reduce((acc, route) => {
   acc[route.path] = route;
   return acc;
-}, {} as Record<string, typeof ROUTES[keyof typeof ROUTES]>);
+}, {} as Record<string, typeof ALL_ROUTES[number]>);
 
 /**
  * 현재 위치에 따른 헤더 속성을 계산하는 훅

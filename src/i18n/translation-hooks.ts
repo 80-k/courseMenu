@@ -2,8 +2,8 @@
  * 다국어 시스템을 위한 커스텀 훅들
  */
 
-import { useContext } from 'react';
-import { I18nContext } from './translation-context';
+import { useContext, useMemo, useCallback } from 'react';
+import { I18nContext } from './translation-provider';
 import type { TranslationKey, TranslationParams, TranslationNamespace } from '../types';
 
 /**
@@ -18,11 +18,15 @@ export const useI18n = () => {
 };
 
 /**
- * 번역 함수만 가져오는 간단한 훅
+ * 번역 함수만 가져오는 간단한 훅 (메모이제이션 적용)
  */
 export const useTranslation = () => {
-  const { translate } = useI18n();
-  return { translate };
+  const { translate, language } = useI18n();
+  
+  // 언어가 변경될 때만 재생성
+  const memoizedTranslate = useMemo(() => translate, [translate, language]);
+  
+  return useMemo(() => ({ translate: memoizedTranslate }), [memoizedTranslate]);
 };
 
 /**
@@ -42,16 +46,22 @@ export const useLanguageSwitcher = () => {
 };
 
 /**
- * 네임스페이스별 번역 함수를 제공하는 훅
+ * 네임스페이스별 번역 함수를 제공하는 훅 (메모이제이션 적용)
  */
 export const useNamespacedTranslation = (namespace: TranslationNamespace) => {
-  const { translate } = useI18n();
+  const { translate, language } = useI18n();
   
-  const namespacedTranslate = (key: TranslationKey, params?: TranslationParams) => {
-    return translate(key, { params, namespace });
-  };
+  const namespacedTranslate = useCallback(
+    (key: TranslationKey, params?: TranslationParams) => {
+      return translate(key, { params, namespace });
+    },
+    [translate, namespace, language]
+  );
   
-  return { translate: namespacedTranslate, namespace };
+  return useMemo(() => ({ 
+    translate: namespacedTranslate, 
+    namespace 
+  }), [namespacedTranslate, namespace]);
 };
 
 /**

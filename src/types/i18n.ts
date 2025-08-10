@@ -24,7 +24,6 @@ export type TranslationNamespace =
   | 'common'      // 공통 텍스트
   | 'header'      // 헤더 관련
   | 'menu'        // 메뉴 관련
-  | 'leftPage'    // 왼쪽 페이지 (일정 포함)
   | 'location'    // 장소 관련
   | 'program'     // 프로그램 관련
   | 'ui'          // UI 요소들
@@ -104,9 +103,9 @@ export type TranslationFunction = {
    * 
    * @param key - 번역 키 (e.g., 'menu.title')
    * @param options - 번역 옵션들 (파라미터, 네임스페이스 등)
-   * @returns 번역된 텍스트
+   * @returns 번역된 텍스트 (문자열 또는 문자열 배열)
    */
-  (key: TranslationKey, options?: TranslationConfiguration): string;
+  (key: TranslationKey, options?: TranslationConfiguration): string | string[];
   
   /**
    * 네임스페이스와 키로 번역된 텍스트를 가져옵니다
@@ -114,9 +113,9 @@ export type TranslationFunction = {
    * @param namespace - 번역 네임스페이스 (e.g., 'menu')
    * @param key - 네임스페이스 내 번역 키 (e.g., 'title')
    * @param options - 번역 옵션들
-   * @returns 번역된 텍스트
+   * @returns 번역된 텍스트 (문자열 또는 문자열 배열)
    */
-  (namespace: TranslationNamespace, key: string, options?: TranslationConfiguration): string;
+  (namespace: TranslationNamespace, key: string, options?: TranslationConfiguration): string | string[];
 };
 
 /**
@@ -130,7 +129,7 @@ export type TranslationFunction = {
 export type NamespacedTranslationFunction = (
   key: string,
   options?: Omit<TranslationConfiguration, 'namespace'>
-) => string;
+) => string | string[];
 
 // =============================================================================
 // TRANSLATION DATA TYPES - 번역 데이터 타입들

@@ -1,9 +1,8 @@
 /**
- * 다국어 시스템 컨텍스트
+ * 다국어 시스템 컨텍스트 및 프로바이더
  */
 
-import React, { useState, useCallback, useEffect } from 'react';
-import { I18nContext } from './translation-context';
+import React, { createContext, useState, useCallback, useEffect } from 'react';
 import { getLanguageTranslations } from './language-data/translation-registry';
 import type { 
   TranslationKey, 
@@ -15,8 +14,11 @@ import type {
   NestedLocalizedText
 } from '../types';
 
+// 컨텍스트 생성
+export const I18nContext = createContext<I18nContextType | undefined>(undefined);
+
 // 유틸리티 함수들
-function getNestedValue(obj: NestedLocalizedText, path: string): string | null {
+function getNestedValue(obj: NestedLocalizedText, path: string): string | string[] | null {
   const keys = path.split('.');
   let result: unknown = obj;
   
@@ -28,19 +30,41 @@ function getNestedValue(obj: NestedLocalizedText, path: string): string | null {
     }
   }
   
-  return typeof result === 'string' ? result : null;
+  // 문자열 또는 문자열 배열을 반환
+  if (typeof result === 'string') {
+    return result;
+  }
+  if (Array.isArray(result) && result.every(item => typeof item === 'string')) {
+    return result as string[];
+  }
+  
+  return null;
 }
 
-function interpolateParams(text: string, params?: Record<string, string | number | boolean>): string {
+function interpolateParams(text: string | string[], params?: Record<string, string | number | boolean>): string | string[] {
   if (!params) return text;
   
-  let result = text;
-  Object.entries(params).forEach(([key, value]) => {
-    const placeholder = `{{${key}}}`;
-    result = result.replace(new RegExp(placeholder, 'g'), String(value));
-  });
+  if (typeof text === 'string') {
+    let result = text;
+    Object.entries(params).forEach(([key, value]) => {
+      const placeholder = `{{${key}}}`;
+      result = result.replace(new RegExp(placeholder, 'g'), String(value));
+    });
+    return result;
+  }
   
-  return result;
+  if (Array.isArray(text)) {
+    return text.map(item => {
+      let result = item;
+      Object.entries(params).forEach(([key, value]) => {
+        const placeholder = `{{${key}}}`;
+        result = result.replace(new RegExp(placeholder, 'g'), String(value));
+      });
+      return result;
+    });
+  }
+  
+  return text;
 }
 
 // 순환 참조 방지를 위해 직접 설정값 사용
@@ -164,7 +188,7 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({
     keyOrNamespace: TranslationKey | TranslationNamespace,
     keyOrOptions?: string | TranslationOptions,
     options?: TranslationOptions
-  ): string => {
+  ): string | string[] => {
     try {
       const translations = getLanguageTranslations(language);
       

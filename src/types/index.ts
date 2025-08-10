@@ -286,3 +286,37 @@ export type Exclude<T, U> = T extends U ? never : T;
  * 특정 타입만 추출한 타입
  */
 export type Extract<T, U> = T extends U ? T : never;
+
+// =============================================================================
+// AUTH TYPES - 인증 관련 타입들  
+// =============================================================================
+
+export type {
+  // Core auth types
+  User,
+  UserRole,
+  Permission,
+  LoginCredentials,
+  LoginResponse,
+  LogoutResponse,
+  TokenPayload,
+  AuthState,
+  AuthAction,
+  AuthContextType,
+  ProtectedRouteConfig,
+  
+  // Utility types
+  WithAuthProps,
+  WithOptionalAuthProps
+} from './auth';
+
+export {
+  // Constants
+  ROLE_PERMISSIONS,
+  
+  // Type guards
+  isUserRole,
+  isPermission,
+  isUser,
+  isTokenPayload
+} from './auth';

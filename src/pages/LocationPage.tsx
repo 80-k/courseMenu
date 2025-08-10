@@ -56,7 +56,7 @@ export const LocationPage: React.FC = () => {
                   <div className="flex items-start gap-3 p-4 bg-white/60 rounded-lg border border-gray-200">
                     <span className="text-xl flex-shrink-0 mt-1">📍</span>
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-medium text-gray-700 mb-1">주소</p>
+                      <p className="text-sm font-medium text-gray-700 mb-1">{translate('locationLabels.address')}</p>
                       <p className="text-sm text-gray-600 font-serif leading-relaxed break-words mb-2">
                         {translate('location.facility.address')}
                       </p>
@@ -67,7 +67,7 @@ export const LocationPage: React.FC = () => {
                         className="inline-flex items-center gap-1 px-3 py-1.5 bg-blue-600 text-white text-xs font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200"
                       >
                         <span>🗺️</span>
-                        구글맵에서 보기
+                        {translate('locationLabels.viewOnGoogleMaps')}
                       </a>
                     </div>
                   </div>
@@ -75,7 +75,7 @@ export const LocationPage: React.FC = () => {
                   <div className="flex items-start gap-3 p-4 bg-white/60 rounded-lg border border-gray-200">
                     <span className="text-xl flex-shrink-0 mt-1">📞</span>
                     <div className="min-w-0">
-                      <p className="text-sm font-medium text-gray-700 mb-1">전화번호</p>
+                      <p className="text-sm font-medium text-gray-700 mb-1">{translate('locationLabels.phone')}</p>
                       <p className="text-sm text-gray-600 font-serif break-all">
                         {translate('location.facility.phone')}
                       </p>
@@ -85,7 +85,7 @@ export const LocationPage: React.FC = () => {
                   <div className="flex items-start gap-3 p-4 bg-white/60 rounded-lg border border-gray-200">
                     <span className="text-xl flex-shrink-0 mt-1">🌐</span>
                     <div className="min-w-0">
-                      <p className="text-sm font-medium text-gray-700 mb-1">웹사이트</p>
+                      <p className="text-sm font-medium text-gray-700 mb-1">{translate('locationLabels.website')}</p>
                       <p className="text-sm text-gray-600 font-serif break-all">
                         {translate('location.facility.website')}
                       </p>
@@ -116,13 +116,16 @@ export const LocationPage: React.FC = () => {
                     </h3>
                   </div>
                   <div className="space-y-2">
-                    {translate('location.transportation.byCar.details')
-                      .split("\n")
-                      .map((line, index) => (
+                    {(() => {
+                      const details = translate('location.transportation.byCar.details');
+                      const detailsArray = Array.isArray(details) ? details : 
+                        (typeof details === 'string' ? details.split("\n") : [String(details)]);
+                      return detailsArray.map((line, index) => (
                         <p key={index} className="text-sm text-blue-700 font-serif leading-relaxed">
                           {line}
                         </p>
-                      ))}
+                      ));
+                    })()}
                   </div>
                 </div>
 
@@ -135,13 +138,16 @@ export const LocationPage: React.FC = () => {
                     </h3>
                   </div>
                   <div className="space-y-2">
-                    {translate('location.transportation.byTrain.details')
-                      .split("\n")
-                      .map((line, index) => (
+                    {(() => {
+                      const details = translate('location.transportation.byTrain.details');
+                      const detailsArray = Array.isArray(details) ? details : 
+                        (typeof details === 'string' ? details.split("\n") : [String(details)]);
+                      return detailsArray.map((line, index) => (
                         <p key={index} className="text-sm text-green-700 font-serif leading-relaxed">
                           {line}
                         </p>
-                      ))}
+                      ));
+                    })()}
                   </div>
                 </div>
 
@@ -154,13 +160,16 @@ export const LocationPage: React.FC = () => {
                     </h3>
                   </div>
                   <div className="space-y-2">
-                    {translate('location.transportation.byPlane.details')
-                      .split("\n")
-                      .map((line, index) => (
+                    {(() => {
+                      const details = translate('location.transportation.byPlane.details');
+                      const detailsArray = Array.isArray(details) ? details : 
+                        (typeof details === 'string' ? details.split("\n") : [String(details)]);
+                      return detailsArray.map((line, index) => (
                         <p key={index} className="text-sm text-purple-700 font-serif leading-relaxed">
                           {line}
                         </p>
-                      ))}
+                      ));
+                    })()}
                   </div>
                 </div>
 
@@ -173,13 +182,16 @@ export const LocationPage: React.FC = () => {
                     </h3>
                   </div>
                   <div className="space-y-2">
-                    {translate('location.transportation.shuttle.details')
-                      .split("\n")
-                      .map((line, index) => (
+                    {(() => {
+                      const details = translate('location.transportation.shuttle.details');
+                      const detailsArray = Array.isArray(details) ? details : 
+                        (typeof details === 'string' ? details.split("\n") : [String(details)]);
+                      return detailsArray.map((line, index) => (
                         <p key={index} className="text-sm text-orange-700 font-serif leading-relaxed">
                           {line}
                         </p>
-                      ))}
+                      ));
+                    })()}
                   </div>
                 </div>
               </div>

@@ -9,7 +9,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist",
+    "i18n:validate": "node scripts/validate-translations.js",
+    "i18n:check": "npm run i18n:validate",
+    "prebuild": "npm run i18n:validate"
   },
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",

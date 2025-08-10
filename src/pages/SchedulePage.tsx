@@ -19,28 +19,28 @@ export const SchedulePage: React.FC = () => {
         <div className="page-layout">
           <div className="schedule-section">
             <h2 className="page-title">
-              {translate('leftPage.schedule.title')}
+              {translate('schedule.title')}
             </h2>
             <p className="text-base text-gray-600 mb-6 italic font-serif md:text-lg md:mb-8">
-              {translate('leftPage.schedule.subtitle')}
+              {translate('schedule.subtitle')}
             </p>
             
             <div className="schedule-list">
               <div className="schedule-item">
-                <span className="schedule-date">{translate('leftPage.schedule.items.marriageRegistration.date')}</span>
-                <span className="schedule-event">{translate('leftPage.schedule.items.marriageRegistration.event')}</span>
+                <span className="schedule-date">{translate('schedule.items.marriageRegistration.date')}</span>
+                <span className="schedule-event">{translate('schedule.items.marriageRegistration.event')}</span>
               </div>
               <div className="schedule-item">
-                <span className="schedule-date">{translate('leftPage.schedule.items.sanggyeonrye.date')}</span>
-                <span className="schedule-event">{translate('leftPage.schedule.items.sanggyeonrye.event')}</span>
+                <span className="schedule-date">{translate('schedule.items.sanggyeonrye.date')}</span>
+                <span className="schedule-event">{translate('schedule.items.sanggyeonrye.event')}</span>
               </div>
               <div className="schedule-item">
-                <span className="schedule-date">{translate('leftPage.schedule.items.preWedding.date')}</span>
-                <span className="schedule-event">{translate('leftPage.schedule.items.preWedding.event')}</span>
+                <span className="schedule-date">{translate('schedule.items.preWedding.date')}</span>
+                <span className="schedule-event">{translate('schedule.items.preWedding.event')}</span>
               </div>
               <div className="schedule-item">
-                <span className="schedule-date">{translate('leftPage.schedule.items.wedding.date')}</span>
-                <span className="schedule-event">{translate('leftPage.schedule.items.wedding.event')}</span>
+                <span className="schedule-date">{translate('schedule.items.wedding.date')}</span>
+                <span className="schedule-event">{translate('schedule.items.wedding.event')}</span>
               </div>
             </div>
           </div>

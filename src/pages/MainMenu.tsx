@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { NavigationMenuCard } from '../components/NavigationMenuCard';
 import { useI18n } from '../i18n';
 import { getNavigationRoutes } from '../config/routes';
+import { usePermissions } from '../auth/AuthContext';
+import { useMenuSettings, isMenuEnabled } from '../contexts/MenuSettingsContext';
 import { FeatureGate } from '../components/common/FeatureGates';
 import { ASSETS } from '../constants/assets';
 import type { MenuCategory } from '../types';
@@ -12,8 +14,20 @@ export const MainMenu: React.FC = memo(() => {
   const { translate } = useI18n();
   const navigate = useNavigate();
 
-  // 성능 최적화: 네비게이션 라우트를 메모이제이션
-  const navigationRoutes = useMemo(() => getNavigationRoutes(), []);
+  const { permissions, role } = usePermissions();
+  const { settings } = useMenuSettings();
+
+  // 성능 최적화: 사용자 권한과 메뉴 설정에 따른 네비게이션 라우트를 메모이제이션
+  const userRoles = role ? [role] : [];
+  const allNavigationRoutes = useMemo(() => getNavigationRoutes(permissions, userRoles), [permissions, userRoles]);
+  
+  // 메뉴 설정에 따라 필터링된 라우트
+  const navigationRoutes = useMemo(() => 
+    allNavigationRoutes.filter(route => 
+      isMenuEnabled(route.id, settings, role || undefined)
+    ), 
+    [allNavigationRoutes, settings, role]
+  );
 
   const navigateToMenuPage = (path: string) => {
     navigate(path);

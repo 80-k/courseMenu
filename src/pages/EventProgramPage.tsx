@@ -3,6 +3,34 @@ import { useI18n } from "../i18n";
 import { ASSETS } from "../constants/assets";
 import "../styles/global.css";
 
+interface ProgramStepProps {
+  stepId: string;
+  isActive: boolean;
+  text: string;
+  onClick: (stepId: string) => void;
+}
+
+const ProgramStep: React.FC<ProgramStepProps> = ({ stepId, isActive, text, onClick }) => (
+  <div 
+    className={`group p-4 bg-gradient-to-r from-primary-50 to-secondary-50 border border-primary-200 rounded-lg cursor-pointer transition-all duration-200 hover:shadow-md hover:border-primary-300 ${isActive ? 'ring-2 ring-primary-500 bg-gradient-to-r from-primary-100 to-secondary-100' : ''}`}
+    onClick={() => onClick(stepId)}
+    role="button"
+    tabIndex={0}
+    onKeyDown={(e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        onClick(stepId);
+      }
+    }}
+  >
+    <div className="flex items-center">
+      <span className="font-medium text-primary-800 group-hover:text-primary-900">
+        {text}
+      </span>
+    </div>
+  </div>
+);
+
 export const EventProgramPage: React.FC = () => {
   const { translate } = useI18n();
   
@@ -15,136 +43,43 @@ export const EventProgramPage: React.FC = () => {
     setCurrentStep(prev => prev === stepId ? null : stepId);
   };
 
+  // 프로그램 스텝 목록
+  const programSteps = [
+    { id: 'opening', key: 'program.opening' },
+    { id: 'familyGreeting', key: 'program.familyGreeting' },
+    { id: 'photoSession', key: 'program.photoSession' },
+    { id: 'toast', key: 'program.toast' },
+    { id: 'dining', key: 'program.dining' },
+    { id: 'quiz', key: 'program.quiz' },
+    { id: 'closing', key: 'program.closing' },
+    { id: 'gardenPhoto', key: 'program.gardenPhoto' },
+  ];
+
   return (
-    <div className='container'>
-      <div className='page-content'>
-        <div className='logo-section'>
-          <img src={ASSETS.LOGO} alt='Restaurant Logo' className='logo-image' />
-        </div>
+    <div className="main-container">
+      <div className="logo-section">
+        <img src={ASSETS.LOGO} alt="Restaurant Logo" className="logo-image" />
+      </div>
 
-        <div className='page-layout'>
-          <div className='program-section'>
-            <h2 className='section-title'>
-              {translate('rightPage.program.title')}
-            </h2>
-            <p className='section-subtitle'>
-              {translate('rightPage.program.subtitle')}
-            </p>
-
-            <div className='program-list'>
-              <div 
-                className={`step ${currentStep === 'opening' ? 'current' : ''}`}
-                onClick={() => handleStepClick('opening')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleStepClick('opening');
-                  }
-                }}
-              >
-                <span className="step-text">{translate('rightPage.program.steps.opening')}</span>
-              </div>
-              <div 
-                className={`step ${currentStep === 'familyGreeting' ? 'current' : ''}`}
-                onClick={() => handleStepClick('familyGreeting')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleStepClick('familyGreeting');
-                  }
-                }}
-              >
-                <span className="step-text">{translate('rightPage.program.steps.familyGreeting')}</span>
-              </div>
-              <div 
-                className={`step ${currentStep === 'photoSession' ? 'current' : ''}`}
-                onClick={() => handleStepClick('photoSession')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleStepClick('photoSession');
-                  }
-                }}
-              >
-                <span className="step-text">{translate('rightPage.program.steps.photoSession')}</span>
-              </div>
-              <div 
-                className={`step ${currentStep === 'toast' ? 'current' : ''}`}
-                onClick={() => handleStepClick('toast')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleStepClick('toast');
-                  }
-                }}
-              >
-                <span className="step-text">{translate('rightPage.program.steps.toast')}</span>
-              </div>
-              <div 
-                className={`step ${currentStep === 'dining' ? 'current' : ''}`}
-                onClick={() => handleStepClick('dining')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleStepClick('dining');
-                  }
-                }}
-              >
-                <span className="step-text">{translate('rightPage.program.steps.dining')}</span>
-              </div>
-              <div 
-                className={`step ${currentStep === 'quiz' ? 'current' : ''}`}
-                onClick={() => handleStepClick('quiz')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleStepClick('quiz');
-                  }
-                }}
-              >
-                <span className="step-text">{translate('rightPage.program.steps.quiz')}</span>
-              </div>
-              <div 
-                className={`step ${currentStep === 'closing' ? 'current' : ''}`}
-                onClick={() => handleStepClick('closing')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleStepClick('closing');
-                  }
-                }}
-              >
-                <span className="step-text">{translate('rightPage.program.steps.closing')}</span>
-              </div>
-              <div 
-                className={`step ${currentStep === 'gardenPhoto' ? 'current' : ''}`}
-                onClick={() => handleStepClick('gardenPhoto')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleStepClick('gardenPhoto');
-                  }
-                }}
-              >
-                <span className="step-text">{translate('rightPage.program.steps.gardenPhoto')}</span>
-              </div>
-            </div>
+      <div className="page-layout">
+        <div className="program-section">
+          <h2 className="page-title">
+            {translate('program.title')}
+          </h2>
+          <p className="text-base text-gray-600 mb-6 italic font-serif md:text-lg md:mb-8">
+            {translate('program.subtitle')}
+          </p>
+          
+          <div className="space-y-3">
+            {programSteps.map((step) => (
+              <ProgramStep
+                key={step.id}
+                stepId={step.id}
+                isActive={currentStep === step.id}
+                text={translate(step.key)}
+                onClick={handleStepClick}
+              />
+            ))}
           </div>
         </div>
       </div>

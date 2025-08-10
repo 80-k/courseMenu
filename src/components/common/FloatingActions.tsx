@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useI18n } from '../../i18n';
 import { ToggleAllIcon, HomeIcon } from '../icons';
+import { TAILWIND_Z_INDEX } from '../../constants/z-index';
 
 type ActionType = 'toggle' | 'home' | 'home-and-toggle';
 
@@ -124,7 +125,13 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
   };
 
   return (
-    <div className="fixed bottom-4 right-3 md:bottom-6 md:right-4 z-50 flex flex-col gap-2 md:gap-3 animate-fade-in">
+    <div 
+      className={`fixed right-3 md:right-4 ${TAILWIND_Z_INDEX.FLOATING_ACTIONS} flex flex-col gap-2 md:gap-3 animate-fade-in`}
+      style={{
+        bottom: 'var(--header-height, 90px)',
+        transform: 'translateY(50%)'
+      }}
+    >
       {renderActionButtons()}
     </div>
   );

@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FloatingActions } from './FloatingActions';
 import { FeatureGate } from './FeatureGates';
-import { ROUTES } from '../../config/routes';
+// 직접 경로 사용으로 ROUTES 의존성 제거
 
 interface FloatingActionsManagerProps {
   allExpanded: boolean;
@@ -22,7 +22,7 @@ export const FloatingActionsManager: React.FC<FloatingActionsManagerProps> = mem
   return (
     <FeatureGate feature="showFloatingButtons">
       {/* 코스 메뉴 페이지 - 홈 버튼 + 모두 열기/닫기 버튼 */}
-      {location.pathname === ROUTES.COURSE.path && (
+      {location.pathname === '/course' && (
         <FloatingActions 
           actionType="home-and-toggle" 
           allExpanded={allExpanded} 
@@ -31,7 +31,12 @@ export const FloatingActionsManager: React.FC<FloatingActionsManagerProps> = mem
       )}
       
       {/* 다른 페이지들 - 홈 버튼만 */}
-      {[ROUTES.LOCATION.path, ROUTES.SCHEDULE.path, ROUTES.PROGRAM.path].some(path => path === location.pathname) && (
+      {['/location', '/schedule', '/program', '/admin'].some(path => path === location.pathname) && (
+        <FloatingActions actionType="home" />
+      )}
+      
+      {/* 관리자 하위 페이지들도 홈 버튼 표시 */}
+      {location.pathname.startsWith('/admin/') && (
         <FloatingActions actionType="home" />
       )}
     </FeatureGate>
