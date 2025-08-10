@@ -7,7 +7,6 @@
 
 import React, { 
   createContext, 
-  useContext, 
   useReducer, 
   useEffect, 
   useCallback,
@@ -41,7 +40,7 @@ import { userHasPermission, userHasRole, getRolePermissions } from './permission
 // CONTEXT DEFINITION - 컨텍스트 정의
 // =============================================================================
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // =============================================================================
 // INITIAL STATE - 초기 상태
@@ -207,7 +206,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const refreshToken = `refresh_${token}`;
 
       // 사용자 객체 생성 (비밀번호 제외)
-      const { password: _, ...userWithoutPassword } = user;
+      const { password, ...userWithoutPassword } = user;
+      // password 는 로그인 처리에서만 사용되고 사용자 상태에서는 제거
       const authenticatedUser: User = {
         ...userWithoutPassword,
         lastLoginAt: new Date()
@@ -450,40 +450,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 };
 
 // =============================================================================
-// CUSTOM HOOK - 커스텀 훅
+// NOTES - 참고사항
 // =============================================================================
 
 /**
- * useAuth 훅 - 인증 컨텍스트 사용
+ * 커스텀 훅들은 auth-hooks.ts 파일에 분리되어 있습니다.
+ * Fast Refresh 지원을 위해 컴포넌트와 훅을 분리했습니다.
+ * 
+ * 사용법:
+ * import { useAuth, usePermissions } from './auth-hooks';
  */
-export const useAuth = (): AuthContextType => {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-};
-
-/**
- * useAuthUser 훅 - 인증된 사용자 정보만 반환
- */
-export const useAuthUser = () => {
-  const { user, isAuthenticated } = useAuth();
-  return isAuthenticated ? user : null;
-};
-
-/**
- * usePermissions 훅 - 권한 관련 유틸리티
- */
-export const usePermissions = () => {
-  const { checkPermission, hasRole, user } = useAuth();
-  
-  return useMemo(() => ({
-    checkPermission,
-    hasRole,
-    permissions: user?.permissions || [],
-    role: user?.role || null,
-    isAdmin: hasRole('admin'),
-    isGuest: hasRole('guest')
-  }), [checkPermission, hasRole, user]);
-};

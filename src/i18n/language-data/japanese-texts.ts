@@ -16,6 +16,7 @@ export const ja = {
     back: "戻る",
     next: "次へ",
     previous: "前へ",
+    cancel: "キャンセル",
   },
 
   // 헤더

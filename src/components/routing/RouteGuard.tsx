@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { useAuth, usePermissions } from '../../auth/AuthContext';
+import { useAuth, usePermissions } from '../../auth/auth-hooks';
 import { type RouteConfig, findRouteByPath } from '../../config/routes';
 import { createRouteAccessError } from '../../auth/PermissionErrorHandler';
 import { PermissionErrorDisplay } from '../auth/PermissionErrorDisplay';

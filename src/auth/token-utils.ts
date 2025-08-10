@@ -65,7 +65,7 @@ const simpleHash = async (data: string, secret: string): Promise<string> => {
       );
       
       return base64UrlEncode(String.fromCharCode(...new Uint8Array(signature)));
-    } catch (error) {
+    } catch {
       console.warn('Web Crypto API not available, using fallback hash');
     }
   }

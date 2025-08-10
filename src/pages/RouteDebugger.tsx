@@ -6,7 +6,7 @@
 
 import React, { memo, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { usePermissions } from '../auth/AuthContext';
+import { usePermissions } from '../auth/auth-hooks';
 import { getAccessibleRoutes, ALL_ROUTES } from '../config/routes';
 import '../styles/global.css';
 

@@ -7,7 +7,7 @@
 
 import React, { Suspense, lazy, memo } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { usePermissions } from '../../auth/AuthContext';
+import { usePermissions } from '../../auth/auth-hooks';
 import { 
   getAccessibleRoutes, 
   type RouteConfig

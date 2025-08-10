@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { NavigationMenuCard } from '../components/NavigationMenuCard';
 import { useI18n } from '../i18n';
 import { getNavigationRoutes } from '../config/routes';
-import { usePermissions } from '../auth/AuthContext';
+import { usePermissions } from '../auth/auth-hooks';
 import { useMenuSettings, isMenuEnabled } from '../contexts/MenuSettingsContext';
 import { FeatureGate } from '../components/common/FeatureGates';
 import { ASSETS } from '../constants/assets';

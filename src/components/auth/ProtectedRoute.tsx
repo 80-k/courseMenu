@@ -7,7 +7,7 @@
 
 import React from 'react';
 import type { ReactNode } from 'react';
-import { useAuth } from '../../auth/AuthContext';
+import { useAuth } from '../../auth/auth-hooks';
 import { validateAccess } from '../../auth/permissions';
 import type { Permission, UserRole, ProtectedRouteConfig } from '../../types/auth';
 import { LoginForm } from './LoginForm';

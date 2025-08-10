@@ -5,7 +5,7 @@
  */
 
 import { useCallback, useMemo } from 'react';
-import { useAuth, usePermissions } from './AuthContext';
+import { useAuth, usePermissions } from './auth-hooks';
 import { 
   HierarchicalAccessControl, 
   calculateEffectivePermissions,

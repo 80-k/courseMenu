@@ -6,7 +6,7 @@
  */
 
 import React, { useState, useCallback } from 'react';
-import { useAuth } from '../../auth/AuthContext';
+import { useAuth } from '../../auth/auth-hooks';
 import { useI18n } from '../../i18n';
 import type { LoginCredentials } from '../../types/auth';
 

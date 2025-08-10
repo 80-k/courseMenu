@@ -6,7 +6,7 @@
 
 import React, { memo, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth, usePermissions } from '../auth/AuthContext';
+import { useAuth, usePermissions } from '../auth/auth-hooks';
 import type { UserRole } from '../types/auth';
 import '../styles/global.css';
 

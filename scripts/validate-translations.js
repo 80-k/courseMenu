@@ -9,8 +9,11 @@
  * Usage: node scripts/validate-translations.js
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // 설정
 const CONFIG = {
@@ -227,8 +230,8 @@ function validateTranslations() {
   }
 }
 
-// 스크립트 실행
-if (require.main === module) {
+// 스크립트 실행 (ES module)
+if (import.meta.url === `file://${process.argv[1]}`) {
   try {
     validateTranslations();
   } catch (error) {

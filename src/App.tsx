@@ -10,7 +10,7 @@ import { useHeaderProps } from "./hooks/useHeaderProps";
 import { courseMenuData } from "./data/menuData";
 import { ASSETS } from "./constants/assets";
 import { getBasePath, handleGitHubPagesRouting } from "./config/routes";
-import { useAuth } from "./auth/AuthContext";
+import { useAuth } from "./auth/auth-hooks";
 import "./styles/global.css";
 
 function AppContent() {

@@ -5,7 +5,7 @@
  */
 
 import { useState, useCallback } from 'react';
-import { useAuth, usePermissions } from './AuthContext';
+import { useAuth, usePermissions } from './auth-hooks';
 import { createFeatureAccessError, type PermissionError } from './PermissionErrorHandler';
 import type { Permission, UserRole } from '../types/auth';
 

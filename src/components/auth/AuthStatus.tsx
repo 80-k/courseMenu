@@ -6,7 +6,7 @@
  */
 
 import React, { useState, useCallback } from 'react';
-import { useAuth, usePermissions } from '../../auth/AuthContext';
+import { useAuth, usePermissions } from '../../auth/auth-hooks';
 import { getRoleDescription } from '../../auth/permissions';
 import { useI18n } from '../../i18n';
 import { LoginForm } from './LoginForm';

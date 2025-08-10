@@ -6,7 +6,7 @@
 
 import React, { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { usePermissions } from '../auth/AuthContext';
+import { usePermissions } from '../auth/auth-hooks';
 import { getRoutesByCategory } from '../config/routes';
 import { useI18n } from '../i18n';
 import '../styles/global.css';
