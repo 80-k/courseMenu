@@ -4,7 +4,7 @@
 
 import { useContext } from 'react';
 import { AuthContext } from './auth-context-definition';
-import type { AuthContextType } from '../types/auth';
+import type { AuthContextType, Permission } from '../types/auth';
 
 /**
  * useAuth 훅 - 인증 컨텍스트 사용
@@ -53,11 +53,11 @@ export const usePermissions = () => {
     role,
     isAdmin,
     isGuest,
-    hasPermission: (permission: string) => 
+    hasPermission: (permission: Permission) => 
       permissions.includes(permission) || permissions.includes('*'),
-    hasAnyPermission: (requiredPermissions: string[]) =>
+    hasAnyPermission: (requiredPermissions: Permission[]) =>
       requiredPermissions.some(p => permissions.includes(p)) || permissions.includes('*'),
-    hasAllPermissions: (requiredPermissions: string[]) =>
+    hasAllPermissions: (requiredPermissions: Permission[]) =>
       requiredPermissions.every(p => permissions.includes(p)) || permissions.includes('*'),
   };
 };

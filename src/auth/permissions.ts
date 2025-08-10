@@ -240,6 +240,9 @@ export const canManageSystem = (user: User | null): boolean => {
  */
 export const getPermissionDescription = (permission: Permission): string => {
   const descriptions: Record<Permission, string> = {
+    // 와일드카드 권한
+    '*': '모든 권한',
+    
     // 새로운 권한
     'VIEW_MENU': '메뉴 조회 권한',
     'VIEW_SCHEDULE': '일정 조회 권한',

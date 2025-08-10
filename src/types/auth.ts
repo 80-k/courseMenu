@@ -21,6 +21,9 @@ export type UserRole = 'guest' | 'admin';
  * 각 기능별로 세분화된 권한 시스템
  */
 export type Permission = 
+  // 와일드카드 권한
+  | '*'                   // 모든 권한
+  
   // 기본 읽기 권한 (게스트 레벨)
   | 'VIEW_MENU'           // 메뉴 조회
   | 'VIEW_SCHEDULE'       // 일정 조회

@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { usePermissions } from '../auth/auth-hooks';
 import { useMenuSettings, MENU_INFO, type MenuSettings } from '../contexts/MenuSettingsContext';
 import { useI18n } from '../i18n';
+import { translateToString } from '../i18n/translation-string-helpers';
 import '../styles/global.css';
 
 interface MenuToggleCardProps {
@@ -105,7 +106,7 @@ const MenuSettingsPage: React.FC = memo(() => {
   }
 
   const handleBack = () => {
-    if (hasChanges && !confirm(translate('admin.messages.confirmExit'))) {
+    if (hasChanges && !confirm(translateToString(translate('admin.messages.confirmExit')))) {
       return;
     }
     navigate('/admin');
@@ -124,7 +125,7 @@ const MenuSettingsPage: React.FC = memo(() => {
   };
 
   const handleReset = () => {
-    if (confirm(translate('admin.messages.menuConfirmReset'))) {
+    if (confirm(translateToString(translate('admin.messages.menuConfirmReset')))) {
       resetSettings();
     }
   };

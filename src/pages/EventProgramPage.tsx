@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useI18n } from "../i18n";
+import { translateToString } from "../i18n/translation-string-helpers";
 import { ASSETS } from "../constants/assets";
 import "../styles/global.css";
 
@@ -76,7 +77,7 @@ export const EventProgramPage: React.FC = () => {
                 key={step.id}
                 stepId={step.id}
                 isActive={currentStep === step.id}
-                text={translate(step.key)}
+                text={translateToString(translate(step.key))}
                 onClick={handleStepClick}
               />
             ))}

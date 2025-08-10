@@ -1,4 +1,5 @@
 import { useI18n } from "../i18n";
+import { translateToString } from "../i18n/translation-string-helpers";
 import { ASSETS } from "../constants/assets";
 import "../styles/global.css";
 
@@ -61,7 +62,7 @@ export const LocationPage: React.FC = () => {
                         {translate('location.facility.address')}
                       </p>
                       <a 
-                        href={translate('location.facility.googleMapsUrl')}
+                        href={translateToString(translate('location.facility.googleMapsUrl'))}
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 px-3 py-1.5 bg-blue-600 text-white text-xs font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200"

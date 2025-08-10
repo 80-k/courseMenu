@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useI18n } from '../../i18n';
+import { translateForAriaLabel } from '../../i18n/translation-string-helpers';
 import { ToggleAllIcon, HomeIcon } from '../icons';
 import { TAILWIND_Z_INDEX } from '../../constants/z-index';
 
@@ -63,7 +64,7 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
             }
           `}
           onClick={handleToggleAllClick}
-          aria-label={allExpanded ? translate('floating.toggleAllCloseAria') : translate('floating.toggleAllOpenAria')}
+          aria-label={allExpanded ? translateForAriaLabel(translate('floating.toggleAllCloseAria')) : translateForAriaLabel(translate('floating.toggleAllOpenAria'))}
         >
           <span className={`flex-shrink-0 transition-transform duration-300 group-hover:scale-110 ${!allExpanded ? '-rotate-90' : ''}`}>
             <ToggleAllIcon isExpanded={allExpanded} />
@@ -83,7 +84,7 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
           border-indigo-500/30 hover:shadow-indigo-500/30
         `}
         onClick={handleHomeClick}
-        aria-label={translate('floating.homeAria')}
+        aria-label={translateForAriaLabel(translate('floating.homeAria'))}
       >
         <span className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
           <HomeIcon />
@@ -111,7 +112,7 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
             }
           `}
           onClick={handleToggleAllClick}
-          aria-label={allExpanded ? translate('floating.toggleAllCloseAria') : translate('floating.toggleAllOpenAria')}
+          aria-label={allExpanded ? translateForAriaLabel(translate('floating.toggleAllCloseAria')) : translateForAriaLabel(translate('floating.toggleAllOpenAria'))}
         >
           <span className={`flex-shrink-0 transition-transform duration-300 group-hover:scale-110 ${!allExpanded ? '-rotate-90' : ''}`}>
             <ToggleAllIcon isExpanded={allExpanded} />

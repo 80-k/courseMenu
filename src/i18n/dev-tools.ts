@@ -7,10 +7,7 @@
 
 import type { 
   TranslationKey, 
-  TranslationNamespace, 
-  SupportedLanguage,
-  TranslationValidationResult,
-  TranslationStats 
+  SupportedLanguage
 } from '../types';
 import { translations } from './language-data/translation-registry';
 

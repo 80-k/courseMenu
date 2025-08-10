@@ -27,7 +27,8 @@ export type TranslationNamespace =
   | 'location'    // 장소 관련
   | 'program'     // 프로그램 관련
   | 'ui'          // UI 요소들
-  | 'floating';   // 플로팅 UI
+  | 'floating'    // 플로팅 UI
+  | 'leftPage';   // 왼쪽 페이지 관련
 
 /**
  * 번역 키의 형태를 나타내는 타입

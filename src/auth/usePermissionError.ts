@@ -119,7 +119,7 @@ export const usePermissionError = (): PermissionCheckResult & {
     // 특정 권한이 필요한 경우
     if (requiredPermissions && requiredPermissions.length > 0) {
       const hasAllPermissions = requiredPermissions.every(permission =>
-        permissions.includes(permission)
+        (permissions as Permission[]).includes(permission)
       );
       
       if (!hasAllPermissions) {

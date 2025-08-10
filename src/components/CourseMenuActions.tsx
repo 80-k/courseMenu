@@ -1,4 +1,5 @@
 import { useI18n } from '../i18n';
+import { translateForAriaLabel } from '../i18n/translation-string-helpers';
 import { ToggleAllIcon } from './icons';
 
 interface CourseMenuActionsProps {
@@ -24,7 +25,7 @@ export const CourseMenuActions: React.FC<CourseMenuActionsProps> = ({
       <button 
         className={`toggle-all-btn ${!allExpanded ? 'all-collapsed' : ''}`}
         onClick={onToggleAll}
-        aria-label={allExpanded ? translate('floating.toggleAllCloseAria') : translate('floating.toggleAllOpenAria')}
+        aria-label={allExpanded ? translateForAriaLabel(translate('floating.toggleAllCloseAria')) : translateForAriaLabel(translate('floating.toggleAllOpenAria'))}
       >
         <span className="toggle-all-icon">
           <ToggleAllIcon isExpanded={allExpanded} />

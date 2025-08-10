@@ -9,6 +9,7 @@ import React, { useState, useCallback } from 'react';
 import { useAuth, usePermissions } from '../../auth/auth-hooks';
 import { getRoleDescription } from '../../auth/permissions';
 import { useI18n } from '../../i18n';
+import { translateForAriaLabel, translateToString } from '../../i18n/translation-string-helpers';
 import { LoginForm } from './LoginForm';
 
 // =============================================================================
@@ -139,7 +140,7 @@ export const AuthStatus: React.FC<AuthStatusProps> = ({
               <button
                 onClick={() => setShowLoginForm(false)}
                 className="absolute -top-3 -right-3 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary-500 z-10 transition-all duration-200"
-                aria-label={translate('auth.loginWindowClose')}
+                aria-label={translateForAriaLabel(translate('auth.loginWindowClose'))}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -169,7 +170,7 @@ export const AuthStatus: React.FC<AuthStatusProps> = ({
       <button
         onClick={() => setShowDropdown(!showDropdown)}
         className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 transition-all duration-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 hover:shadow-sm"
-        title={translate('auth.userMenu')}
+        title={translateToString(translate('auth.userMenu'))}
       >
         {/* 사용자 아바타 */}
         <div className={`flex-shrink-0 ${compact ? 'w-6 h-6' : 'w-8 h-8'} bg-gradient-to-br from-primary-600 to-secondary-600 rounded-full flex items-center justify-center ring-2 ring-white shadow-sm`}>
@@ -207,7 +208,7 @@ export const AuthStatus: React.FC<AuthStatusProps> = ({
           onClick={handleLogout}
           disabled={isLoggingOut}
           className="ml-2 p-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50"
-          title={translate('auth.logout')}
+          title={translateToString(translate('auth.logout'))}
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />

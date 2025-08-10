@@ -8,6 +8,7 @@
 import React, { useState, useCallback } from 'react';
 import { useAuth } from '../../auth/auth-hooks';
 import { useI18n } from '../../i18n';
+import { translateToString } from '../../i18n/translation-string-helpers';
 import type { LoginCredentials } from '../../types/auth';
 
 // =============================================================================
@@ -108,10 +109,13 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   const validateForm = useCallback((): boolean => {
     const newErrors: FormErrors = {};
     
-    const emailError = validateEmail(formData.email, translate);
+    // Create a wrapper function that returns only strings
+    const translateWrapper = (key: string) => translateToString(translate(key));
+    
+    const emailError = validateEmail(formData.email, translateWrapper);
     if (emailError) newErrors.email = emailError;
     
-    const passwordError = validatePassword(formData.password, translate);
+    const passwordError = validatePassword(formData.password, translateWrapper);
     if (passwordError) newErrors.password = passwordError;
     
     setErrors(newErrors);
@@ -134,7 +138,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
       onSuccess?.();
     } catch (error) {
       setErrors({
-        general: error instanceof Error ? error.message : translate('validation.login.failed')
+        general: error instanceof Error ? error.message : translateToString(translate('validation.login.failed'))
       });
     } finally {
       setIsSubmitting(false);
@@ -157,7 +161,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
       onSuccess?.();
     } catch (error) {
       setErrors({
-        general: error instanceof Error ? error.message : translate('validation.guestLogin.failed')
+        general: error instanceof Error ? error.message : translateToString(translate('validation.guestLogin.failed'))
       });
     } finally {
       setIsSubmitting(false);
@@ -201,7 +205,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
             className={`w-full px-3 py-2 border rounded-lg text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed ${
               errors.email ? 'border-red-300 bg-red-50' : 'border-gray-300 bg-white hover:border-gray-400'
             }`}
-            placeholder={translate('login.emailPlaceholder')}
+            placeholder={translateToString(translate('login.emailPlaceholder'))}
             autoComplete="email"
           />
           {errors.email && (
@@ -223,7 +227,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
             className={`w-full px-3 py-2 border rounded-lg text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed ${
               errors.password ? 'border-red-300 bg-red-50' : 'border-gray-300 bg-white hover:border-gray-400'
             }`}
-            placeholder={translate('login.passwordPlaceholder')}
+            placeholder={translateToString(translate('login.passwordPlaceholder'))}
             autoComplete="current-password"
           />
           {errors.password && (
